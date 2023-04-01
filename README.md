@@ -8,7 +8,7 @@ This plugin replaces and extends the features from the original [Budget](https:/
 Features
 -------------
 
-- to do: Add more currencies
+- New default currencies
 - to do: Work out a petty cash type system
 - to do: show currencies and costs etc for tasks too
 

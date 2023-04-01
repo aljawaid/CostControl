@@ -5,6 +5,7 @@ namespace Kanboard\Plugin\CostControl;
 use Kanboard\Core\Plugin\Base;
 use Kanboard\Core\Translator;
 use Kanboard\Core\Security\Role;
+use Kanboard\Plugin\CostControl\Model\ExtendedCurrencyModel;
 
 class Plugin extends Base
 {
@@ -24,6 +25,11 @@ class Plugin extends Base
         $this->route->addRoute('/budget/project/:project_id', 'BudgetController', 'show', 'budget');
         $this->route->addRoute('/budget/project/:project_id/lines', 'BudgetLineController', 'show', 'budget');
         $this->route->addRoute('/budget/project/:project_id/breakdown', 'BudgetController', 'breakdown', 'budget');
+
+        // Replace Model
+        $this->container['currencyModel'] = $this->container->factory(function ($c) {
+                return new ExtendedCurrencyModel($c);
+        });
     }
 
     public function onStartup()

@@ -1,6 +1,6 @@
 <?php
 
-namespace Kanboard\Plugin\Budget\Controller;
+namespace Kanboard\Plugin\CostControl\Controller;
 
 use Kanboard\Controller\BaseController;
 
@@ -14,11 +14,11 @@ class BudgetLineController extends BaseController
             $values['date'] = date('Y-m-d');
         }
 
-        $this->response->html($this->helper->layout->project('budget:budget_lines/show', array(
+        $this->response->html($this->helper->layout->project('costControl:budget_lines/show', array(
             'lines' => $this->budget->getAll($project['id']),
             'project' => $project,
             'title' => t('Budget lines')
-        ), 'budget:budget/sidebar'));
+        ), 'costControl:budget/sidebar'));
     }
 
     public function create(array $values = array(), array $errors = array())
@@ -29,12 +29,12 @@ class BudgetLineController extends BaseController
             $values['date'] = date('Y-m-d');
         }
 
-        $this->response->html($this->helper->layout->project('budget:budget_lines/create', array(
+        $this->response->html($this->helper->layout->project('costControl:budget_lines/create', array(
             'values' => $values + array('project_id' => $project['id']),
             'errors' => $errors,
             'project' => $project,
             'title' => t('Budget lines')
-        ), 'budget:budget/sidebar'));
+        ), 'costControl:budget/sidebar'));
     }
 
     /**
@@ -53,7 +53,7 @@ class BudgetLineController extends BaseController
 
             if ($this->budget->create($values['project_id'], $values['amount'], $values['comment'], $values['date'])) {
                 $this->flash->success(t('The budget line have been created successfully.'));
-                $this->response->redirect($this->helper->url->to('BudgetLineController', 'create', array('plugin' => 'budget', 'project_id' => $project['id'])), true);
+                $this->response->redirect($this->helper->url->to('BudgetLineController', 'create', array('plugin' => 'CostControl', 'project_id' => $project['id'])), true);
                 return;
             } else {
                 $this->flash->failure(t('Unable to create the budget line.'));
@@ -72,7 +72,7 @@ class BudgetLineController extends BaseController
     {
         $project = $this->getProject();
 
-        $this->response->html($this->template->render('budget:budget_lines/remove', array(
+        $this->response->html($this->template->render('costControl:budget_lines/remove', array(
             'project' => $project,
             'budget_id' => $this->request->getIntegerParam('budget_id'),
         )));
@@ -94,6 +94,6 @@ class BudgetLineController extends BaseController
             $this->flash->failure(t('Unable to remove this budget line.'));
         }
 
-        $this->response->redirect($this->helper->url->to('BudgetLineController', 'show', array('plugin' => 'budget', 'project_id' => $project['id'])), true);
+        $this->response->redirect($this->helper->url->to('BudgetLineController', 'show', array('plugin' => 'CostControl', 'project_id' => $project['id'])), true);
     }
 }

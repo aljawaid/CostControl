@@ -1,6 +1,6 @@
 <?php
 
-namespace Kanboard\Plugin\Budget\Model;
+namespace Kanboard\Plugin\CostControl\Model;
 
 use DateInterval;
 use DateTime;

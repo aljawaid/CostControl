@@ -2,7 +2,7 @@
     <h2><?= t('Budget lines') ?></h2>
     <ul>
         <li>
-            <?= $this->modal->medium('plus', t('New budget line'), 'BudgetLineController', 'create', array('plugin' => 'budget', 'project_id' => $project['id'])) ?>
+            <?= $this->modal->medium('plus', t('New budget line'), 'BudgetLineController', 'create', array('plugin' => 'CostControl', 'project_id' => $project['id'])) ?>
         </li>
     </ul>
 </div>
@@ -21,7 +21,7 @@
             <td><?= $this->dt->date($line['date']) ?></td>
             <td><?= $this->helper->text->e($line['comment']) ?></td>
             <td>
-                <?= $this->modal->confirm('trash-o', t('Remove'), 'BudgetLineController', 'confirm', array('plugin' => 'budget', 'project_id' => $project['id'], 'budget_id' => $line['id'])) ?>
+                <?= $this->modal->confirm('trash-o', t('Remove'), 'BudgetLineController', 'confirm', array('plugin' => 'CostControl', 'project_id' => $project['id'], 'budget_id' => $line['id'])) ?>
             </td>
         </tr>
         <?php endforeach ?>

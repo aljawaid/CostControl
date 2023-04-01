@@ -30,4 +30,4 @@
     <p class="alert"><?= t('There is not enough data to show something.') ?></p>
 <?php endif ?>
 
-<?= $this->asset->js('plugins/Budget/Asset/Javascript/BudgetChart.js') ?>
+<?= $this->asset->js('plugins/CostControl/Assets/js/BudgetChart.js') ?>

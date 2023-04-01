@@ -47,6 +47,7 @@ class ExtendedCurrencyModel extends Base
             'MYR' => t('MYR - Malaysian Ringgit'),
             'NOK' => t('NOK - Norwegian Krone'),
             'NZD' => t('NZD - New Zealand Dollar'),
+            'PKR' => t('PKR - Pakistani Rupee'),
             'RSD' => t('RSD - Serbian dinar'),
             'RUB' => t('RUB - Russian Ruble'),
             'SEK' => t('SEK - Swedish Krona'),

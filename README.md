@@ -2,13 +2,14 @@
 
 #### _Plugin for [Kanboard](https://github.com/kanboard/kanboard "Kanboard - Kanban Project Management Software")_
 
-This plugin replaces and extends the features from the original [Budget](https://github.com/kanboard/plugin-budget) plugin allowing users to control the budget of a project. 
+This plugin replaces and extends the features from the original [Budget](https://github.com/kanboard/plugin-budget) plugin allowing users to control the budget of a project. Manage your tasks and projects efficiently with more currencies.
 
 
 Features
 -------------
 
 - New default currencies
+  - `MYR`, `SGD`
 - to do: Work out a petty cash type system
 - to do: show currencies and costs etc for tasks too
 

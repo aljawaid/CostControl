@@ -12,7 +12,7 @@ Features
 - to do: Work out a petty cash type system
 - to do: show currencies and costs etc for tasks too
 
-### Budget Management - _Budget plugin imported feature_
+#### Budget Management - _Budget plugin imported feature_
 - Budget management is based on the sub-task time tracking, the user timetable and the user hourly rate.
 
 #### Budget Lines - _Budget plugin imported feature_
@@ -29,7 +29,7 @@ Features
   - Budget lines are the provisioned budget
   - Remaining is the budget left at the given time
 
-### Hourly Rate - _Budget plugin imported feature_
+#### Hourly Rate - _Budget plugin imported feature_
 - Each user can have a pre-defined hourly rate.
 - This feature is used for budget calculation.
   - To define a new price, go to **User profile > Hourly rates**.
@@ -64,10 +64,14 @@ Compatibility
 - Requires [Kanboard](https://github.com/kanboard/kanboard "Kanboard - Kanban Project Management Software") ≥`1.0.37`
 
 #### Other Plugins & Action Plugins
-- _No known issues_
+- **Migrating data from [Budget](https://github.com/kanboard/plugin-budget) plugin**
+  - Uninstall the Budget plugin - the data in the database is not deleted by default
+  - Install the CostControl plugin - the database tables are identical so the imported features should work (untested)
 #### Core Files & Templates
 - _No template overrides_
-- _No database changes_
+- Database Changes:
+  - `01` New database table created as `budget_lines`
+  - `01` New database table created as `hourly_rates`
 
 
 Changelog

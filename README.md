@@ -9,7 +9,7 @@ Features
 -------------
 
 - New default currencies
-  - `MYR`, `SGD`, `PKR`
+  - `MYR`, `SGD`, `PKR`, `ZAR`
 - to do: Work out a petty cash type system
 - to do: show currencies and costs etc for tasks too
 

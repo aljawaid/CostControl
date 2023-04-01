@@ -56,6 +56,7 @@ class ExtendedCurrencyModel extends Base
             'USD' => t('USD - US Dollar'),
             'VBL' => t('VES - Venezuelan Bolívar'),
             'XBT' => t('XBT - Bitcoin'),
+            'ZAR' => t('ZAR - South African Rands'),
         );
     }
 

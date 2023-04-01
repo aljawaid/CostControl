@@ -1,40 +1,72 @@
-# `Plugin Name`
+# CostControl
 
-#### _Plugin for [Kanboard](https://github.com/fguillot/kanboard "Kanboard - Kanban Project Management Software")_
+#### _Plugin for [Kanboard](https://github.com/kanboard/kanboard "Kanboard - Kanban Project Management Software")_
 
-`Brief intro`
+This plugin replaces and extends the features from the original [Budget](https://github.com/kanboard/plugin-budget) plugin allowing users to control the budget of a project. 
 
 
 Features
 -------------
 
-- `main features list`
-- `main features list`
+- to do: Add more currencies
+- to do: Work out a petty cash type system
+- to do: show currencies and costs etc for tasks too
+
+### Budget Management - _Budget plugin imported feature_
+- Budget management is based on the sub-task time tracking, the user timetable and the user hourly rate.
+
+#### Budget Lines - _Budget plugin imported feature_
+- Budget lines are used to define a budget for the project.
+- This budget can be adjusted by adding a new entry with an effective date.
+
+#### Cost Breakdown - _Budget plugin imported feature_
+- Based on the subtask time tracking table and user information you can see the cost of each subtask.
+- The time spent is rounded to the nearest quarter.
+
+#### Budget Chart - _Budget plugin imported feature_
+- Combining all information we can generate a graph:
+  - Expenses represent user costs
+  - Budget lines are the provisioned budget
+  - Remaining is the budget left at the given time
+
+### Hourly Rate - _Budget plugin imported feature_
+- Each user can have a pre-defined hourly rate.
+- This feature is used for budget calculation.
+  - To define a new price, go to **User profile > Hourly rates**.
+- Each hourly rate can have an effective date and different currencies.
 
 
 Screenshots
 ----------
 
-**title**  
+**Budget Lines**  
+![Cost Lines](https://cloud.githubusercontent.com/assets/323546/20451620/965a4a2e-adc9-11e6-9131-3088ce6d8d78.png "Budget plugin imported feature")
 
-![Screenshot Name](../master/Screenshots/screenshot-name.png "Read Screenshot Name")
+**Cost Breakdown**
+![Cost Breakdown](https://cloud.githubusercontent.com/assets/323546/20451619/9658c9ba-adc9-11e6-8dd9-97b7d01db7f2.png "Budget plugin imported feature")
+
+**Budget Graph**
+![Budget Graph](https://cloud.githubusercontent.com/assets/323546/20451621/965c1110-adc9-11e6-925c-c37c5a738c26.png "Budget plugin imported feature")
+
+**Hourly Rate**
+![Hourly Rate](https://cloud.githubusercontent.com/assets/323546/20451622/965da606-adc9-11e6-9537-cd987abac06d.png "Budget plugin imported feature")
 
 
 Usage
 -------------
 
-Go to `Settings` &#10562;
+Go to `Project` &#10562; Budget
 
 
 Compatibility
 -------------
 
-- Requires [Kanboard](https://github.com/fguillot/kanboard "Kanboard - Kanban Project Management Software") ≥`1.2.20`
+- Requires [Kanboard](https://github.com/kanboard/kanboard "Kanboard - Kanban Project Management Software") ≥`1.0.37`
 
 #### Other Plugins & Action Plugins
 - _No known issues_
 #### Core Files & Templates
-- `01` Template override
+- _No template overrides_
 - _No database changes_
 
 
@@ -47,7 +79,7 @@ Read the full [**Changelog**](../master/changelog.md "See changes")
 Installation
 ------------
 
-- **Install via the [Kanboard](https://github.com/fguillot/kanboard "Kanboard - Kanban Project Management Software") Plugin Directory**
+- **Install via the [Kanboard](https://github.com/kanboard/kanboard "Kanboard - Kanban Project Management Software") Plugin Directory**
   - _Go to:_
     - Kanboard: `Plugins` &#10562; `Plugin Directory`
   - _or with [PluginManager](https://github.com/aljawaid/PluginManager) installed:_
@@ -82,7 +114,8 @@ Translations
 Authors & Contributors
 ----------------------
 
-- [@](https://github.com/url) - Author
+- [@aljawaid](https://github.com/aljawaid) - Author
+- [Frédéric Guillot](https://github.com/kanboard/plugin-budget) - Author (Imported features from Budget plugin)
 - _Contributors welcome_
 
 

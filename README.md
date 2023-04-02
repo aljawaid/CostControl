@@ -71,7 +71,7 @@ Compatibility
   - Uninstall the Budget plugin
     - _The data in the database is not deleted by default_
   - Install the CostControl plugin
-    - _The database tables are identical therefore the imported features should work normally_
+    - _Database tables for the imported features are identical therefore data should be preserved_
     - _The clean URLs will change therefore any saved bookmarks must be updated_
 #### Core Files & Templates
 - _No template overrides_
@@ -125,7 +125,7 @@ Authors & Contributors
 ----------------------
 
 - [@aljawaid](https://github.com/aljawaid) - Author
-- [Frédéric Guillot](https://github.com/kanboard/plugin-budget) - Author (Imported features from the Budget plugin)
+- [Frédéric Guillot](https://github.com/kanboard/plugin-budget) - Author (imported features from the Budget plugin)
 - _Contributors welcome_
 
 

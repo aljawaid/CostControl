@@ -70,10 +70,10 @@ class LiveRateHelper extends Base
                     //$live_rate = round(($base_price * $response->conversion_rates->$rate_currency), 2);
 
                     $base_currency = $application_currency;
-                    foreach ($response as $key => $value) {
+                    foreach ($response->rates as $key => $value) {
                         $rate_currency = $key;
                     }
-                return $key
+                return $rate_currency
                 }
 
             }

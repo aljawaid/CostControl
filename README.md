@@ -2,7 +2,7 @@
 
 #### _Plugin for [Kanboard](https://github.com/kanboard/kanboard "Kanboard - Kanban Project Management Software")_
 
-This plugin replaces and extends the features from the original [Budget](https://github.com/kanboard/plugin-budget) plugin allowing users to control the budget of a project. Manage your tasks and projects efficiently with more currencies.
+This plugin replaces and extends the features from the original [Budget](https://github.com/kanboard/plugin-budget) plugin allowing users to control the budget of a project. Extended features include more currencies allowing users to change and modify their base currencies for most countries. 
 
 
 Features

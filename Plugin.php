@@ -56,7 +56,7 @@ class Plugin extends Base
 
     public function getPluginDescription()
     {
-        return t('description text');
+        return t('This plugin replaces and extends the features from the original Budget plugin allowing users to control the budget of a project. Extended features include more currencies allowing users to change and modify their base currencies for most countries.');
     }
 
     public function getPluginAuthor()

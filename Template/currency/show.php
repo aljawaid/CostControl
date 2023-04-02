@@ -1,10 +1,10 @@
 <div class="page-header">
-    <h2><?= t('Currency rates') ?></h2>
-    <ul>
-        <li>
+    <h2 class=""><?= t('Currency rates') ?></h2>
+    <ul class="">
+        <li class="">
             <?= $this->modal->medium('plus', t('Add or change currency rate'), 'CurrencyController', 'create') ?>
         </li>
-        <li>
+        <li class="">
             <?= $this->modal->medium('edit', t('Change reference currency'), 'CurrencyController', 'change') ?>
         </li>
     </ul>
@@ -16,16 +16,16 @@
 
 <?php if (! empty($rates)): ?>
     <table class="table-striped">
-        <tr>
+        <tr class="">
             <th class="column-35"><?= t('Currency') ?></th>
-            <th><?= t('Rate') ?></th>
+            <th class=""><?= t('Rate') ?></th>
         </tr>
         <?php foreach ($rates as $rate): ?>
-        <tr>
-            <td>
+        <tr class="">
+            <td class="">
                 <strong><?= $this->text->e($rate['currency']) ?></strong>
             </td>
-            <td>
+            <td class="">
                 <?= n($rate['rate']) ?>
             </td>
         </tr>

@@ -19,6 +19,7 @@
         <tr class="">
             <th class="column-35"><?= t('Currency') ?></th>
             <th class=""><?= t('Rate') ?></th>
+            <th class="">Current Live Rate</th>
         </tr>
         <?php foreach ($rates as $rate): ?>
         <tr class="">
@@ -28,7 +29,12 @@
             <td class="">
                 <?= n($rate['rate']) ?>
             </td>
+            <td class="live-rate">
+                <?= $this->helper->liveRateHelper->getLiveRate($application_currency, $rate_currency = $this->text->e($rate['currency'])) ?>
+            </td>
         </tr>
         <?php endforeach ?>
     </table>
 <?php endif ?>
+
+<a href="https://www.exchangerate-api.com">Rates By Exchange Rate API</a>

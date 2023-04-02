@@ -29,6 +29,22 @@ class LiveRateHelper extends Base
               "ALL": 128.90737,
             }
         }
+
+    Rate Limiting
+
+    We've been providing free versions of our currency conversion API for over 10 years now and have experienced the inevitable DDoS attacks & broken while(1){} loops during this time. As such our open access free exchange rate API has to be rate limited.
+
+    • If you only request once every 24 hours you won't need to read any more of this section. Easy!
+    • If you can't keep a cached response for that long, you could still request once every hour and never get rate limited.
+
+    These suggestions are quite reasonable because:
+
+    • The data only refreshes once every 24 hours anyway.
+    • Included in the response is the specific time of the next data update.
+    • Our Terms permit caching of the data.
+
+    Don't panic if you send too many requests due to a bug and get rate limited. Rate limited IP's will receive HTTP code 429 responses. After 20 minutes the rate limit will finish and new requests will be allowed through.
+
     *****/
 
     public static function getLiveRate($application_currency, $rate_currency)

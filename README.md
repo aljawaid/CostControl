@@ -10,6 +10,7 @@ Features
 
 - Choose from over 120 currencies in your projects
   - **100** New currencies in addition to the 27 standard default currencies
+  - All currency codes are [ISO 4217 three letter currency format](https://en.wikipedia.org/wiki/ISO_4217 "Learn more")
   - Includes `SDR` - Special Drawing Rights
   - Includes `XDR` - International Monetary Fund (IMF) Special Drawing Rights
 - to do: Work out a petty cash type system

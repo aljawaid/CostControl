@@ -75,7 +75,7 @@ Compatibility
     - _Database tables for the imported features are identical therefore data should be preserved_
     - _The clean URLs will change therefore any saved bookmarks must be updated_
 #### Core Files & Templates
-- _No template overrides_
+- `03` template overrides
 - Database Changes:
   - `01` New database table created as `budget_lines`
   - `01` New database table created as `hourly_rates`

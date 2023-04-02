@@ -14,6 +14,12 @@ class Plugin extends Base
         $this->applicationAccessMap->add('HourlyRateController', '*', Role::APP_ADMIN);
         $this->projectAccessMap->add('BudgetController', '*', Role::PROJECT_MANAGER);
 
+        // Template Override
+        //  - Override name should be camelCase e.g. pluginNameExampleCamelCase
+        $this->template->setTemplateOverride('currency/change', 'costControl:currency/change');
+        $this->template->setTemplateOverride('currency/create', 'costControl:currency/create');
+        $this->template->setTemplateOverride('currency/show', 'costControl:currency/show');
+
         // Views - Add Menu Item - Template Hook
         //  - Override name should start lowercase e.g. pluginNameExampleCamelCase
         $this->template->hook->attach('template:project:dropdown', 'costControl:project/dropdown');

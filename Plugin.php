@@ -40,7 +40,7 @@ class Plugin extends Base
     public function getClasses()
     {
         return array(
-            'Plugin\Budget\Model' => array(
+            'Plugin\CostControl\Model' => array(
                 'HourlyRate',
                 'Budget',
             )

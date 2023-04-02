@@ -22,9 +22,9 @@ class Plugin extends Base
         // Extra Page - Routes
         //  - Example: $this->route->addRoute('/my/custom/route', 'MyController', 'show', 'PluginNameExampleStudlyCaps');
         //  - Must have the corresponding action in the matching controller
-        $this->route->addRoute('/budget/project/:project_id', 'BudgetController', 'show', 'budget');
-        $this->route->addRoute('/budget/project/:project_id/lines', 'BudgetLineController', 'show', 'budget');
-        $this->route->addRoute('/budget/project/:project_id/breakdown', 'BudgetController', 'breakdown', 'budget');
+        $this->route->addRoute('/project/:project_id/budget', 'BudgetController', 'show', 'CostControl');
+        $this->route->addRoute('/project/:project_id/budget/lines', 'BudgetLineController', 'show', 'CostControl');
+        $this->route->addRoute('/project/:project_id/budget/breakdown', 'BudgetController', 'breakdown', 'CostControl');
 
         // Replace Model
         $this->container['currencyModel'] = $this->container->factory(function ($c) {

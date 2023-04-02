@@ -67,9 +67,12 @@ Compatibility
 - Requires [Kanboard](https://github.com/kanboard/kanboard "Kanboard - Kanban Project Management Software") ≥`1.0.37`
 
 #### Other Plugins & Action Plugins
-- **Migrating data from [Budget](https://github.com/kanboard/plugin-budget) plugin**
-  - Uninstall the Budget plugin - the data in the database is not deleted by default
-  - Install the CostControl plugin - the database tables are identical so the imported features should work (untested)
+- **Migrating data from the [Budget](https://github.com/kanboard/plugin-budget) plugin**
+  - Uninstall the Budget plugin
+    - _The data in the database is not deleted by default_
+  - Install the CostControl plugin
+    - _The database tables are identical therefore the imported features should work normally_
+    - _The clean URLs will change therefore any saved bookmarks must be updated_
 #### Core Files & Templates
 - _No template overrides_
 - Database Changes:

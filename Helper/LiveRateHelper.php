@@ -9,6 +9,28 @@ class LiveRateHelper extends Base
     // https://www.exchangerate-api.com/docs/php-currency-api
     // https://www.exchangerate-api.com/docs/free
 
+    /*****
+        RESPONSE JSON EXAMPLE
+        {
+            "result": "success",
+            "provider": "https://www.exchangerate-api.com",
+            "documentation": "https://www.exchangerate-api.com/docs/free",
+            "terms_of_use": "https://www.exchangerate-api.com/terms",
+            "time_last_update_unix": 1680393752,
+            "time_last_update_utc": "Sun, 02 Apr 2023 00:02:32 +0000",
+            "time_next_update_unix": 1680481582,
+            "time_next_update_utc": "Mon, 03 Apr 2023 00:26:22 +0000",
+            "time_eol_unix": 0,
+            "base_code": "GBP",
+            "rates": {
+              "GBP": 1,
+              "AED": 4.536918,
+              "AFN": 107.049854,
+              "ALL": 128.90737,
+            }
+        }
+    *****/
+
     public static function getLiveRate($application_currency, $rate_currency)
     {
         // Fetching JSON
@@ -27,12 +49,17 @@ class LiveRateHelper extends Base
                 if('success' === $response->result) {
 
                 // YOUR APPLICATION CODE HERE, e.g.
-                    $base_price = 1; // Your price in USD
+                    //$base_price = 1; // Your price in USD
                     // $EUR_price = round(($base_price * $response->conversion_rates->EUR), 2);
-                    $live_rate = round(($base_price * $response->conversion_rates->$rate_currency), 2);
+                    //$live_rate = round(($base_price * $response->conversion_rates->$rate_currency), 2);
+
+                    $base_currency = $application_currency;
+                    foreach ($response as $key => $value) {
+                        $rate_currency = $key;
+                    }
+                return $key
                 }
 
-                return $live_rate
             }
 
             catch(Exception $e) {

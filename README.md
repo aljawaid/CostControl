@@ -125,7 +125,7 @@ Authors & Contributors
 ----------------------
 
 - [@aljawaid](https://github.com/aljawaid) - Author
-- [Frédéric Guillot](https://github.com/kanboard/plugin-budget) - Author (Imported features from Budget plugin)
+- [Frédéric Guillot](https://github.com/kanboard/plugin-budget) - Author (Imported features from the Budget plugin)
 - _Contributors welcome_
 
 

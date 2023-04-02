@@ -61,7 +61,7 @@ class Plugin extends Base
 
     public function getPluginAuthor()
     {
-        return '';
+        return 'aljawaid';
     }
 
     public function getPluginVersion()

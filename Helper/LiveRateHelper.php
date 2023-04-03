@@ -65,9 +65,9 @@ class LiveRateHelper extends Base
                 if('success' === $response->result) {
 
                 // YOUR APPLICATION CODE HERE, e.g.
-                    //$base_price = 1; // Your price in USD
+                    // $base_price = 1; // Your price in USD
                     // $EUR_price = round(($base_price * $response->conversion_rates->EUR), 2);
-                    //$live_rate = round(($base_price * $response->conversion_rates->$rate_currency), 2);
+                    // $live_rate = round(($base_price * $response->conversion_rates->$rate_currency), 2);
 
                     $last_updated = $response->time_last_update_utc;
                     $key == $rate_currency;
@@ -75,7 +75,9 @@ class LiveRateHelper extends Base
                     foreach ($response->rates as $key => $value) {
                         $currency_rate = $key .' '. $value;
                     }
-                return $currency_rate;
+
+                    return $currency_rate;
+
                 }
 
             }

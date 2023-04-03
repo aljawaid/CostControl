@@ -69,11 +69,13 @@ class LiveRateHelper extends Base
                     // $EUR_price = round(($base_price * $response->conversion_rates->EUR), 2);
                     //$live_rate = round(($base_price * $response->conversion_rates->$rate_currency), 2);
 
+                    $last_updated = $response->time_last_update_utc;
+                    $key == $rate_currency;
                     $base_currency = $application_currency;
                     foreach ($response->rates as $key => $value) {
-                        $rate_currency = $key;
+                        $currency_rate = $key .' '. $value;
                     }
-                return $rate_currency;
+                return $currency_rate;
                 }
 
             }

@@ -27,4 +27,7 @@ function version_1(PDO $pdo)
         FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE,
         PRIMARY KEY(id)
     ) ENGINE=InnoDB CHARSET=utf8");
+
+    // IF THE PLUGIN IS NOT INSTALLING, DELETE IF THIS COLUMN EXISTS
+    $pdo->exec("ALTER TABLE `currencies` ADD COLUMN `last_modified` DATE");
 }

@@ -25,4 +25,7 @@ function version_1(PDO $pdo)
         currency CHAR(3) NOT NULL,
         FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE
     )");
+
+    // IF THE PLUGIN IS NOT INSTALLING, DELETE IF THIS COLUMN EXISTS
+    $pdo->exec("ALTER TABLE `currencies` ADD COLUMN `last_modified` DATE");
 }

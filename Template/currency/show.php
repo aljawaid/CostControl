@@ -1,5 +1,7 @@
 <div class="page-header">
-    <h2 class=""><?= t('Currency rates') ?></h2>
+    <h2 class="">
+        <span class="currency-wallet-icon"></span> <?= t('Currency rates') ?>
+    </h2>
     <ul class="">
         <li class="">
             <?= $this->modal->medium('plus', t('Add or change currency rate'), 'CurrencyController', 'create') ?>
@@ -24,7 +26,7 @@
         <?php foreach ($rates as $rate): ?>
         <tr class="">
             <td class="">
-                <strong><?= $this->text->e($rate['currency']) ?></strong>
+                <span class="currency-coins-icon"></span> <strong><?= $this->text->e($rate['currency']) ?></strong>
             </td>
             <td class="">
                 <?= n($rate['rate']) ?>

@@ -12,8 +12,9 @@ class Plugin extends Base
 {
     public function initialize()
     {
-        $this->applicationAccessMap->add('HourlyRateController', '*', Role::APP_ADMIN);
-        $this->projectAccessMap->add('BudgetController', '*', Role::PROJECT_MANAGER);
+        // CSS - Asset Hook
+        //  - Keep filename lowercase
+        $this->hook->on('template:layout:css', array('template' => 'plugins/CostControl/Assets/css/cost-control.css'));
 
         // Template Override
         //  - Override name should be camelCase e.g. pluginNameExampleCamelCase
@@ -40,6 +41,9 @@ class Plugin extends Base
         //  - Example: $this->helper->register('helperClassNameCamelCase', '\Kanboard\Plugin\PluginNameExampleStudlyCaps\Helper\HelperNameExampleStudlyCaps');
         //  - Add each Helper in the 'use' section at the top of this file
         $this->helper->register('liveRateHelper', '\Kanboard\Plugin\CostControl\Helper\LiveRateHelper');
+
+        $this->applicationAccessMap->add('HourlyRateController', '*', Role::APP_ADMIN);
+        $this->projectAccessMap->add('BudgetController', '*', Role::PROJECT_MANAGER);
 
         // Replace Model
         $this->container['currencyModel'] = $this->container->factory(function ($c) {

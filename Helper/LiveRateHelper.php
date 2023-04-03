@@ -73,7 +73,7 @@ class LiveRateHelper extends Base
                     foreach ($response->rates as $key => $value) {
                         $rate_currency = $key;
                     }
-                return $rate_currency
+                return $rate_currency;
                 }
 
             }

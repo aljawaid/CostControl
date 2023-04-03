@@ -8,11 +8,13 @@ This plugin replaces and extends the features from the original [Budget](https:/
 Features
 -------------
 
-- Choose from over 120 currencies in your projects
+- Choose from over **120 currencies** in your projects
   - **100** New currencies in addition to the 27 standard default currencies
   - All currency codes are [ISO 4217 three letter currency format](https://en.wikipedia.org/wiki/ISO_4217 "Learn more")
   - Includes `SDR` - Special Drawing Rights
   - Includes `XDR` - International Monetary Fund (IMF) Special Drawing Rights
+- Live updated currency rates from [ExchangeRate-API](https://www.exchangerate-api.com)
+- Show the last modified date for manual currency rates
 - to do: Work out a petty cash type system
 - to do: show currencies and costs etc for tasks too
 
@@ -80,6 +82,7 @@ Compatibility
 - Database Changes:
   - `01` New database table created as `budget_lines`
   - `01` New database table created as `hourly_rates`
+  - `01` New column added to the `currencies` table as `last_modified`
 
 
 Changelog

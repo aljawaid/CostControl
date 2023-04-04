@@ -47,7 +47,7 @@ class LiveRateHelper extends Base
 
     *****/
 
-    public static function getLiveRate($application_currency, $rate_currency)
+    public static function getLiveRate($application_currency, $rate_currency, $last_updated = '')
     {
         // Fetching JSON
         //$req_url = 'https://open.er-api.com/v6/latest/USD';
@@ -76,7 +76,7 @@ class LiveRateHelper extends Base
                         $currency_rate = $key .' '. $value;
                     }
 
-                    return $currency_rate;
+                    return array ($currency_rate, $last_updated);
 
                 }
 

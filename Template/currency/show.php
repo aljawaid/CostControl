@@ -40,5 +40,5 @@
     <?php endif ?>
 
     <a href="https://www.exchangerate-api.com">Rates By Exchange Rate API</a> Last Updated: date / Next Update: date
-
+<?= $this->helper->liveRateHelper->getLiveRate($last_updated) ?>
 </div>

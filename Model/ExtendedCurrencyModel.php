@@ -84,7 +84,6 @@ class ExtendedCurrencyModel extends Base
             'JPY' => t('JPY - Japanese Yen'),
             'KES' => t('KES - Kenyan Shilling'),
             'KHR' => t('KHR - Cambodian Riel'),
-            'KPW' => t('KPW - North Korean Won'),
             'KRW' => t('KRW - South Korean Won'),
             'KWD' => t('KWD - Kuwaiti Dinar'),
             'KYD' => t('KYD - Cayman Islands Dollar'),
@@ -128,12 +127,10 @@ class ExtendedCurrencyModel extends Base
             'SAR' => t('SAR - Saudi Riyal'),
             'SCR' => t('SCR - Seychellois Rupee'),
             'SDG' => t('SDG - Sudanese Pound'),
-            'SDR' => t('SDR - Special Drawing Rights'),
             'SEK' => t('SEK - Swedish Krona'),
             'SGD' => t('SGD - Singapore Dollar'),
             'SLL' => t('SLL - Sierra Leonean Leone'),
             'SOS' => t('SOS - Somali Shilling'),
-            'SVC' => t('SVC - Salvadoran Colón'),
             'SYP' => t('SYP - Syrian Pound'),
             'THB' => t('THB - Thai Baht'),
             'TJS' => t('TJS - Tajikistani Somoni'),
@@ -148,13 +145,13 @@ class ExtendedCurrencyModel extends Base
             'USD' => t('USD - United States Dollar'),
             'UYU' => t('UYU - Uruguayan Peso'),
             'UZS' => t('UZS - Uzbekistani Som'),
-            'VEF' => t('VEF - Venezuelan Bolívar'),
+            'VES' => t('VES - Venezuelan Bolívar'),
             'VND' => t('VND - Vietnamese Dong'),
             'XDR' => t('XDR - International Monetary Fund (IMF) Special Drawing Rights'),
             'YER' => t('YER - Yemeni Rial'),
             'ZAR' => t('ZAR - South African Rand'),
             'ZMW' => t('ZMW - Zambian Kwacha'),
-            'ZWD' => t('ZWD - Zimbabwean Dollar'),
+            'ZWL' => t('ZWL - Zimbabwean Dollar'),
         );
     }
 
@@ -221,4 +218,5 @@ class ExtendedCurrencyModel extends Base
     {
         return $this->db->table(self::TABLE)->eq('currency', $currency)->update(array('rate' => $rate));
     }
+
 }

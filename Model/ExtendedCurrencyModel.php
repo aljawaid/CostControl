@@ -219,4 +219,18 @@ class ExtendedCurrencyModel extends Base
         return $this->db->table(self::TABLE)->eq('currency', $currency)->update(array('rate' => $rate));
     }
 
+    public function updateAll()
+    {
+        $req_url = 'https://open.er-api.com/v6/latest/'.$this->configModel->get('application_currency', 'USD');
+        $response_json = file_get_contents($req_url);
+        $json_currency_rates = json_decode($response_json,true);
+        $currencies = $this->getCurrencies();
+
+        foreach ($currencies as $currency => $value) {
+            if (isset($json_currency_rates['rates'][$currency])) {
+                $live_rate = $json_currency_rates['rates'][$currency];
+                $this->create($currency, $live_rate);
+            }
+        }
+    }
 }

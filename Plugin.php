@@ -18,8 +18,8 @@ class Plugin extends Base
 
         // Template Override
         //  - Override name should be camelCase e.g. pluginNameExampleCamelCase
-        $this->template->setTemplateOverride('currency/change', 'costControl:currency/change');
-        $this->template->setTemplateOverride('currency/create', 'costControl:currency/create');
+        //$this->template->setTemplateOverride('currency/change', 'costControl:currency/change');
+        //$this->template->setTemplateOverride('currency/create', 'costControl:currency/create');
         $this->template->setTemplateOverride('currency/show', 'costControl:currency/show');
 
         // Views - Add Menu Item - Template Hook

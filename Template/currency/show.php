@@ -1,8 +1,8 @@
 <?php 
-//if (time() - $this->model->configModel->get('last_checked_liverates', time() - 86401) > 86400) {
-    //$this->model->configModel->save(['last_checked_liverates'=> time()]);
+if (time() - $this->model->configModel->get('last_checked_liverates', time() - 86401) > 86400) {
+    $this->model->configModel->save(['last_checked_liverates'=> time()]);
     $this->model->currencyModel->getLiveRates(); 
-//} 
+} 
 ?>
 <div class="page-header">
     <h2 class="">
@@ -47,4 +47,5 @@
     <?php endif ?>
 
     <a href="https://www.exchangerate-api.com">Rates By Exchange Rate API</a>
+    Last Checked:<?= $this->dt->datetime($this->model->configModel->get('last_checked_liverates', time() - 86401)) ?>
 </div>

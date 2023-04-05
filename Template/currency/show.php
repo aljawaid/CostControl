@@ -42,7 +42,7 @@
                 <td class="live-rate">
                     <?= n($rate['live_rate']) ?>
                 </td>
-                <td class="manual-rate-last-modified"><?= $this->dt->datetime($rate['live_rate_updated']) ?></td>
+                <td class="manual-rate-last-modified"><?= ($rate['live_rate_updated'] > 0) ? $this->dt->datetime($rate['live_rate_updated']) : '' ?></td>
             </tr>
             <?php endforeach ?>
         </table>

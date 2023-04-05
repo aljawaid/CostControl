@@ -1,3 +1,9 @@
+<?php 
+//if (time() - $this->model->configModel->get('last_checked_liverates', time() - 86401) > 86400) {
+    //$this->model->configModel->save(['last_checked_liverates'=> time()]);
+    $this->model->currencyModel->getLiveRates(); 
+//} 
+?>
 <div class="page-header">
     <h2 class="">
         <span class="currency-wallet-icon"></span> <?= t('Currency Rates') ?>
@@ -31,9 +37,9 @@
                 <td class="">
                     <?= n($rate['rate']) ?>
                 </td>
-                <td class="manual-rate-last-modified"><?= $this->text->e($rate['last_modified']) ?></td>
+                <td class="manual-rate-last-modified"><?= $this->dt->datetime($rate['last_modified']) ?></td>
                 <td class="live-rate">
-                    <?= $this->model->currencyModel->getLiveRates(); ?>
+                    <?= n($rate['live_rate']) ?>
                 </td>
             </tr>
             <?php endforeach ?>
@@ -41,6 +47,4 @@
     <?php endif ?>
 
     <a href="https://www.exchangerate-api.com">Rates By Exchange Rate API</a>
-    Last Updated: <?= $this->model->currencyModel->getLiveRatesDates($live_rate_updated); ?>
-    Next Update: <?= $this->model->currencyModel->getLiveRatesDates($live_rate_next_update); ?>
 </div>

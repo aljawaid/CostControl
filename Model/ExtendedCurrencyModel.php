@@ -149,6 +149,7 @@ class ExtendedCurrencyModel extends Base
             'VES' => t('VBL - Venezuelan Bolívar'),
             'VND' => t('VND - Vietnamese Dong'),
             'XDR' => t('XDR - International Monetary Fund (IMF) Special Drawing Rights'),
+            'XBT' => t('BTC - Bitcoin'),
             'YER' => t('YER - Yemeni Rial'),
             'ZAR' => t('ZAR - South African Rand'),
             'ZMW' => t('ZMW - Zambian Kwacha'),

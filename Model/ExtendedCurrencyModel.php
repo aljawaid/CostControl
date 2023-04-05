@@ -230,8 +230,14 @@ class ExtendedCurrencyModel extends Base
             if (isset($json_currency_rates['rates'][$currency])) {
                 $live_rate = $json_currency_rates['rates'][$currency];
                 $live_rate_updated = $json_currency_rates['time_last_update_unix'];
+                $live_rate_next_update = $json_currency_rates['time_next_update_unix'];
                 $this->create($currency, $live_rate, $live_rate_updated);
             }
         }
+    }
+
+    public function getLiveRatesDates()
+    {
+        return array($live_rate_updated, $live_rate_next_update);
     }
 }

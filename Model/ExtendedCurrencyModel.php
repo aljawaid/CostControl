@@ -197,13 +197,13 @@ class ExtendedCurrencyModel extends Base
      * @param  float     $rate
      * @return boolean|integer
      */
-    public function create($currency, $rate, $live_rate)
+    public function create($currency, $rate, $live_rate, $live_rate_updated)
     {
         if ($this->db->table(self::TABLE)->eq('currency', $currency)->exists()) {
             return $this->update($currency, $rate);
         }
 
-        return $this->db->table(self::TABLE)->insert(array('currency' => $currency, 'rate' => $rate, 'live_rate' => $live_rate));
+        return $this->db->table(self::TABLE)->insert(array('currency' => $currency, 'rate' => $rate, 'live_rate' => $live_rate, 'live_rate_updated' => $live_rate_updated));
     }
 
     /**
@@ -214,9 +214,9 @@ class ExtendedCurrencyModel extends Base
      * @param  float     $rate
      * @return boolean
      */
-    public function update($currency, $rate, $live_rate)
+    public function update($currency, $rate, $live_rate, $live_rate_updated)
     {
-        return $this->db->table(self::TABLE)->eq('currency', $currency)->update(array('rate' => $rate, 'live_rate' => $live_rate));
+        return $this->db->table(self::TABLE)->eq('currency', $currency)->update(array('rate' => $rate, 'live_rate' => $live_rate, 'live_rate_updated' => $live_rate_updated));
     }
 
     public function getLiveRates()
@@ -229,7 +229,8 @@ class ExtendedCurrencyModel extends Base
         foreach ($currencies as $currency => $value) {
             if (isset($json_currency_rates['rates'][$currency])) {
                 $live_rate = $json_currency_rates['rates'][$currency];
-                $this->create($currency, $live_rate);
+                $live_rate_updated = $json_currency_rates['time_last_update_unix'];
+                $this->create($currency, $live_rate, $live_rate_updated);
             }
         }
     }

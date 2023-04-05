@@ -256,12 +256,15 @@ class ExtendedCurrencyModel extends Base
         $json_currency_rates = json_decode($response_json,true);
         $currencies = $this->getCurrencies();
         $db_currencies = $this->getAll();
+        $live_rate_updated = $json_currency_rates['time_last_update_unix'];
+        $live_rate_next_update = $json_currency_rates['time_next_update_unix'];
+        $this->configModel->save(['cost_control_last_updated' => $live_rate_updated]);
+        $this->configModel->save(['cost_control_next_update' => $live_rate_next_update]);
+        
         
         foreach ($currencies as $currency => $value) {
             if (isset($json_currency_rates['rates'][$currency])) {
                 $live_rate = $json_currency_rates['rates'][$currency];
-                $live_rate_updated = $json_currency_rates['time_last_update_unix'];
-                $live_rate_next_update = $json_currency_rates['time_next_update_unix'];
                 $this->createWithLive($currency, $live_rate, time());
             }
         }

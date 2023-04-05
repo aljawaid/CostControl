@@ -197,13 +197,30 @@ class ExtendedCurrencyModel extends Base
      * @param  float     $rate
      * @return boolean|integer
      */
-    public function create($currency, $rate, $last_modified, $live_rate, $live_rate_updated)
+    public function createWithLive($currency, $live_rate, $live_rate_updated)
     {
         if ($this->db->table(self::TABLE)->eq('currency', $currency)->exists()) {
-            return $this->update($currency, $rate, $last_modified, $live_rate, $live_rate_updated);
+            return $this->updateWithLive($currency, $live_rate, $live_rate_updated);
         }
 
-        return $this->db->table(self::TABLE)->insert(array('currency' => $currency, 'rate' => $rate, 'last_modified' => $last_modified, 'live_rate' => $live_rate, 'live_rate_updated' => $live_rate_updated));
+        return $this->db->table(self::TABLE)->insert(array('currency' => $currency, 'live_rate' => $live_rate, 'live_rate_updated' => $live_rate_updated));
+    }
+    
+    /**
+     * Add a new currency rate
+     *
+     * @access public
+     * @param  string    $currency
+     * @param  float     $rate
+     * @return boolean|integer
+     */
+    public function create($currency, $rate)
+    {
+        if ($this->db->table(self::TABLE)->eq('currency', $currency)->exists()) {
+            return $this->update($currency, $rate);
+        }
+
+        return $this->db->table(self::TABLE)->insert(array('currency' => $currency, 'rate' => $rate, 'last_modified' => time()));
     }
 
     /**
@@ -214,9 +231,22 @@ class ExtendedCurrencyModel extends Base
      * @param  float     $rate
      * @return boolean
      */
-    public function update($currency, $rate, $last_modified, $live_rate, $live_rate_updated)
+    public function update($currency, $rate)
     {
-        return $this->db->table(self::TABLE)->eq('currency', $currency)->update(array('rate' => $rate, 'last_modified' => $last_modified, 'live_rate' => $live_rate, 'live_rate_updated' => $live_rate_updated));
+        return $this->db->table(self::TABLE)->eq('currency', $currency)->update(array('rate' => $rate, 'last_modified' => time()));
+    }
+    
+    /**
+     * Update a currency rate
+     *
+     * @access public
+     * @param  string    $currency
+     * @param  float     $rate
+     * @return boolean
+     */
+    public function updateWithLive($currency, $live_rate, $live_rate_updated)
+    {
+        return $this->db->table(self::TABLE)->eq('currency', $currency)->update(array('live_rate' => $live_rate, 'live_rate_updated' => $live_rate_updated));
     }
 
     public function getLiveRates()
@@ -232,7 +262,7 @@ class ExtendedCurrencyModel extends Base
                 $live_rate = $json_currency_rates['rates'][$currency];
                 $live_rate_updated = $json_currency_rates['time_last_update_unix'];
                 $live_rate_next_update = $json_currency_rates['time_next_update_unix'];
-                $this->create($currency, (isset($db_currencies[$currency]['rate'])) ? isset($db_currencies[$currency]['rate']) : $live_rate, time(), $live_rate, time());
+                $this->createWithLive($currency, $live_rate, time());
             }
         }
     }

@@ -1,8 +1,8 @@
 <?php 
-if (time() - $this->model->configModel->get('last_checked_liverates', time() - 86401) > 86400) {
-    $this->model->configModel->save(['last_checked_liverates'=> time()]);
+//if (time() - $this->model->configModel->get('last_checked_liverates', time() - 86401) > 86400) {
+   // $this->model->configModel->save(['last_checked_liverates'=> time()]);
     $this->model->currencyModel->getLiveRates(); 
-} 
+//} 
 ?>
 <div class="page-header">
     <h2 class="">
@@ -28,6 +28,7 @@ if (time() - $this->model->configModel->get('last_checked_liverates', time() - 8
                 <th class=""><?= t('Manual Rate') ?></th>
                 <th class=""> Last Modified</th>
                 <th class="">Live Daily Rate</th>
+                <th class=""> Live Rate Updated</th>
             </tr>
             <?php foreach ($rates as $rate): ?>
             <tr class="">
@@ -41,6 +42,7 @@ if (time() - $this->model->configModel->get('last_checked_liverates', time() - 8
                 <td class="live-rate">
                     <?= n($rate['live_rate']) ?>
                 </td>
+                <td class="manual-rate-last-modified"><?= $this->dt->datetime($rate['live_rate_updated']) ?></td>
             </tr>
             <?php endforeach ?>
         </table>

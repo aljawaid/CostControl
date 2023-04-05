@@ -9,7 +9,7 @@ Features
 -------------
 
 - Choose from **over 120 currencies** in your projects
-  - **97** New currencies in addition to the 27 standard default currencies
+  - **97** New currencies in addition to the 28 standard default currencies
   - All currency codes are [ISO 4217 three letter currency format](https://en.wikipedia.org/wiki/ISO_4217 "Learn more")
   - Includes `XDR` - International Monetary Fund (IMF) Special Drawing Rights
 - Live updated currency rates retrieved daily from [ExchangeRate-API](https://www.exchangerate-api.com)

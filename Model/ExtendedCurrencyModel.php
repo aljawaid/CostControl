@@ -197,13 +197,13 @@ class ExtendedCurrencyModel extends Base
      * @param  float     $rate
      * @return boolean|integer
      */
-    public function create($currency, $rate)
+    public function create($currency, $rate, $live_rate)
     {
         if ($this->db->table(self::TABLE)->eq('currency', $currency)->exists()) {
             return $this->update($currency, $rate);
         }
 
-        return $this->db->table(self::TABLE)->insert(array('currency' => $currency, 'rate' => $rate));
+        return $this->db->table(self::TABLE)->insert(array('currency' => $currency, 'rate' => $rate, 'live_rate' => $live_rate));
     }
 
     /**
@@ -214,9 +214,9 @@ class ExtendedCurrencyModel extends Base
      * @param  float     $rate
      * @return boolean
      */
-    public function update($currency, $rate)
+    public function update($currency, $rate, $live_rate)
     {
-        return $this->db->table(self::TABLE)->eq('currency', $currency)->update(array('rate' => $rate));
+        return $this->db->table(self::TABLE)->eq('currency', $currency)->update(array('rate' => $rate, 'live_rate' => $live_rate));
     }
 
     public function getLiveRates()

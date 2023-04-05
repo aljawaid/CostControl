@@ -197,13 +197,13 @@ class ExtendedCurrencyModel extends Base
      * @param  float     $rate
      * @return boolean|integer
      */
-    public function create($currency, $rate, $live_rate, $live_rate_updated)
+    public function create($currency, $rate, $last_modified = time(), $live_rate, $live_rate_updated)
     {
         if ($this->db->table(self::TABLE)->eq('currency', $currency)->exists()) {
-            return $this->update($currency, $rate);
+            return $this->update($currency, $rate, $last_modified);
         }
 
-        return $this->db->table(self::TABLE)->insert(array('currency' => $currency, 'rate' => $rate, 'live_rate' => $live_rate, 'live_rate_updated' => $live_rate_updated));
+        return $this->db->table(self::TABLE)->insert(array('currency' => $currency, 'rate' => $rate, 'last_modified' => $last_modified, 'live_rate' => $live_rate, 'live_rate_updated' => $live_rate_updated));
     }
 
     /**
@@ -214,9 +214,9 @@ class ExtendedCurrencyModel extends Base
      * @param  float     $rate
      * @return boolean
      */
-    public function update($currency, $rate, $live_rate, $live_rate_updated)
+    public function update($currency, $rate, $last_modified = time(), $live_rate, $live_rate_updated)
     {
-        return $this->db->table(self::TABLE)->eq('currency', $currency)->update(array('rate' => $rate, 'live_rate' => $live_rate, 'live_rate_updated' => $live_rate_updated));
+        return $this->db->table(self::TABLE)->eq('currency', $currency)->update(array('rate' => $rate, 'last_modified' => $last_modified, 'live_rate' => $live_rate, 'live_rate_updated' => $live_rate_updated));
     }
 
     public function getLiveRates()

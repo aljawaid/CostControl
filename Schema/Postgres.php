@@ -27,5 +27,5 @@ function version_1(PDO $pdo)
     )");
 
     // IF THE PLUGIN IS NOT INSTALLING, DELETE IF THIS COLUMN EXISTS
-    $pdo->exec("ALTER TABLE `currencies` ADD COLUMN `last_modified` DATE");
+    $pdo->exec("ALTER TABLE `currencies` ADD COLUMN `last_modified` INTEGER, ADD COLUMN `live_rate` DECIMAL(19,6), ADD COLUMN `live_rate_updated` INTEGER");
 }

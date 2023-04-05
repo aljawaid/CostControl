@@ -82,7 +82,7 @@ Compatibility
 - Database Changes:
   - `01` New database table created as `budget_lines`
   - `01` New database table created as `hourly_rates`
-  - `01` New column added to the `currencies` table as `last_modified`
+  - `03` New columns added to the `currencies` table as `last_modified`, `live_rate`, `live_rate_updated`
 
 
 Changelog

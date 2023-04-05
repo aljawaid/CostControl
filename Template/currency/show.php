@@ -32,7 +32,7 @@
                     <?= n($rate['rate']) ?>
                 </td>
                 <td class="live-rate">
-                    <?= $this->helper->liveRateHelper->getLiveRate($application_currency, $rate_currency = $this->text->e($rate['currency'])) ?>
+                    <?php $this->model->currencyModel->getLiveRates(); ?>
                 </td>
             </tr>
             <?php endforeach ?>

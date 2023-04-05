@@ -36,9 +36,9 @@
                     <span class="currency-coins-icon"></span> <strong><?= $this->text->e($rate['currency']) ?></strong>
                 </td>
                 <td class="">
-                    <?= n($rate['rate']) ?>
+                    <?= ($rate['rate'] > 0) ? n($rate['rate']) : '' ?>
                 </td>
-                <td class="manual-rate-last-modified"><?= $this->dt->datetime($rate['last_modified']) ?></td>
+                <td class="manual-rate-last-modified"><?= ($rate['last_modified'] > 0) ? $this->dt->datetime($rate['last_modified']) : '' ?></td>
                 <td class="live-rate">
                     <?= n($rate['live_rate']) ?>
                 </td>

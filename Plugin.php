@@ -6,7 +6,6 @@ use Kanboard\Core\Plugin\Base;
 use Kanboard\Core\Translator;
 use Kanboard\Core\Security\Role;
 use Kanboard\Plugin\CostControl\Model\ExtendedCurrencyModel;
-//use Kanboard\Plugin\CostControl\LiveRateHelper;  // Helper Class and Filename should be exact
 
 class Plugin extends Base
 {
@@ -36,11 +35,6 @@ class Plugin extends Base
         $this->route->addRoute('/settings/currencies/rates', 'CurrencyController', 'show');
         $this->route->addRoute('/settings/currencies/add', 'CurrencyController', 'create');
         $this->route->addRoute('/settings/currencies/change', 'CurrencyController', 'change');
-
-        // Helper
-        //  - Example: $this->helper->register('helperClassNameCamelCase', '\Kanboard\Plugin\PluginNameExampleStudlyCaps\Helper\HelperNameExampleStudlyCaps');
-        //  - Add each Helper in the 'use' section at the top of this file
-        //$this->helper->register('liveRateHelper', '\Kanboard\Plugin\CostControl\Helper\LiveRateHelper');
 
         $this->applicationAccessMap->add('HourlyRateController', '*', Role::APP_ADMIN);
         $this->projectAccessMap->add('BudgetController', '*', Role::PROJECT_MANAGER);

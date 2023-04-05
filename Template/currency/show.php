@@ -42,7 +42,7 @@ if (time() - $this->model->configModel->get('last_checked_liverates', time() - 8
                 <td class="live-rate">
                     <?= n($rate['live_rate']) ?>
                 </td>
-                <td class="manual-rate-last-modified"><?= ($rate['live_rate_updated'] > 0) ? $this->dt->datetime($rate['live_rate_updated']) : '' ?></td>
+                <td class="live-rate-last-updated"><?= ($rate['live_rate_updated'] > 0) ? $this->dt->datetime($rate['live_rate_updated']) : '' ?></td>
             </tr>
             <?php endforeach ?>
         </table>

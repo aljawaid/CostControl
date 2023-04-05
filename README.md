@@ -2,14 +2,14 @@
 
 #### _Plugin for [Kanboard](https://github.com/kanboard/kanboard "Kanboard - Kanban Project Management Software")_
 
-Manage your costs per project to budget and plan using over 100 currencies. Get automatic live daily updates to compare your saved currency rates to forecast your budgets more accurately. This plugin replaces and extends the features from the original [Budget](https://github.com/kanboard/plugin-budget) plugin. Extended features include allowing users to change and modify their base currencies for most countries. 
+Manage your costs per project to budget and plan using over 120 currencies. Get automatic live daily updates to compare your saved currency rates to forecast your budgets more accurately. This plugin replaces and extends the features from the original [Budget](https://github.com/kanboard/plugin-budget) plugin. Extended features include allowing users to change and modify their base currencies for most countries. 
 
 
 Features
 -------------
 
 - Choose from **over 120 currencies** in your projects
-  - **97** New currencies in addition to the 28 standard default currencies
+  - **101** New currencies in addition to the 25 standard default currencies
   - All currency codes are [ISO 4217 three letter currency format](https://en.wikipedia.org/wiki/ISO_4217 "Learn more")
   - Includes `XDR` - International Monetary Fund (IMF) Special Drawing Rights
 - Live updated currency rates retrieved daily from [ExchangeRate-API](https://www.exchangerate-api.com)

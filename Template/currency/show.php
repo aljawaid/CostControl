@@ -29,9 +29,9 @@ if (time() - $this->model->configModel->get('cost_control_last_checked_live_rate
             <tr class="">
                 <th class="column-35"><?= t('Currency') ?></th>
                 <th class=""><?= t('Manual Rate') ?></th>
-                <th class=""> Last Modified</th>
-                <th class="">Live Daily Rate</th>
-                <th class=""> Live Rate Updated</th>
+                <th class=""><?= t('Last Modified') ?></th>
+                <th class=""><?= t('Live Daily Rate') ?></th>
+                <th class=""><?= t('Live Rate Updated') ?></th>
             </tr>
             <?php foreach ($rates as $rate): ?>
             <tr class="">
@@ -51,7 +51,7 @@ if (time() - $this->model->configModel->get('cost_control_last_checked_live_rate
         </table>
     <?php endif ?>
 
-    <a href="https://www.exchangerate-api.com">Rates By Exchange Rate API</a>
+    <a href="https://www.exchangerate-api.com">Live Rates By Exchange Rate API</a>
     Last Checked: <?= $this->dt->datetime($this->model->configModel->get('last_checked_liverates', time() - 86401)) ?><br>
     Last Update to Live Rate Data: <?= $this->dt->datetime($this->model->configModel->get('cost_control_last_updated', time())) ?><br>
     Next Update to Live Rate Data: <?= $this->dt->datetime($this->model->configModel->get('cost_control_next_update', time())) ?>

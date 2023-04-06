@@ -6,7 +6,7 @@ if (time() - $this->model->configModel->get('last_checked_liverates', time() - 8
 ?>
 <div class="page-header">
     <h2 class="">
-        <span class="currency-wallet-icon"></span> <?= t('Currency Rates') ?>
+        <span class="currency-wallet-icon"></span> <?= t('Test Rates') ?>
     </h2>
     <ul class="">
         <li class="">

@@ -43,7 +43,7 @@ if (time() - $this->model->configModel->get('cost_control_last_checked_live_rate
                 </td>
                 <td class="manual-rate-last-modified"><?= ($rate['last_modified'] > 0) ? $this->dt->datetime($rate['last_modified']) : '' ?></td>
                 <td class="live-rate">
-                    <?= n($rate['live_rate']) ?>
+                    <?= ($rate['live_rate'] > 0) ? n($rate['live_rate']) : '' ?>
                 </td>
                 <td class="live-rate-last-updated"><?= ($rate['live_rate_updated'] > 0) ? $this->dt->datetime($rate['live_rate_updated']) : '' ?></td>
             </tr>

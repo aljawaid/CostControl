@@ -273,8 +273,4 @@ class ExtendedCurrencyModel extends Base
         }
     }
 
-    public function getLiveRatesDates()
-    {
-        return array($live_rate_updated, $live_rate_next_update);
-    }
 }

@@ -1,7 +1,10 @@
-<?php 
-if (time() - $this->model->configModel->get('last_checked_liverates', time() - 86401) > 86400) {
-    $this->model->configModel->save(['last_checked_liverates'=> time()]);
-    $this->model->currencyModel->getLiveRates(); 
+<?php
+// 24 RATE LIMIT CHECK
+if (time() - $this->model->configModel->get('cost_control_last_checked_live_rates', time() - 86401) > 86400) {
+    // SAVE DATE IF GREATER THAN 24HRS
+    $this->model->configModel->save(['cost_control_last_checked_live_rates'=> time()]);
+    // CHECK JSON API
+    $this->model->currencyModel->getLiveRates();
 } 
 ?>
 <div class="page-header">

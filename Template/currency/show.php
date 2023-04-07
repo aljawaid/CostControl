@@ -9,11 +9,11 @@ if (time() - $this->model->configModel->get('cost_control_last_checked_live_rate
     echo '<div class="alert alert-error alert-fade-out" style="top: 50%; bottom: initial;">'. t('The next update for live rates will be on ') . $this->dt->datetime($this->model->configModel->get('cost_control_next_update', time())) .'</div>';
 }
 ?>
-<div class="page-header">
+<div class="cost-control-page-header">
     <h2 class="">
-        <span class="currency-wallet-icon"></span> <?= t('Test Rates') ?>
+        <span class="currency-wallet-icon"></span> <?= t('Currency Rates') ?>
     </h2>
-    <ul class="">
+    <ul class="currency-actions">
         <li class="">
             <?= $this->modal->medium('plus', t('Add or change currency rate'), 'CurrencyController', 'create') ?>
         </li>
@@ -32,7 +32,7 @@ if (time() - $this->model->configModel->get('cost_control_last_checked_live_rate
                 <th class="column-35"><?= t('Currency') ?></th>
                 <th class=""><?= t('Manual Rate') ?></th>
                 <th class=""><?= t('Last Modified') ?></th>
-                <th class=""><?= t('Live Daily Rate') ?></th>
+                <th class=""><?= t('Live Rate') ?></th>
                 <th class=""><?= t('Live Rate Updated') ?></th>
             </tr>
             <?php foreach ($rates as $rate): ?>

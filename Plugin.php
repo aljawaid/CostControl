@@ -25,6 +25,7 @@ class Plugin extends Base
         //  - Override name should start lowercase e.g. pluginNameExampleCamelCase
         $this->template->hook->attach('template:project:dropdown', 'costControl:project/dropdown');
         $this->template->hook->attach('template:user:sidebar:actions', 'costControl:user/sidebar');
+        $this->template->hook->attach('template:config:application', 'costControl:config/settings');
 
         // Extra Page - Routes
         //  - Example: $this->route->addRoute('/my/custom/route', 'MyController', 'show', 'PluginNameExampleStudlyCaps');

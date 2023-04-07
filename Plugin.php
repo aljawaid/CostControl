@@ -6,6 +6,7 @@ use Kanboard\Core\Plugin\Base;
 use Kanboard\Core\Translator;
 use Kanboard\Core\Security\Role;
 use Kanboard\Plugin\CostControl\Model\ExtendedCurrencyModel;
+//use Kanboard\Model\CurrencyModel;
 
 class Plugin extends Base
 {
@@ -44,6 +45,14 @@ class Plugin extends Base
         $this->container['currencyModel'] = $this->container->factory(function ($c) {
                 return new ExtendedCurrencyModel($c);
         });
+
+        // CHECK FOR LIVE RATES ONE MIN AFTER NEXT SCHEDULED UPDATE FROM THE JSON
+        if (time() - $this->configModel->get('cost_control_next_update', time() - 61) > 60) {
+            // SAVE DATE WHEN CHECKED
+            $this->configModel->save(['cost_control_last_checked_live_rates'=> time()]);
+            // CHECK JSON API
+            $this->currencyModel->getLiveRates();
+        }
     }
 
     public function onStartup()

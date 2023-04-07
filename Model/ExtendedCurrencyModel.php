@@ -176,7 +176,6 @@ class ExtendedCurrencyModel extends Base
      */
     public function getReferenceCurrency()
     {
-        //return $this->db->table(self::TABLE)->select(1)->eq('currency', $this->configModel->get('cost_control_reference_currency'))->findOne();
         return $this->db->table(self::TABLE)->eq('currency', $this->configModel->get('cost_control_reference_currency'))->findOne();
     }
 

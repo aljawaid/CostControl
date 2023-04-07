@@ -97,4 +97,21 @@ class CostController extends \Kanboard\Controller\BaseController
         )));
     }
 
+    /**
+     * Save reference currency
+     *
+     * @access public
+     */
+    public function update()
+    {
+        $values = $this->request->getValues();
+
+        if ($this->configModel->save($values)) {
+            $this->flash->success(t('Settings saved successfully.'));
+        } else {
+            $this->flash->failure(t('Unable to save your settings.'));
+        }
+
+        $this->response->redirect($this->helper->url->to('CostController', 'showEveryone', array('plugin' => 'CostControl')), true);
+    }
 }

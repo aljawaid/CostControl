@@ -7,6 +7,8 @@ use Kanboard\Core\Translator;
 use Kanboard\Core\Security\Role;
 use Kanboard\Plugin\CostControl\Model\ExtendedCurrencyModel;
 use Kanboard\Model\CurrencyModel;
+use Kanboard\Plugin\CostControl\Helper\CostControlLayoutHelper;  // Helper Class and Filename should be exact
+use Kanboard\Helper;  // Add core Helper for using forms etc. inside external templates
 
 class Plugin extends Base
 {

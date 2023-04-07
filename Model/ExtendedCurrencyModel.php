@@ -169,7 +169,17 @@ class ExtendedCurrencyModel extends Base
     }
 
     /**
-     * Calculate the price for the reference currency
+     * Get single reference currency rates
+     *
+     * @access public
+     * @return array
+     */
+    public function getReferenceCurrency()
+    {
+        //return $this->db->table(self::TABLE)->select(1)->eq('currency', $this->configModel->get('cost_control_reference_currency'))->findOne();
+        return $this->db->table(self::TABLE)->eq('currency', $this->configModel->get('cost_control_reference_currency'))->findOne();
+    }
+
     /**
      * Calculate the price for the base currency
      *

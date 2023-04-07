@@ -67,8 +67,7 @@ class CostController extends \Kanboard\Controller\BaseController
         if ($valid) {
             if ($this->currencyModel->create($values['currency'], $values['rate'], $values['comment'])) {
                 $this->flash->success(t('The currency rate has been added successfully.'));
-                $this->response->redirect($this->helper->url->to('CostController', 'showEveryone', array('plugin' => 'CostControl')), true);
-                return;
+                $this->response->redirect($this->helper->url->to('CostController', 'showEveryone', array('plugin' => 'CostControl')));
             } else {
                 $this->flash->failure(t('Unable to add this currency rate.'));
             }

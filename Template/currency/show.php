@@ -1,14 +1,4 @@
-<?php
-// CHECK FOR LIVE RATES ONE MIN AFTER NEXT SCHEDULED UPDATE FROM THE JSON
-if (time() - $this->model->configModel->get('cost_control_next_update', time() - 61) > 60) {
-    // SAVE DATE WHEN CHECKED
-    $this->model->configModel->save(['cost_control_last_checked_live_rates'=> time()]);
-    // CHECK JSON API
-    $this->model->currencyModel->getLiveRates();
-} else {
-    echo '<div class="alert alert-error alert-fade-out" style="top: 50%; bottom: initial;">'. t('The next update for live rates will be on ') . $this->dt->datetime($this->model->configModel->get('cost_control_next_update', time())) .'</div>';
-}
-?>
+<div class="alert alert-error alert-fade-out" style="top: 50%; bottom: initial;"><?= t('The next update for live rates will be on ') . $this->dt->datetime($this->model->configModel->get('cost_control_next_update', time())) ?></div>
 <div class="cost-control-page-header">
     <h2 class="">
         <span class="currency-wallet-icon"></span> <?= t('Exchange Rates') ?>

@@ -1,7 +1,7 @@
 <?php
-// 24 RATE LIMIT CHECK
-if (time() - $this->model->configModel->get('cost_control_last_checked_live_rates', time() - 86401) > 86400) {
-    // SAVE DATE IF GREATER THAN 24HRS
+// CHECK FOR LIVE RATES ONE MIN AFTER NEXT SCHEDULED UPDATE FROM THE JSON
+if (time() - $this->model->configModel->get('cost_control_next_update', time() - 61) > 60) {
+    // SAVE DATE WHEN CHECKED
     $this->model->configModel->save(['cost_control_last_checked_live_rates'=> time()]);
     // CHECK JSON API
     $this->model->currencyModel->getLiveRates();

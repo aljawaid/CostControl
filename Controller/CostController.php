@@ -13,6 +13,17 @@ use Kanboard\Core\Plugin\Directory;
 
 class CostController extends \Kanboard\Controller\BaseController
 {
+
+    public function showEveryone()
+    {
+        $this->response->html($this->helper->costControlLayoutHelper->customLayout('costControl:currency/show', array(
+            'application_currency' => $this->configModel->get('application_currency'),
+            'rates'                => $this->currencyModel->getAll(),
+            'currencies'           => $this->currencyModel->getCurrencies(),
+            'title'                => t('Cost Control'),
+        )));
+    }
+
     /**
      * Add or change currency rate
      *

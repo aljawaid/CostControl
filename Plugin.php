@@ -6,7 +6,7 @@ use Kanboard\Core\Plugin\Base;
 use Kanboard\Core\Translator;
 use Kanboard\Core\Security\Role;
 use Kanboard\Plugin\CostControl\Model\ExtendedCurrencyModel;
-//use Kanboard\Model\CurrencyModel;
+use Kanboard\Model\CurrencyModel;
 
 class Plugin extends Base
 {

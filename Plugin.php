@@ -39,6 +39,11 @@ class Plugin extends Base
         $this->route->addRoute('/settings/currencies/add', 'CostController', 'create', 'CostControl');
         $this->route->addRoute('/settings/currencies/change', 'CurrencyController', 'change');
 
+        // Helper
+        //  - Example: $this->helper->register('helperClassNameCamelCase', '\Kanboard\Plugin\PluginNameExampleStudlyCaps\Helper\HelperNameExampleStudlyCaps');
+        //  - Add each Helper in the 'use' section at the top of this file
+        $this->helper->register('costControlLayoutHelper', '\Kanboard\Plugin\CostControl\Helper\CostControlLayoutHelper');
+
         $this->applicationAccessMap->add('HourlyRateController', '*', Role::APP_ADMIN);
         $this->projectAccessMap->add('BudgetController', '*', Role::PROJECT_MANAGER);
 

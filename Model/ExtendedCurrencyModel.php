@@ -170,6 +170,8 @@ class ExtendedCurrencyModel extends Base
 
     /**
      * Calculate the price for the reference currency
+    /**
+     * Calculate the price for the base currency
      *
      * @access public
      * @param  string  $currency

@@ -1,7 +1,7 @@
 <div class="page-header">
     <h2 class=""><?= t('Change Base Currency') ?></h2>
 </div>
-<form method="post" class="" action="<?= $this->url->href('CurrencyController', 'update') ?>" autocomplete="on">
+<form method="post" class="" action="<?= $this->url->href('CostController', 'update', array('plugin' => 'CostControl')) ?>" autocomplete="on">
 
     <?= $this->form->csrf() ?>
     <?= $this->form->label(t('Base Currency'), 'application_currency') ?>

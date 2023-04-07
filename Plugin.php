@@ -28,6 +28,8 @@ class Plugin extends Base
         $this->template->hook->attach('template:project:dropdown', 'costControl:project/dropdown');
         $this->template->hook->attach('template:user:sidebar:actions', 'costControl:user/sidebar');
         $this->template->hook->attach('template:config:application', 'costControl:config/settings');
+        // TOP RIGHT MENU FOR ALL USERS TO ACCESS
+        $this->template->hook->attach('template:header:dropdown', 'costControl:header/user_dropdown');
 
         // Extra Page - Routes
         //  - Example: $this->route->addRoute('/my/custom/route', 'MyController', 'show', 'PluginNameExampleStudlyCaps');

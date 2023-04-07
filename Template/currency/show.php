@@ -22,10 +22,30 @@ if (time() - $this->model->configModel->get('cost_control_next_update', time() -
         </li>
     </ul>
 
-    <div class="panel">
-        <strong><?= t('Base Currency: %s', $application_currency) ?></strong>
-        <span class=""><?= t('Reference Currency') ?> <?= $this->model->configModel->get('cost_control_reference_currency', '') ?></span>
-    </div>
+    <fieldset class="">
+        <legend><?= t('Application Currencies') ?></legend>
+        <div class="base-currency-wrapper">
+            <div class="base-currency">
+                <h4 class="base-currency-title"><?= t('Base Currency') ?></h4> <span class="base-currency-code"><?= $application_currency ?></span>
+            </div>
+        </div>
+        <?php if (!empty($this->model->configModel->get('cost_control_reference_currency', ''))): ?>
+            <div class="reference-currency-wrapper">
+                <div class="reference-currency">
+                    <h4 class="reference-currency-title"><?= t('Reference Currency') ?></h4>
+                    <span class="reference-currency-code">
+                        <?= $this->model->configModel->get('cost_control_reference_currency', '') ?>
+                    </span>
+                    <span class="reference-currency-manual-rate" title="<?= t('Last Modified: ') . $this->dt->datetime($this->model->currencyModel->getReferenceCurrency()['last_modified']) ?>">
+                        <?= t('Manual Rate')?> <?= (n($this->model->currencyModel->getReferenceCurrency()['rate']) > 0) ? n($this->model->currencyModel->getReferenceCurrency()['rate']) : t('Not set') ?>
+                    </span>
+                    <span class="reference-currency-live-rate" title="<?= t('Last Updated: ') . $this->dt->datetime($this->model->currencyModel->getReferenceCurrency()['live_rate_updated']) ?>">
+                        <?= t('Live Rate') . n($this->model->currencyModel->getReferenceCurrency()['live_rate']) ?>
+                    </span>
+                </div>
+            </div>
+        <?php endif ?>
+    </fieldset>
 
     <?php if (! empty($rates)): ?>
         <table class="table-striped">

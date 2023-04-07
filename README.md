@@ -12,7 +12,11 @@ Features
   - **101** New currencies in addition to the 25 standard default currencies
   - All currency codes are [ISO 4217 three letter currency format](https://en.wikipedia.org/wiki/ISO_4217 "Learn more")
   - Includes `XDR` - International Monetary Fund (IMF) Special Drawing Rights
+
+### Currency Rates
 - Live updated currency rates retrieved daily from [ExchangeRate-API](https://www.exchangerate-api.com)
+- _Application Currency_ is known as Base Currency
+- Save favorite currency as _Reference Currency_
 - Show the last modified date for manual currency rates
 
 #### Budget Management - _Budget plugin imported feature_
@@ -129,8 +133,8 @@ Authors & Contributors
 ----------------------
 
 - [@aljawaid](https://github.com/aljawaid) - Author
-- [Frédéric Guillot](https://github.com/kanboard/plugin-budget) - Author (imported features from the Budget plugin)
 - [Craig Crosby](https://github.com/creecros) - Contributor
+- [Frédéric Guillot](https://github.com/kanboard/plugin-budget) - Author (imported features from the Budget plugin)
 - _Contributors welcome_
 
 

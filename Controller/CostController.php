@@ -13,6 +13,20 @@ use Kanboard\Core\Plugin\Directory;
 
 class CostController extends \Kanboard\Controller\BaseController
 {
+    /**
+     * Display all currency rates
+     *
+     * @access public
+     */
+    public function show()
+    {
+        $this->response->html($this->helper->layout->config('costControl:currency/show', array(
+            'application_currency' => $this->configModel->get('application_currency'),
+            'rates'                => $this->currencyModel->getAll(),
+            'currencies'           => $this->currencyModel->getCurrencies(),
+            'title'                => t('Settings') . ' &#10562; ' . t('Currency Rates'),
+        )));
+    }
 
     public function showEveryone()
     {
@@ -62,4 +76,25 @@ class CostController extends \Kanboard\Controller\BaseController
 
         $this->create($values, $errors);
     }
+
+    /**
+     * Change reference currency
+     *
+     * @access public
+     * @param array $values
+     * @param array $errors
+     */
+    public function change(array $values = array(), array $errors = array())
+    {
+        if (empty($values)) {
+            $values['application_currency'] = $this->configModel->get('application_currency');
+        }
+
+        $this->response->html($this->template->render('currency/change', array(
+            'values'     => $values,
+            'errors'     => $errors,
+            'currencies' => $this->currencyModel->getCurrencies(),
+        )));
+    }
+
 }

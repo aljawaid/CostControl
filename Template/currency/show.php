@@ -18,7 +18,7 @@ if (time() - $this->model->configModel->get('cost_control_next_update', time() -
             <?= $this->modal->medium('plus', t('Add or change currency rate'), 'CurrencyController', 'create') ?>
         </li>
         <li class="">
-            <?= $this->modal->medium('edit', t('Change reference currency'), 'CurrencyController', 'change') ?>
+            <?= $this->modal->medium('edit', t('Change base currency'), 'CurrencyController', 'change') ?>
         </li>
     </ul>
 

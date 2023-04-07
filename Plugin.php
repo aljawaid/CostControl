@@ -36,7 +36,7 @@ class Plugin extends Base
         $this->route->addRoute('/project/:project_id/budget/lines', 'BudgetLineController', 'show', 'CostControl');
         $this->route->addRoute('/project/:project_id/budget/breakdown', 'BudgetController', 'breakdown', 'CostControl');
         $this->route->addRoute('/settings/currencies/rates', 'CurrencyController', 'show');
-        $this->route->addRoute('/settings/currencies/add', 'CurrencyController', 'create');
+        $this->route->addRoute('/settings/currencies/add', 'CostController', 'create', 'CostControl');
         $this->route->addRoute('/settings/currencies/change', 'CurrencyController', 'change');
 
         $this->applicationAccessMap->add('HourlyRateController', '*', Role::APP_ADMIN);

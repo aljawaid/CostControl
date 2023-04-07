@@ -24,6 +24,7 @@ if (time() - $this->model->configModel->get('cost_control_next_update', time() -
 
     <div class="panel">
         <strong><?= t('Base Currency: %s', $application_currency) ?></strong>
+        <span class=""><?= t('Reference Currency') ?> <?= $this->model->configModel->get('cost_control_reference_currency', '') ?></span>
     </div>
 
     <?php if (! empty($rates)): ?>

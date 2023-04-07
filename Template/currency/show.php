@@ -11,7 +11,7 @@ if (time() - $this->model->configModel->get('cost_control_next_update', time() -
 ?>
 <div class="cost-control-page-header">
     <h2 class="">
-        <span class="currency-wallet-icon"></span> <?= t('Currency Rates') ?>
+        <span class="currency-wallet-icon"></span> <?= t('Cost Control') ?>
     </h2>
     <ul class="currency-actions">
         <li class="">
@@ -20,6 +20,7 @@ if (time() - $this->model->configModel->get('cost_control_next_update', time() -
         <li class="">
             <?= $this->modal->medium('edit', t('Change base currency'), 'CurrencyController', 'change') ?>
         </li>
+        <li class=""><?= $this->url->link(t('Edit Reference Currency'), 'ConfigController', 'application', array(), false, '', t('Settings'), false, 'CostControlSettings') ?></li>
     </ul>
 
     <fieldset class="">

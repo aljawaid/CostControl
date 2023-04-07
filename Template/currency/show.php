@@ -11,7 +11,7 @@ if (time() - $this->model->configModel->get('cost_control_next_update', time() -
 ?>
 <div class="cost-control-page-header">
     <h2 class="">
-        <span class="currency-wallet-icon"></span> <?= t('Cost Control') ?>
+        <span class="currency-wallet-icon"></span> <?= t('Exchange Rates') ?>
     </h2>
     <ul class="currency-actions">
         <li class="">

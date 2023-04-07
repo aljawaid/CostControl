@@ -5,7 +5,9 @@ if (time() - $this->model->configModel->get('cost_control_last_checked_live_rate
     $this->model->configModel->save(['cost_control_last_checked_live_rates'=> time()]);
     // CHECK JSON API
     $this->model->currencyModel->getLiveRates();
-} 
+} else {
+    echo '<div class="alert alert-error alert-fade-out" style="top: 50%; bottom: initial;">'. t('The next update for live rates will be on ') . $this->dt->datetime($this->model->configModel->get('cost_control_next_update', time())) .'</div>';
+}
 ?>
 <div class="page-header">
     <h2 class="">

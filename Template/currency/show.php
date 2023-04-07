@@ -15,7 +15,7 @@ if (time() - $this->model->configModel->get('cost_control_next_update', time() -
     </h2>
     <ul class="currency-actions">
         <li class="">
-            <?= $this->modal->medium('plus', t('Add or change currency rate'), 'CurrencyController', 'create') ?>
+            <?= $this->modal->medium('plus', t('Add or change currency rate'), 'CostController', 'create', array('plugin' => 'CostControl')) ?>
         </li>
         <li class="">
             <?= $this->modal->medium('edit', t('Change base currency'), 'CurrencyController', 'change') ?>
@@ -53,6 +53,7 @@ if (time() - $this->model->configModel->get('cost_control_next_update', time() -
                 <th class="column-35"><?= t('Currency') ?></th>
                 <th class=""><?= t('Manual Rate') ?></th>
                 <th class=""><?= t('Last Modified') ?></th>
+                <th class=""><?= t('Comment') ?></th>
                 <th class=""><?= t('Live Rate') ?></th>
                 <th class=""><?= t('Live Rate Updated') ?></th>
             </tr>
@@ -65,6 +66,7 @@ if (time() - $this->model->configModel->get('cost_control_next_update', time() -
                     <?= ($rate['rate'] > 0) ? n($rate['rate']) : '' ?>
                 </td>
                 <td class="manual-rate-last-modified"><?= ($rate['last_modified'] > 0) ? $this->dt->datetime($rate['last_modified']) : '' ?></td>
+                <td class="manual-rate-comment"><?= ($rate['comment']) ?></td>
                 <td class="live-rate">
                     <?= ($rate['live_rate'] > 0) ? n($rate['live_rate']) : '' ?>
                 </td>

@@ -17,10 +17,14 @@ if (time() - $this->model->configModel->get('cost_control_next_update', time() -
         <li class="">
             <?= $this->modal->medium('plus', t('Add or change currency rate'), 'CostController', 'create', array('plugin' => 'CostControl')) ?>
         </li>
-        <li class="">
-            <?= $this->modal->medium('edit', t('Change base currency'), 'CurrencyController', 'change') ?>
-        </li>
-        <li class=""><?= $this->url->link(t('Edit Reference Currency'), 'ConfigController', 'application', array(), false, '', t('Settings'), false, 'CostControlSettings') ?></li>
+        <?php if ($this->user->hasAccess('ConfigController', 'application')): ?>
+            <li class="">
+                <?= $this->modal->medium('edit', t('Change base currency'), 'CostController', 'change', array('plugin' => 'CostControl')) ?>
+            </li>
+            <li class="">
+                <?= $this->url->link(t('Edit Reference Currency'), 'ConfigController', 'application', array(), false, '', t('Settings'), false, 'CostControlSettings') ?>
+            </li>
+        <?php endif ?>
     </ul>
 
     <fieldset class="">

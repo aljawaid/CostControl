@@ -52,10 +52,10 @@ if (time() - $this->model->configModel->get('cost_control_next_update', time() -
             </tr>
             <?php endforeach ?>
         </table>
+        <a href="https://www.exchangerate-api.com">Live Rates By Exchange Rate API</a>
+        Last Checked: <?= $this->dt->datetime($this->model->configModel->get('last_checked_liverates', time() - 86401)) ?><br>
+        Last Update to Live Rate Data: <?= $this->dt->datetime($this->model->configModel->get('cost_control_last_updated', time())) ?><br>
+        Next Update to Live Rate Data: <?= $this->dt->datetime($this->model->configModel->get('cost_control_next_update', time())) ?>
     <?php endif ?>
 
-    <a href="https://www.exchangerate-api.com">Live Rates By Exchange Rate API</a>
-    Last Checked: <?= $this->dt->datetime($this->model->configModel->get('last_checked_liverates', time() - 86401)) ?><br>
-    Last Update to Live Rate Data: <?= $this->dt->datetime($this->model->configModel->get('cost_control_last_updated', time())) ?><br>
-    Next Update to Live Rate Data: <?= $this->dt->datetime($this->model->configModel->get('cost_control_next_update', time())) ?>
 </div>

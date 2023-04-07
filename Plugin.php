@@ -15,6 +15,7 @@ class Plugin extends Base
         // CSS - Asset Hook
         //  - Keep filename lowercase
         $this->hook->on('template:layout:css', array('template' => 'plugins/CostControl/Assets/css/cost-control.css'));
+        $this->hook->on('template:layout:css', array('template' => 'plugins/CostControl/Assets/css/cost-control-icons.css'));
 
         // Template Override
         //  - Override name should be camelCase e.g. pluginNameExampleCamelCase

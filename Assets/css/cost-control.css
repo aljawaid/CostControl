@@ -56,4 +56,16 @@
 
 .relative { position: relative; }
 
-
+#RateReminder {
+    top: 0;
+    bottom: initial;
+    right: 0;
+    position: absolute;
+    left: unset;
+    animation: fadeout 5s linear forwards;
+    animation-delay: 3s;
+    width: auto;
+    border: 2px solid;
+    font-style: italic;
+    padding: 5px 15px;
+}

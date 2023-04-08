@@ -111,6 +111,6 @@ class CostController extends \Kanboard\Controller\BaseController
             $this->flash->failure(t('Unable to save your settings.'));
         }
 
-        $this->response->redirect($this->helper->url->to('CostController', 'showEveryone', array('plugin' => 'CostControl')), true);
+        $this->response->redirect($this->helper->url->to('CostController', 'showEveryone', array('plugin' => 'CostControl')));
     }
 }

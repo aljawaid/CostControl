@@ -1,12 +1,15 @@
 // KANBOARD PLUGIN ASSET FILE
 
-// FILTER TABLES IN THE INSTALLED PLUGINS PAGE
+// FILTER CURRENCY LIST TABLE http://jsfiddle.net/7BUmG/2/
 $(document).ready(function(){
-    $("#CurrencyCodeSearch").on("keyup", function() {
-        var value = $(this).val().toLowerCase();
-        $(".currencies-table").filter(function() {
-            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-        });
+    var $rows = $('#CurrenciesTable tr.rate-results');
+    $('#CurrencyCodeSearch').keyup(function() {
+        var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
+
+        $rows.show().filter(function() {
+            var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+            return !~text.indexOf(val);
+        }).hide();
     });
 });
 

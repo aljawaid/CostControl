@@ -47,18 +47,20 @@
     <?php if (! empty($rates)): ?>
         <table class="table-striped">
             <tr class="">
+                <th class="column-7"><?= t('Code') ?></th>
                 <th class="column-35"><?= t('Currency') ?></th>
-                <th class=""><?= t('Manual Rate') ?></th>
-                <th class=""><?= t('Last Modified') ?></th>
+                <th class="column-8"><?= t('Manual Rate') ?></th>
+                <th class="column-10"><?= t('Last Modified') ?></th>
                 <th class=""><?= t('Comment') ?></th>
-                <th class=""><?= t('Live Rate') ?></th>
-                <th class=""><?= t('Live Rate Updated') ?></th>
+                <th class="column-8"><?= t('Live Rate') ?></th>
+                <th class="column-10"><?= t('Live Rate Updated') ?></th>
             </tr>
             <?php foreach ($rates as $rate): ?>
             <tr class="">
                 <td class="">
                     <span class="currency-coins-icon"></span> <strong><?= $this->text->e($rate['currency']) ?></strong>
                 </td>
+                <td class=""><?= $this->text->e($currencies[$rate['currency']]) ?></td>
                 <td class="">
                     <?= ($rate['rate'] > 0) ? n($rate['rate']) : '' ?>
                 </td>

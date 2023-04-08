@@ -66,10 +66,10 @@ class CostController extends \Kanboard\Controller\BaseController
 
         if ($valid) {
             if ($this->currencyModel->create($values['currency'], $values['rate'], $values['comment'])) {
-                $this->flash->success(t('The currency rate has been added successfully.'));
+                $this->flash->success(t('The manual currency rate has been added successfully'));
                 $this->response->redirect($this->helper->url->to('CostController', 'showEveryone', array('plugin' => 'CostControl')));
             } else {
-                $this->flash->failure(t('Unable to add this currency rate.'));
+                $this->flash->failure(t('Unable to add this manual currency rate'));
             }
         }
 
@@ -106,9 +106,9 @@ class CostController extends \Kanboard\Controller\BaseController
         $values = $this->request->getValues();
 
         if ($this->configModel->save($values)) {
-            $this->flash->success(t('Settings saved successfully.'));
+            $this->flash->success(t('Settings saved successfully'));
         } else {
-            $this->flash->failure(t('Unable to save your settings.'));
+            $this->flash->failure(t('Unable to save your settings'));
         }
 
         $this->response->redirect($this->helper->url->to('CostController', 'showEveryone', array('plugin' => 'CostControl')));

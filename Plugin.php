@@ -19,6 +19,10 @@ class Plugin extends Base
         $this->hook->on('template:layout:css', array('template' => 'plugins/CostControl/Assets/css/cost-control.css'));
         $this->hook->on('template:layout:css', array('template' => 'plugins/CostControl/Assets/css/cost-control-icons.css'));
 
+        // JS - Asset Hook
+        //  - Keep filename lowercase
+        $this->hook->on('template:layout:js', array('template' => 'plugins/CostControl/Assets/js/cost-control.js'));
+
         // Template Override
         //  - Override name should be camelCase e.g. pluginNameExampleCamelCase
         $this->template->setTemplateOverride('currency/change', 'costControl:currency/change');

@@ -53,7 +53,7 @@
                     <path d="M6 11.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
                 </svg>
             </label>
-            <input type="search" id="CurrencyCodeSearch" class="search-input" placeholder="<?= t('EUR') ?>" title="<?= t('Search Currency Code') ?>" autocomplete="off" autofocus="autofocus">
+            <input type="search" id="CurrencyCodeSearch" class="search-input" placeholder="<?= t('EUR') ?>" title="<?= t('Search Currency Code') ?>" autocomplete="off" autofocus="autofocus" onclick="this.value=''">
         </form>
         <table id="CurrenciesTable" class="currencies-table table-striped">
             <tr class="">

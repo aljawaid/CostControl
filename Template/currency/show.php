@@ -1,5 +1,7 @@
-<div class="alert alert-error alert-fade-out" style="top: 50%; bottom: initial;"><?= t('The next update for live rates will be on ') . $this->dt->datetime($this->model->configModel->get('cost_control_next_update', time())) ?></div>
-<div class="cost-control-page-header">
+<div class="cost-control-page-header relative">
+    <div id="RateReminder" class="alert alert-error alert-fade-out" style="">
+        <?= t('The next update for live rates will be on ') . $this->dt->datetime($this->model->configModel->get('cost_control_next_update', time())) ?>
+    </div>
     <h2 class="">
         <span class="currency-wallet-icon"></span> <?= t('Exchange Rates') ?>
     </h2>

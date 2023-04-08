@@ -30,6 +30,6 @@ class CostControlLayoutHelper extends Base
             $params['errors'] = array();
         }
 
-        return $this->helper->layout->subLayout('config/layout', 'costControl:cost-control/sidebar', $template, $params);
+        return $this->helper->layout->subLayout('dashboard/layout', 'costControl:cost-control/sidebar', $template, $params);
     }
 }

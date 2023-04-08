@@ -22,3 +22,13 @@ $(document).ready(function() {
         }
     });
 });
+
+// SELECT INPUT ON MOUSOVER
+$(document).ready(function() {
+    const input = document.getElementById("CurrencyCodeSearch");
+    if (input !== null) {
+        input.addEventListener('mouseover', () => {
+            input.select();
+        })
+    }
+});

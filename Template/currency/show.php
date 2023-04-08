@@ -45,7 +45,17 @@
     </fieldset>
 
     <?php if (! empty($rates)): ?>
-        <table class="table-striped">
+        <form class="plugin-installed-filter">
+            <label for="CurrencyCodeSearch">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-filter-square" viewBox="0 0 16 16">
+                    <title><?= t('Filter Currency Codes') ?></title>
+                    <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                    <path d="M6 11.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+                </svg>
+            </label>
+            <input type="search" id="CurrencyCodeSearch" class="search-input" placeholder="<?= t('EUR') ?>" title="<?= t('Search Currency Code') ?>" autocomplete="off" autofocus="autofocus">
+        </form>
+        <table id="CurrenciesTable" class="currencies-table table-striped">
             <tr class="">
                 <th class="column-7"><?= t('Code') ?></th>
                 <th class="column-35"><?= t('Currency') ?></th>
@@ -56,7 +66,7 @@
                 <th class="column-10"><?= t('Live Rate Updated') ?></th>
             </tr>
             <?php foreach ($rates as $rate): ?>
-            <tr class="">
+            <tr class="rate-results">
                 <td class="">
                     <span class="currency-coins-icon"></span> <strong><?= $this->text->e($rate['currency']) ?></strong>
                 </td>
@@ -72,16 +82,6 @@
                 <td class="live-rate-last-updated"><?= ($rate['live_rate_updated'] > 0) ? $this->dt->datetime($rate['live_rate_updated']) : '' ?></td>
             </tr>
             <?php endforeach ?>
-        <form class="plugin-installed-filter">
-            <label for="CurrencyCodeSearch">
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-filter-square" viewBox="0 0 16 16">
-                    <title><?= t('Filter Currency Codes') ?></title>
-                    <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
-                    <path d="M6 11.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
-                </svg>
-            </label>
-            <input type="search" id="CurrencyCodeSearch" class="search-input" placeholder="<?= t('EUR') ?>" title="<?= t('Search Currency Code') ?>" autocomplete="off" autofocus="autofocus">
-        </form>
         </table>
         <a href="https://www.exchangerate-api.com">Live Rates By Exchange Rate API</a>
         Last Checked: <?= $this->dt->datetime($this->model->configModel->get('last_checked_liverates', time() - 86401)) ?><br>

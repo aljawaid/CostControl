@@ -10,3 +10,15 @@ $(document).ready(function(){
     });
 });
 
+// PREVENTS ENTER KEY FROM BEING USED FOR THIS FORM
+$(document).ready(function() {
+    $("#CurrencyCodeSearch").on("keypress", function (event) {
+        //console.log("Enter key pressed on input field inside form");
+        var keyPressed = event.keyCode || event.which;
+        if (keyPressed === 13) {
+            alert("The enter key is ignored as it is not required in this filter");
+            event.preventDefault();
+            return false;
+        }
+    });
+});

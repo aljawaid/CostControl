@@ -84,8 +84,8 @@
             </tr>
             <?php endforeach ?>
         </table>
-        <a href="https://www.exchangerate-api.com">Live Rates By Exchange Rate API</a>
         <a id="PluginTop" href="#main" title="<?= t('Go to the top of the page') ?>" class="btn-action"><i class="fa fa-level-up" aria-hidden="true"></i> <?= t('Top') ?></a>
+        <a href="https://www.exchangerate-api.com" target="_blank" title="<?= t('Opens in a new window') ?>" rel="noopener noreferrer">Live Rates By Exchange Rate API</a>
         Last Checked: <?= $this->dt->datetime($this->model->configModel->get('last_checked_liverates', time() - 86401)) ?><br>
         Last Update to Live Rate Data: <?= $this->dt->datetime($this->model->configModel->get('cost_control_last_updated', time())) ?><br>
         Next Update to Live Rate Data: <?= $this->dt->datetime($this->model->configModel->get('cost_control_next_update', time())) ?>

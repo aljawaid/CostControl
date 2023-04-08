@@ -18,12 +18,12 @@
     --blue-border-gradient-match: #476E9E;
     --button-background-delete: #D05C84;
     --link-color-primary: #36C;
-    --header-page-margin-ksp: 5px 15px 10px 15px;
-    --page-margin-ksp: 0px 15px 0px 15px;
-    --title-margin-ksp: 0px 15px 0px 15px;
-    --border-radius-ksp: 3px;
-    --panel-background-ksp: #EEEEEE;
-    --transition-ksp: ease-in-out all .3s;
+    --header-page-margin-cost-control: 5px 15px 10px 15px;
+    --page-margin-cost-control: 0px 15px 0px 15px;
+    --title-margin-cost-control: 0px 15px 0px 15px;
+    --border-radius-cost-control: 3px;
+    --panel-background-cost-control: #EEEEEE;
+    --transition-cost-control: ease-in-out all .3s;
 }
 
 .pp-blue { color: var(--pp-blue); fill: var(--pp-blue); }

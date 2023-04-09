@@ -22,7 +22,7 @@ class Plugin extends Base
         // JS - Asset Hook
         //  - Keep filename lowercase
         $this->hook->on('template:layout:js', array('template' => 'plugins/CostControl/Assets/js/cost-control.js'));
-        if (!file_exists('plugins/PluginManager') {
+        if (!file_exists('plugins/PluginManager')) {
             $this->hook->on('template:layout:js', array('template' => 'plugins/CostControl/Assets/js/cost-control-top-btn.js'));
         }
 

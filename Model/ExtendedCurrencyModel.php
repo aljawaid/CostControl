@@ -279,7 +279,9 @@ class ExtendedCurrencyModel extends Base
         foreach ($currencies as $currency => $value) {
             if (isset($json_currency_rates['rates'][$currency])) {
                 $live_rate = $json_currency_rates['rates'][$currency];
-                $this->createWithLive($currency, $live_rate, time());
+                if ($db_currencies[$currency]['live_rate'] != $live_rate) {
+                    $this->createWithLive($currency, $live_rate, time());
+                }
             }
         }
     }

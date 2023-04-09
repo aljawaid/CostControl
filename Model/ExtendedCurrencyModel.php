@@ -271,7 +271,7 @@ class ExtendedCurrencyModel extends Base
         $currencies = $this->getCurrencies();
         $db_currencies = $this->getAll();
         $live_rate_updated = $json_currency_rates['time_last_update_unix'];
-        //error_log('Live Rates Update:'.$live_rate_updated,0);
+        //error_log('LIVE RATES RESPONSE: OK '.$live_rate_updated,0);
         $live_rate_next_update = $json_currency_rates['time_next_update_unix'];
         $this->configModel->save(['cost_control_last_updated' => $live_rate_updated]);
         $this->configModel->save(['cost_control_next_update' => $live_rate_next_update]);

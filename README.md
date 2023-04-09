@@ -9,6 +9,7 @@ Features
 -------------
 
 - Introducing a new Cost Control section allowing access for all users to use and update all currency rates
+  - Access directly from the dashboard or from the user dropdown menu
   - New menu template hook for developers: `template:cost-control:sidebar`
 - Quickly filter through all the currencies
 - _Application Currency_ is known as Base Currency (can only be edited by `admins`)
@@ -74,7 +75,7 @@ Compatibility
 - Requires [Kanboard](https://github.com/kanboard/kanboard "Kanboard - Kanban Project Management Software") ≥`1.0.37`
 
 #### Other Plugins & Action Plugins
-- Compatible with [URLCleaner](https://github.com/aljawaid/URLCleaner)
+- Compatible with [URLCleaner](https://github.com/aljawaid/URLCleaner), [PluginManager](https://github.com/aljawaid/PluginManager)
 - **Migrating data from the [Budget](https://github.com/kanboard/plugin-budget) plugin**
   - Uninstall the Budget plugin
     - _The data in the database is not deleted by default_

@@ -35,6 +35,7 @@ class CostController extends \Kanboard\Controller\BaseController
             'rates'                => $this->currencyModel->getAll(),
             'currencies'           => $this->currencyModel->getCurrencies(),
             'title'                => t('Cost Control'),
+            'user'                 => $this->getUser(),
         )));
     }
 

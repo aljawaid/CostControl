@@ -66,7 +66,7 @@ class CostController extends \Kanboard\Controller\BaseController
         list($valid, $errors) = $this->currencyValidator->validateCreation($values);
 
         if ($valid) {
-            if ($this->currencyModel->create($values['currency'], $values['rate'], isset($values['comment']))) {
+            if ($this->currencyModel->create($values['currency'], $values['rate'], $values['comment'])) {
                 $this->flash->success(t('The manual currency rate has been added successfully'));
                 $this->response->redirect($this->helper->url->to('CostController', 'showEveryone', array('plugin' => 'CostControl')));
             } else {
@@ -78,7 +78,29 @@ class CostController extends \Kanboard\Controller\BaseController
     }
 
     /**
-     * Change reference currency
+     * Validate and save a new currency rate
+     *
+     * @access public
+     */
+    public function saveWithoutComment()
+    {
+        $values = $this->request->getValues();
+        list($valid, $errors) = $this->currencyValidator->validateCreation($values);
+
+        if ($valid) {
+            if ($this->currencyModel->createWithoutComment($values['currency'], $values['rate'])) {
+                $this->flash->success(t('The manual currency rate has been added successfully'));
+                $this->response->redirect($this->helper->url->to('CostController', 'showEveryone', array('plugin' => 'CostControl')));
+            } else {
+                $this->flash->failure(t('Unable to add this manual currency rate'));
+            }
+        }
+
+        $this->create($values, $errors);
+    }
+
+    /**
+     * Change base currency
      *
      * @access public
      * @param array $values

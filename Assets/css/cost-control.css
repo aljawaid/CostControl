@@ -69,3 +69,23 @@
     font-style: italic;
     padding: 5px 15px;
 }
+
+#PluginTop {
+    display: block;
+    right: 0;
+    position: relative;
+    float: right;
+    margin-top: 3px;
+    color: var(--pp-grey);
+}
+
+#PluginBottom {
+    display: block;
+    right: 0;
+    position: relative;
+    float: right;
+    margin-bottom: 4px;
+    color: var(--pp-grey);
+    margin-top: 3px;
+    margin-left: 5px;
+}

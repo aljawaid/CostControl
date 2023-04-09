@@ -9,6 +9,7 @@ Features
 -------------
 
 - Introducing a new Cost Control section allowing access for all users to use and update all currency rates
+  - New menu template hook for developers: `template:cost-control:sidebar`
 - Quickly filter through all the currencies
 - _Application Currency_ is known as Base Currency (can only be edited by `admins`)
 - Save a favorite currency as _Reference Currency_ (can only be edited by `admins`)

@@ -36,6 +36,8 @@ class Plugin extends Base
         $this->template->hook->attach('template:config:application', 'costControl:config/settings');
         // TOP RIGHT MENU FOR ALL USERS TO ACCESS
         $this->template->hook->attach('template:header:dropdown', 'costControl:header/user_dropdown');
+        // TOP DASHBOARD MENU FOR ALL USERS TO ACCESS
+        $this->template->hook->attach('template:dashboard:page-header:menu', 'costControl:dashboard/layout');
 
         // Extra Page - Routes
         //  - Example: $this->route->addRoute('/my/custom/route', 'MyController', 'show', 'PluginNameExampleStudlyCaps');

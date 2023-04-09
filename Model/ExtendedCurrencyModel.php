@@ -9,18 +9,20 @@ use Kanboard\Core\Base;
  *
  * @package  Kanboard\Model
  * @author   Frederic Guillot
+ * @author   aljawaid
+ * @author   Craig Crosby
  */
 class ExtendedCurrencyModel extends Base
 {
     /**
-     * SQL table name
+     * SQL TABLE NAME
      *
      * @var string
      */
     const TABLE = 'currencies';
 
     /**
-     * Get available application currencies
+     * GET AVAILABLE CURRENCIES AVAILABLE IN THE APPLICATION
      *
      * @access public
      * @return array
@@ -158,7 +160,7 @@ class ExtendedCurrencyModel extends Base
     }
 
     /**
-     * Get all currency rates
+     * GET ALL CURRENCY RATES
      *
      * @access public
      * @return array
@@ -169,7 +171,7 @@ class ExtendedCurrencyModel extends Base
     }
 
     /**
-     * Get single reference currency rates
+     * GET REFERENCE CURRENCY RATES
      *
      * @access public
      * @return array
@@ -203,7 +205,7 @@ class ExtendedCurrencyModel extends Base
     }
 
     /**
-     * Add a new currency rate
+     * ADD NEW CURRENCY RATE WITH LIVE RATE
      *
      * @access public
      * @param  string    $currency
@@ -220,7 +222,7 @@ class ExtendedCurrencyModel extends Base
     }
     
     /**
-     * Add a new currency rate
+     * ADD NEW CURRENCY RATE
      *
      * @access public
      * @param  string    $currency
@@ -237,7 +239,24 @@ class ExtendedCurrencyModel extends Base
     }
 
     /**
-     * Update a currency rate
+     * ADD NEW CURRENCY RATE WITHOUT COMMENT
+     *
+     * @access public
+     * @param  string    $currency
+     * @param  float     $rate
+     * @return boolean|integer
+     */
+    public function createWithoutComment($currency, $rate)
+    {
+        if ($this->db->table(self::TABLE)->eq('currency', $currency)->exists()) {
+            return $this->updateWithoutComment($currency, $rate);
+        }
+
+        return $this->db->table(self::TABLE)->insert(array('currency' => $currency, 'rate' => $rate, 'last_modified' => time()));
+    }
+
+    /**
+     * UPDATE CURRENCY RATE
      *
      * @access public
      * @param  string    $currency
@@ -250,7 +269,20 @@ class ExtendedCurrencyModel extends Base
     }
     
     /**
-     * Update a currency rate
+     * UPDATE CURRENCY RATE WITHOUT COMMENT
+     *
+     * @access public
+     * @param  string    $currency
+     * @param  float     $rate
+     * @return boolean
+     */
+    public function updateWithoutComment($currency, $rate)
+    {
+        return $this->db->table(self::TABLE)->eq('currency', $currency)->update(array('rate' => $rate, 'last_modified' => time()));
+    }
+
+    /**
+     * UPDATE CURRENCY LIVE RATE
      *
      * @access public
      * @param  string    $currency
@@ -262,7 +294,13 @@ class ExtendedCurrencyModel extends Base
         return $this->db->table(self::TABLE)->eq('currency', $currency)->update(array('live_rate' => $live_rate, 'live_rate_updated' => $live_rate_updated));
     }
 
-   public function getLiveRates()
+    /**
+     * GET JSON & UPDATE CURRENCY LIVE RATES
+     *
+     * @access public
+     *
+     */
+    public function getLiveRates()
     {
         //error_log('ABOUT TO CHECK JSON FOR LIVE RATES',0);
         $req_url = 'https://open.er-api.com/v6/latest/'.$this->configModel->get('application_currency', 'USD');

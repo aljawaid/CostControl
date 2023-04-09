@@ -8,11 +8,11 @@ Use the new Cost Control section to enable currencies and budgeting in Kanboard.
 Features
 -------------
 
+- Introducing a new Cost Control section allowing access for all users to use and update all currency rates
 - Choose from **over 120 currencies** in your projects
   - **101** New currencies in addition to the 25 standard default currencies
   - All currency codes are [ISO 4217 three letter currency format](https://en.wikipedia.org/wiki/ISO_4217 "Learn more")
   - Includes `XDR` - International Monetary Fund (IMF) Special Drawing Rights
-- Introducing a new Cost Control section allowing access for all users to use and update all currency rates
 - **Budget Management** - _Budget plugin imported feature_
   - Budget management is based on subtask time tracking, the user timetable and the user hourly rate
 - **Budget Lines** - _Budget plugin imported feature_
@@ -30,7 +30,7 @@ Features
   - This feature is used for budget calculation
   - Each hourly rate shows an effective date with different currencies
 
-#### Currency Rates
+### Currency Rates
 - Live updated currency rates are retrieved daily from [ExchangeRate-API](https://www.exchangerate-api.com)
   - Show the last updated time when each currency was updated (except for currencies with a rate of `1.0`)
   - Show alert notification to inform of the next update

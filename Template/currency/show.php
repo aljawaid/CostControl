@@ -71,7 +71,7 @@
                 <td class="">
                     <span class="currency-coins-icon"></span> <strong><?= $this->text->e($rate['currency']) ?></strong>
                 </td>
-                <td class=""><?= $this->text->e($currencies[$rate['currency']]) ?></td>
+                <td class=""><?= substr($this->text->e($currencies[$rate['currency']]), 6) ?></td>
                 <td class="">
                     <?= ($rate['rate'] > 0) ? n($rate['rate']) : '' ?>
                 </td>

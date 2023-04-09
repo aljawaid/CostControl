@@ -9,6 +9,9 @@ Features
 -------------
 
 - Introducing a new Cost Control section allowing access for all users to use and update all currency rates
+- Quickly filter through all the currencies
+- _Application Currency_ is known as Base Currency (can only be edited by `admins`)
+- Save a favorite currency as _Reference Currency_ (can only be edited by `admins`)
 - Choose from **over 120 currencies** in your projects
   - **101** New currencies in addition to the 25 standard default currencies
   - All currency codes are [ISO 4217 three letter currency format](https://en.wikipedia.org/wiki/ISO_4217 "Learn more")
@@ -30,14 +33,14 @@ Features
   - This feature is used for budget calculation
   - Each hourly rate shows an effective date with different currencies
 
-### Currency Rates
+### Live Currency Rates
 - Live updated currency rates are retrieved daily from [ExchangeRate-API](https://www.exchangerate-api.com)
-  - Show the last updated time when each currency was updated (except for currencies with a rate of `1.0`)
-  - Show alert notification to inform of the next update
-  - Quickly filter through the currencies
-- _Application Currency_ is known as Base Currency
-- Save favorite currency as _Reference Currency_
+- Show the last updated time when each currency was updated (except for currencies with a rate of `1.0`)
+- Show an alert notification to inform the user of the next update
+
+### Manual Currency Rates
 - Show the last modified date for manual currency rates
+- Add a comment for each manual rate for easy reference
 
 
 Screenshots

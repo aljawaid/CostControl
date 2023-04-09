@@ -13,6 +13,16 @@
             </div>
         </div>
     </fieldset>
+    <fieldset class="c-control-options">
+        <legend class=""><?= t('Comment Options') ?></legend>
+        <p class="c-control-options-intro"><?= t('Control how comments are saved against manual rates') ?></p>
+        <div class="c-control-options-section-radios">
+            <div class="c-control-radio-options">
+                <?= $this->form->radio('cost_control_rate_comments', t('Replace the previous comment when editing a manual rate'), 'replace_comment_on_edit', true, '', isset($values['cost_control_rate_comments']) && $values['cost_control_rate_comments'] == 'replace_comment_on_edit') ?>
+                <?= $this->form->radio('cost_control_rate_comments', t('Keep the previous comment when editing a manual rate'), 'ignore_comment_on_edit', isset($values['cost_control_rate_comments']) && $values['cost_control_rate_comments'] == 'ignore_comment_on_edit') ?>
+            </div>
+        </div>
+    </fieldset>
     <div class="form-actions">
         <button type="submit" class="btn btn-blue" title="<?= t('Saves any changes made on this page') ?>"><?= t('Save Settings') ?></button>
         <a href="<?= $this->url->href('CostController', 'showEveryone', array('plugin' => 'CostControl')) ?>" class="btn cost-control-btn" title="<?= t('Go to Cost Control') ?>"><span class="currency-wallet-icon"></span> <?= t('Cost Control') ?></a>

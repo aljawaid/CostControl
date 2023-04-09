@@ -2,11 +2,17 @@
     <h3 class="">
         <span class="currency-wallet-icon"></span> Cost Control <?= t('Settings') ?>
     </h3>
-    <fieldset class="glancer-options">
+    <fieldset class="c-control-options">
         <legend class=""><?= t('Currency Options') ?></legend>
-        <p class="glancer-options-intro"><?= t('Setting a reference currency here allows you to view and compare the reference currency to the base currency at a glance around the site') ?></p>
-        <div class="glancer-options-section-area">
-            <div class="glancer-options-section w-200">
+        <p class="c-control-options-intro"><?= t('Set a reference currency to view and compare rates with the base currency at a glance') ?></p>
+        <div class="c-control-options-section-area">
+            <div class="c-control-options-section w-200">
+                <?= $this->form->label(t('Base Currency'), 'application_currency', array('class="w-200"')) ?>
+                <?= $this->form->text('application_currency', $this->model->configModel->get('application_currency'), array(), array('value="'. $this->model->configModel->get('application_currency') .'" disabled')) ?>
+                <?= $this->modal->medium('edit', t('Edit Base Currency'), 'CostController', 'change', array('plugin' => 'CostControl')) ?>
+                <p class="form-help w-200"><?= t('The base currency is your main currency') ?></p>
+            </div>
+            <div class="c-control-options-section w-200">
                 <?= $this->form->label(t('Reference Currency'), 'cost_control_reference_currency', array('class="w-200"')) ?>
                 <?= $this->form->text('cost_control_reference_currency', $values, $errors, array('placeholder="EUR"')) ?>
                 <p class="form-help w-200"><?= t('Enter the three letter currency code') ?></p>

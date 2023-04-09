@@ -66,7 +66,7 @@ class CostController extends \Kanboard\Controller\BaseController
         list($valid, $errors) = $this->currencyValidator->validateCreation($values);
 
         if ($valid) {
-            if ($this->currencyModel->create($values['currency'], $values['rate'], $values['comment'])) {
+            if ($this->currencyModel->create($values['currency'], $values['rate'], isset($values['comment']))) {
                 $this->flash->success(t('The manual currency rate has been added successfully'));
                 $this->response->redirect($this->helper->url->to('CostController', 'showEveryone', array('plugin' => 'CostControl')));
             } else {

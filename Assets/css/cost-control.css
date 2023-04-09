@@ -89,3 +89,27 @@
     margin-top: 3px;
     margin-left: 5px;
 }
+
+.currency-filter {
+    display: block;
+    margin: 10px auto 25px auto;
+    text-align: center;
+}
+
+.currency-filter label {
+    display: inline;
+}
+
+.currency-filter label svg {
+    vertical-align: text-bottom;
+    margin-right: 5px;
+    pointer-events: none;
+}
+
+.currency-filter input {
+    padding: 3px 3px 4px 3px;
+    font-size: 1em;
+    border: 2px solid var(--blue-border-gradient-match);
+    width: 375px;
+    text-align: center;
+}

@@ -45,7 +45,7 @@
     </fieldset>
 
     <?php if (! empty($rates)): ?>
-        <form class="plugin-installed-filter">
+        <form class="currency-filter">
             <label for="CurrencyCodeSearch">
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-filter-square" viewBox="0 0 16 16">
                     <title><?= t('Filter Currency Codes') ?></title>

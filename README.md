@@ -2,7 +2,7 @@
 
 #### _Plugin for [Kanboard](https://github.com/kanboard/kanboard "Kanboard - Kanban Project Management Software")_
 
-Manage your costs per project to budget and plan using over 120 currencies. Get automatic live daily updates to compare your saved currency rates to forecast your budgets more accurately. This plugin replaces and extends the features from the original [Budget](https://github.com/kanboard/plugin-budget) plugin. Extended features include allowing users to change and modify their base currencies for most countries. 
+Use the new Cost Control section to enable currencies and budgeting in Kanboard. Get live currency rates automatically for over 120 currencies allowing users to compare with manually saved rates. This plugin replaces and extends the features from the original [Budget](https://github.com/kanboard/plugin-budget) plugin enabling projects to have an associated cost element.
 
 
 Features
@@ -12,35 +12,32 @@ Features
   - **101** New currencies in addition to the 25 standard default currencies
   - All currency codes are [ISO 4217 three letter currency format](https://en.wikipedia.org/wiki/ISO_4217 "Learn more")
   - Includes `XDR` - International Monetary Fund (IMF) Special Drawing Rights
+- Introducing a new Cost Control section allowing access for all users to use and update all currency rates
+- **Budget Management** - _Budget plugin imported feature_
+  - Budget management is based on subtask time tracking, the user timetable and the user hourly rate
+- **Budget Lines** - _Budget plugin imported feature_
+  - Budget lines are used to define a budget for the project
+  - Budgets can be adjusted by adding a new entry with an effective date
+- **Cost Breakdown** - _Budget plugin imported feature_
+  - Individual costs of each subtask are shown
+  - Time spent is rounded to the nearest quarter
+- **Budget Chart** - _Budget plugin imported feature_
+  - Show expenses representing user costs
+  - Show budget lines as the provisioned budget
+  - Display the remaining budget at any given time
+- **User Hourly Rate** - _Budget plugin imported feature_
+  - Each user can have a set hourly rate in `User Profile` &#10562; `Hourly Rate`
+  - This feature is used for budget calculation
+  - Each hourly rate shows an effective date with different currencies
 
-### Currency Rates
-- Live updated currency rates retrieved daily from [ExchangeRate-API](https://www.exchangerate-api.com)
+#### Currency Rates
+- Live updated currency rates are retrieved daily from [ExchangeRate-API](https://www.exchangerate-api.com)
+  - Show the last updated time when each currency was updated (except for currencies with a rate of `1.0`)
+  - Show alert notification to inform of the next update
+  - Quickly filter through the currencies
 - _Application Currency_ is known as Base Currency
 - Save favorite currency as _Reference Currency_
 - Show the last modified date for manual currency rates
-
-#### Budget Management - _Budget plugin imported feature_
-- Budget management is based on the subtask time tracking, the user timetable and the user hourly rate.
-
-#### Budget Lines - _Budget plugin imported feature_
-- Budget lines are used to define a budget for the project.
-- The budget can be adjusted by adding a new entry with an effective date.
-
-#### Cost Breakdown - _Budget plugin imported feature_
-- Based on the subtask time tracking table and user information, the cost of each subtask is shown.
-- The time spent is rounded to the nearest quarter.
-
-#### Budget Chart - _Budget plugin imported feature_
-- Graph shows:
-  - Expenses representing user costs
-  - Budget lines as the provisioned budget
-  - Remaining budget at any given time
-
-#### Hourly Rate - _Budget plugin imported feature_
-- Each user can have a set hourly rate.
-- This feature is used for budget calculation.
-  - To define a new price, go to **User profile > Hourly rates**.
-- Each hourly rate shows an effective date with different currencies.
 
 
 Screenshots

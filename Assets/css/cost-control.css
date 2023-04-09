@@ -113,3 +113,10 @@
     width: 375px;
     text-align: center;
 }
+
+.cost-control-btn .currency-wallet-icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: bottom;
+    margin-bottom: 3px;
+}

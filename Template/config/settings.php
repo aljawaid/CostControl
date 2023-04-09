@@ -15,5 +15,6 @@
     </fieldset>
     <div class="form-actions">
         <button type="submit" class="btn btn-blue" title="<?= t('Saves any changes made on this page') ?>"><?= t('Save Settings') ?></button>
+        <a href="<?= $this->url->href('CostController', 'showEveryone', array('plugin' => 'CostControl')) ?>" class="btn cost-control-btn" title="<?= t('Go to Cost Control') ?>"><span class="currency-wallet-icon"></span> <?= t('Cost Control') ?></a>
     </div>
 </fieldset>

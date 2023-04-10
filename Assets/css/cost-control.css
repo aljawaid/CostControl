@@ -145,3 +145,17 @@ ul.currency-actions li {
     display: inline-block;
     margin-right: 15px;
 }
+
+.top-detail-bar .json-last-checked {
+    float: left;
+    /*margin-bottom: 4px;*/
+    margin-top: 9px;
+    padding: 2px 4px 1px 0;
+    font-weight: 400;
+    color: var(--pp-grey);
+    font-style: italic;
+}
+
+#CurrenciesTable {
+    margin: 5px auto;
+}

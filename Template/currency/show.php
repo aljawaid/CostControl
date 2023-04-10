@@ -19,29 +19,33 @@
         <?php endif ?>
     </ul>
 
-    <fieldset class="">
+    <fieldset class="app-currencies">
         <legend><?= t('Application Currencies') ?></legend>
-        <div class="base-currency-wrapper">
-            <div class="base-currency">
-                <h4 class="base-currency-title"><?= t('Base Currency') ?></h4> <span class="base-currency-code"><?= $application_currency ?></span>
-            </div>
-        </div>
-        <?php if (!empty($this->model->configModel->get('cost_control_reference_currency', ''))): ?>
-            <div class="reference-currency-wrapper">
-                <div class="reference-currency">
-                    <h4 class="reference-currency-title"><?= t('Reference Currency') ?></h4>
-                    <span class="reference-currency-code">
-                        <?= $this->model->configModel->get('cost_control_reference_currency', '') ?>
-                    </span>
-                    <span class="reference-currency-manual-rate" title="<?= t('Last Modified: ') . $this->dt->datetime($this->model->currencyModel->getReferenceCurrency()['last_modified']) ?>">
-                        <?= t('Manual Rate')?> <?= (n($this->model->currencyModel->getReferenceCurrency()['rate']) > 0) ? n($this->model->currencyModel->getReferenceCurrency()['rate']) : t('Not set') ?>
-                    </span>
-                    <span class="reference-currency-live-rate" title="<?= t('Last Updated: ') . $this->dt->datetime($this->model->currencyModel->getReferenceCurrency()['live_rate_updated']) ?>">
-                        <?= t('Live Rate') . n($this->model->currencyModel->getReferenceCurrency()['live_rate']) ?>
-                    </span>
+        <div class="app-currency-wrapper">
+            <div class="app-currency-list">
+                <div class="base-currency-wrapper">
+                    <span class="base-currency-title"><?= t('Base Currency') ?></span>
+                    <span class="base-currency-code"><?= $application_currency ?></span>
+                    <span class="base-currency-value">1.00</span>
+                </div>
+                <div class="reference-currency-wrapper">
+                    <?php if (!empty($this->model->configModel->get('cost_control_reference_currency', ''))): ?>
+                        <span class="reference-currency-title"><?= t('Reference Currency') ?></span>
+                        <span class="reference-currency-code"><?= $this->model->configModel->get('cost_control_reference_currency', '') ?></span>
+                        <span class="reference-currency-manual-rate" title="<?= t('Last Modified: ') . $this->dt->datetime($this->model->currencyModel->getReferenceCurrency()['last_modified']) ?>">
+                            <?= t('Manual Rate')?> <?= (n($this->model->currencyModel->getReferenceCurrency()['rate']) > 0) ? n($this->model->currencyModel->getReferenceCurrency()['rate']) : t('Not set') ?>
+                        </span>
+                        <span class="reference-currency-live-rate" title="<?= t('Last Updated: ') . $this->dt->datetime($this->model->currencyModel->getReferenceCurrency()['live_rate_updated']) ?>">
+                            <?= t('Live Rate') .' '. n($this->model->currencyModel->getReferenceCurrency()['live_rate']) ?>
+                        </span>
+                    <?php else: ?>
+                        <span class="add-reference-currency">
+                            <?= $this->url->link(t('Add Reference Currency'), 'ConfigController', 'application', array(), false, '', t('Go to Settings'), false, 'CostControlSettings') ?>
+                        </span>
+                    <?php endif ?>
                 </div>
             </div>
-        <?php endif ?>
+        </div>
     </fieldset>
 
     <?php if (! empty($rates)): ?>
@@ -55,7 +59,10 @@
             </label>
             <input type="search" id="CurrencyCodeSearch" class="search-input" placeholder="<?= t('EUR') ?>" title="<?= t('Search Currency Code') ?>" autocomplete="off" autofocus="autofocus" onclick="this.value=''">
         </form>
-        <a id="PluginBottom" href="#PluginTop" title="<?= t('Go to the bottom of the page') ?>" class="btn-action"><i class="fa fa-level-down" aria-hidden="true"></i> <?= t('Bottom') ?></a>
+        <div class="top-detail-bar">
+            <span class="json-last-checked"><?= t('Last Checked:') ?> <?= $this->dt->datetime($this->model->configModel->get('last_checked_liverates', time() - 86401)) ?></span>
+            <a id="PluginBottom" href="#PluginTop" title="<?= t('Go to the bottom of the page') ?>" class="btn-action"><i class="fa fa-level-down" aria-hidden="true"></i> <?= t('Bottom') ?></a>
+        </div>
         <table id="CurrenciesTable" class="currencies-table table-striped">
             <tr class="">
                 <th class="column-7"><?= t('Code') ?></th>
@@ -87,10 +94,11 @@
             </tr>
             <?php endforeach ?>
         </table>
-        <a id="PluginTop" href="#main" title="<?= t('Go to the top of the page') ?>" class="btn-action"><i class="fa fa-level-up" aria-hidden="true"></i> <?= t('Top') ?></a>
-        <a href="https://www.exchangerate-api.com" target="_blank" title="<?= t('Opens in a new window') ?>" rel="noopener noreferrer">Live Rates By Exchange Rate API</a>
-        Last Checked: <?= $this->dt->datetime($this->model->configModel->get('last_checked_liverates', time() - 86401)) ?><br>
-        Last Update to Live Rate Data: <?= $this->dt->datetime($this->model->configModel->get('cost_control_last_updated', time())) ?><br>
-        Next Update to Live Rate Data: <?= $this->dt->datetime($this->model->configModel->get('cost_control_next_update', time())) ?>
+        <div class="bottom-detail-bar">
+            <a id="PluginTop" href="#main" title="<?= t('Go to the top of the page') ?>" class="btn-action"><i class="fa fa-level-up" aria-hidden="true"></i> <?= t('Top') ?></a>
+            <a href="https://www.exchangerate-api.com" target="_blank" title="<?= t('Opens in a new window') ?>" rel="noopener noreferrer">Live Rates By Exchange Rate API</a>
+            <span class=""><?= t('Last Update to Live Rate Data:') ?> <?= $this->dt->datetime($this->model->configModel->get('cost_control_last_updated', time())) ?></span>
+            <span class=""><?= t('Next Update to Live Rate Data:') ?> <?= $this->dt->datetime($this->model->configModel->get('cost_control_next_update', time())) ?></span>
+        </div>
     <?php endif ?>
 </div>

@@ -136,4 +136,19 @@ class CostController extends \Kanboard\Controller\BaseController
 
         $this->response->redirect($this->helper->url->to('CostController', 'showEveryone', array('plugin' => 'CostControl')));
     }
+
+    /**
+     * EDIT COMMENT
+     *
+     * @access public
+     * @param array $values
+     * @param array $errors
+     */
+    public function editComment(array $values = array())
+    {
+        $this->response->html($this->template->render('costControl:cost-control/edit_comment', array(
+            'values'     => $values,
+            'currencies' => $this->currencyModel->getCurrencies(),
+        )));
+    }
 }

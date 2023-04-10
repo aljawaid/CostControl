@@ -14,7 +14,7 @@
                 <?= $this->modal->medium('edit', t('Change Base Currency'), 'CostController', 'change', array('plugin' => 'CostControl')) ?>
             </li>
             <li class="">
-                <?= $this->url->link(t('Edit Reference Currency'), 'ConfigController', 'application', array(), false, '', t('Settings'), false, 'CostControlSettings') ?>
+                <?= $this->url->link(t('Edit Reference Currency'), 'ConfigController', 'application', array(), false, '', t('Go to Settings'), false, 'CostControlSettings') ?>
             </li>
         <?php endif ?>
     </ul>
@@ -90,5 +90,4 @@
         Last Update to Live Rate Data: <?= $this->dt->datetime($this->model->configModel->get('cost_control_last_updated', time())) ?><br>
         Next Update to Live Rate Data: <?= $this->dt->datetime($this->model->configModel->get('cost_control_next_update', time())) ?>
     <?php endif ?>
-
 </div>

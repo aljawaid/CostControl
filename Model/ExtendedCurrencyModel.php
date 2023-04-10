@@ -340,4 +340,18 @@ class ExtendedCurrencyModel extends Base
 
         return $this->db->table(self::TABLE)->insert(array('currency' => $currency, 'comment' => $comment));
     }
+
+    /**
+     * UPDATE COMMENT
+     *
+     * @access public
+     * @param  string    $currency
+     * @param  float     $rate
+     * @return boolean
+     */
+    public function updateComment($comment)
+    {
+        return $this->db->table(self::TABLE)->eq('currency', $currency)->update(array('comment' => $comment));
+    }
+
 }

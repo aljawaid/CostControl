@@ -332,13 +332,13 @@ class ExtendedCurrencyModel extends Base
      * @param  float     $rate
      * @return boolean|integer
      */
-    public function editComment($currency, $comment)
+    public function editComment($values)
     {
-        if ($this->db->table(self::TABLE)->eq('currency', $currency)->exists()) {
-            return $this->updateComment($currency, $comment);
+        if ($this->db->table(self::TABLE)->eq('currency', $values['currency'])->exists()) {
+            return $this->updateComment($values['currency'], $values['comment']);
         }
 
-        return $this->db->table(self::TABLE)->insert(array('currency' => $currency, 'comment' => $comment));
+        return $this->db->table(self::TABLE)->insert(array('currency' => $values['currency'], 'comment' => $values['comment']));
     }
 
     /**

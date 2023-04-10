@@ -148,7 +148,7 @@ class CostController extends \Kanboard\Controller\BaseController
     {
         $values = $this->request->getValues();
 
-        $this->response->html($this->template->render('costcontrol:cost-control/edit_comment', array(
+        $this->response->html($this->template->render('costControl:cost-control/edit_comment', array(
             'values'     => $values,
             'currency'   => $this->request->getStringParam('currency'),
             'comment'    => $this->request->getStringParam('comment'),
@@ -166,7 +166,7 @@ class CostController extends \Kanboard\Controller\BaseController
         //list($valid, $errors) = $this->currencyValidator->validateCreation($values);
 
         //if ($valid) {
-            if ($this->currencyModel->editComment($values['comment'])) {
+            if ($this->currencyModel->editComment($values)) {
                 $this->flash->success(t('Comment updated successfully'));
                 $this->response->redirect($this->helper->url->to('CostController', 'showEveryone', array('plugin' => 'CostControl')));
             } else {
@@ -174,6 +174,5 @@ class CostController extends \Kanboard\Controller\BaseController
             }
         //}
 
-        $this->create($values, $errors);
     }
 }

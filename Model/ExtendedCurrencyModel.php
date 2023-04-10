@@ -332,10 +332,10 @@ class ExtendedCurrencyModel extends Base
      * @param  float     $rate
      * @return boolean|integer
      */
-    public function editComment($comment)
+    public function editComment($currency, $comment)
     {
         if ($this->db->table(self::TABLE)->eq('currency', $currency)->exists()) {
-            return $this->updateComment($comment);
+            return $this->updateComment($currency, $comment);
         }
 
         return $this->db->table(self::TABLE)->insert(array('currency' => $currency, 'comment' => $comment));
@@ -349,7 +349,7 @@ class ExtendedCurrencyModel extends Base
      * @param  float     $rate
      * @return boolean
      */
-    public function updateComment($comment)
+    public function updateComment($currency, $comment)
     {
         return $this->db->table(self::TABLE)->eq('currency', $currency)->update(array('comment' => $comment));
     }

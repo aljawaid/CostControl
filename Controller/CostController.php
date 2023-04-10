@@ -146,7 +146,9 @@ class CostController extends \Kanboard\Controller\BaseController
      */
     public function editComment(array $values = array())
     {
-        $this->response->html($this->template->render('costControl:cost-control/edit_comment', array(
+        $values = $this->request->getValues();
+
+        $this->response->html($this->template->render('costcontrol:cost-control/edit_comment', array(
             'values'     => $values,
             'currencies' => $this->currencyModel->getCurrencies(),
         )));

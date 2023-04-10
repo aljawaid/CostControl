@@ -98,6 +98,9 @@
 
 .currency-filter label {
     display: inline;
+    position: absolute;
+    margin-top: 4px;
+    margin-left: 4px;
 }
 
 .currency-filter label svg {
@@ -132,4 +135,13 @@
 
 .cost-control-page-header h2 span {
     vertical-align: bottom;
+}
+
+ul.currency-actions {
+    list-style-type: none;
+}
+
+ul.currency-actions li {
+    display: inline-block;
+    margin-right: 15px;
 }

@@ -12,7 +12,7 @@
         <?= $this->form->text('comment', $values, array(), array('placeholder="Provider Notes"'), 'form-text') ?>
         <?= $this->modal->submitButtons() ?>
     </form>
-<?php elseif ($this->task->configModel->get('cost_control_rate_comments', '') == 'ignore_comment_on_edit'): ?>
+<?php else: ?>
     <form method="post" class="" action="<?= $this->url->href('CostController', 'saveWithoutComment', array('plugin' => 'CostControl')) ?>" autocomplete="on">
         <?= $this->form->csrf() ?>
         <?= $this->form->label(t('Currency'), 'currency') ?>

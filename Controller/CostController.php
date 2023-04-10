@@ -150,7 +150,8 @@ class CostController extends \Kanboard\Controller\BaseController
 
         $this->response->html($this->template->render('costcontrol:cost-control/edit_comment', array(
             'values'     => $values,
-            'currencies' => $this->currencyModel->getCurrencies(),
+            'currency'   => $this->request->getStringParam('currency'),
+            'comment'    => $this->request->getStringParam('comment'),
         )));
     }
 

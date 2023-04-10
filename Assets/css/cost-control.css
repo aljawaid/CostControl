@@ -120,3 +120,16 @@
     vertical-align: bottom;
     margin-bottom: 3px;
 }
+
+.cost-control-page-header {
+    margin: var(--page-margin-cost-control);
+}
+
+.cost-control-page-header h2 {
+    margin-top: 0;
+    font-weight: 600;
+}
+
+.cost-control-page-header h2 span {
+    vertical-align: bottom;
+}

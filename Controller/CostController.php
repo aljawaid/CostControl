@@ -159,7 +159,7 @@ class CostController extends \Kanboard\Controller\BaseController
      *
      * @access public
      */
-    public function editCommentForm()
+    public function saveCommentForm()
     {
         $values = $this->request->getValues();
         //list($valid, $errors) = $this->currencyValidator->validateCreation($values);

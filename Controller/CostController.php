@@ -151,4 +151,26 @@ class CostController extends \Kanboard\Controller\BaseController
             'currencies' => $this->currencyModel->getCurrencies(),
         )));
     }
+
+    /**
+     * EDIT COMMENT FORM
+     *
+     * @access public
+     */
+    public function editCommentForm()
+    {
+        $values = $this->request->getValues();
+        //list($valid, $errors) = $this->currencyValidator->validateCreation($values);
+
+        //if ($valid) {
+            if ($this->currencyModel->editComment($values['comment'])) {
+                $this->flash->success(t('Comment updated successfully'));
+                $this->response->redirect($this->helper->url->to('CostController', 'showEveryone', array('plugin' => 'CostControl')));
+            } else {
+                $this->flash->failure(t('Unable to update this comment'));
+            }
+        //}
+
+        $this->create($values, $errors);
+    }
 }

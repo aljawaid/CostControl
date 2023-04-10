@@ -85,7 +85,7 @@
                 <td class="manual-rate-last-modified"><?= ($rate['last_modified'] > 0) ? $this->dt->datetime($rate['last_modified']) : '' ?></td>
                 <td class="manual-rate-comment">
                     <?= ($rate['comment']) ?>
-                    <span class=""><?= $this->modal->mediumIcon('edit', t('Edit'), 'CostController', 'editComment', array('plugin' => 'costControl', 'currency' => $rate['currency'], 'comment' => $rate['comment'])) ?></span>
+                    <span class=""><?= $this->modal->small('edit', t('Edit'), 'CostController', 'editComment', array('plugin' => 'costControl', 'currency' => $rate['currency'], 'comment' => $rate['comment'])) ?></span>
                 </td>
                 <td class="live-rate">
                     <?= ($rate['live_rate'] > 0) ? n($rate['live_rate']) : '' ?>

@@ -44,6 +44,7 @@ Features
 - Show the last modified date for manual currency rates
 - Add a comment for each manual rate for easy reference
   - Replace previous comments directly when modifying manual rates
+- Add and edit comments individually
 
 
 Screenshots

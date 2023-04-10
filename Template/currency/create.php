@@ -1,5 +1,5 @@
 <div class="page-header">
-    <h2 class=""><?= t('Create or Update Manual Rate') ?></h2>
+    <h2 class=""><?= t('Update Manual Rate') ?></h2>
 </div>
 <?php if ($this->task->configModel->get('cost_control_rate_comments', '') == 'replace_comment_on_edit'): ?>
     <form method="post" class="" action="<?= $this->url->href('CostController', 'save', array('plugin' => 'CostControl')) ?>" autocomplete="on">

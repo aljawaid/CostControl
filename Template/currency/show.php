@@ -7,11 +7,11 @@
     </h2>
     <ul class="currency-actions">
         <li class="">
-            <?= $this->modal->medium('plus', t('Add or change currency rate'), 'CostController', 'create', array('plugin' => 'CostControl')) ?>
+            <?= $this->modal->medium('plus', t('Update Manual Rate'), 'CostController', 'create', array('plugin' => 'CostControl')) ?>
         </li>
         <?php if ($this->user->hasAccess('ConfigController', 'application')): ?>
             <li class="">
-                <?= $this->modal->medium('edit', t('Change base currency'), 'CostController', 'change', array('plugin' => 'CostControl')) ?>
+                <?= $this->modal->medium('edit', t('Change Base Currency'), 'CostController', 'change', array('plugin' => 'CostControl')) ?>
             </li>
             <li class="">
                 <?= $this->url->link(t('Edit Reference Currency'), 'ConfigController', 'application', array(), false, '', t('Settings'), false, 'CostControlSettings') ?>

@@ -159,3 +159,19 @@ ul.currency-actions li {
 #CurrenciesTable {
     margin: 5px auto;
 }
+
+.edit-comment-btn {
+    float: right;
+}
+
+.edit-comment-empty {
+    visibility: hidden;
+}
+
+tr.rate-results td a{
+    transition: var(--transition-cost-control);
+}
+
+tr.rate-results:hover .edit-comment-empty {
+    visibility: visible;
+}

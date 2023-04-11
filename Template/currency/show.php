@@ -85,9 +85,15 @@
                 <td class="manual-rate-last-modified"><?= ($rate['last_modified'] > 0) ? $this->dt->datetime($rate['last_modified']) : '' ?></td>
                 <td class="manual-rate-comment">
                     <?= ($rate['comment']) ?>
-                    <a href="<?= $this->url->href('CostController', 'editComment', array('plugin' => 'costControl', 'currency' => $rate['currency'], 'comment' => $rate['comment']), false, '', false) ?>" class="js-modal-small btn edit-comment-btn" title="<?= t('Edit Comment') ?>">
-                        <i class="fa fa-edit fa-fw js-modal-small" aria-hidden="true"></i>
-                    </a>
+                    <?php if (!empty($rate['comment'])): ?>
+                        <a href="<?= $this->url->href('CostController', 'editComment', array('plugin' => 'costControl', 'currency' => $rate['currency'], 'comment' => $rate['comment']), false, '', false) ?>" class="js-modal-small btn edit-comment-btn" title="<?= t('Edit Comment') ?>">
+                            <i class="fa fa-edit fa-fw js-modal-small" aria-hidden="true"></i>
+                        </a>
+                    <?php else: ?>
+                        <a href="<?= $this->url->href('CostController', 'editComment', array('plugin' => 'costControl', 'currency' => $rate['currency'], 'comment' => $rate['comment']), false, '', false) ?>" class="js-modal-small btn edit-comment-btn edit-comment-empty" title="<?= t('Add Comment') ?>">
+                            <i class="fa fa-edit fa-fw js-modal-small" aria-hidden="true"></i>
+                        </a>
+                    <?php endif ?>
                 </td>
                 <td class="live-rate">
                     <?= ($rate['live_rate'] > 0) ? n($rate['live_rate']) : '' ?>

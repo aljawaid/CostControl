@@ -169,6 +169,17 @@ class ExtendedCurrencyModel extends Base
     {
         return $this->db->table(self::TABLE)->findAll();
     }
+    
+    /**
+     * GET CURRENCY LIVE RATE
+     *
+     * @access public
+     * @return array
+     */
+    public function getLiveRate($currency)
+    {
+        return $this->db->table(self::TABLE)->eq('currency', $currency)->findOneColumn('live_rate');
+    }
 
     /**
      * GET REFERENCE CURRENCY RATES
@@ -307,7 +318,6 @@ class ExtendedCurrencyModel extends Base
         $response_json = file_get_contents($req_url);
         $json_currency_rates = json_decode($response_json,true);
         $currencies = $this->getCurrencies();
-        $db_currencies = $this->getAll();
         $live_rate_updated = $json_currency_rates['time_last_update_unix'];
         //error_log('LIVE RATES RESPONSE: OK '.$live_rate_updated,0);
         $live_rate_next_update = $json_currency_rates['time_next_update_unix'];
@@ -317,7 +327,7 @@ class ExtendedCurrencyModel extends Base
         foreach ($currencies as $currency => $value) {
             if (isset($json_currency_rates['rates'][$currency])) {
                 $live_rate = $json_currency_rates['rates'][$currency];
-                if ($db_currencies[$currency]['live_rate'] != $live_rate) {
+                if ($this->getLiveRate($currency) != $live_rate) {
                     $this->createWithLive($currency, $live_rate, time());
                 }
             }

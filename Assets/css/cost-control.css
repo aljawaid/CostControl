@@ -175,3 +175,8 @@ tr.rate-results td a{
 tr.rate-results:hover .edit-comment-empty {
     visibility: visible;
 }
+
+.api-detail, .last-update-detail, .next-update-detail {
+    display: block;
+    font-size: .9em;
+}

@@ -181,3 +181,11 @@ tr.rate-results:hover .edit-comment-empty {
     display: block;
     font-size: .9em;
 }
+
+.live-rate .exchange-rate-icon {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    vertical-align: bottom;
+    opacity: .6;
+}

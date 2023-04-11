@@ -96,7 +96,7 @@
                     <?php endif ?>
                 </td>
                 <td class="live-rate">
-                    <?= ($rate['live_rate'] > 0) ? n($rate['live_rate']) : '' ?>
+                    <span class="exchange-rate-icon"></span> <?= ($rate['live_rate'] > 0) ? n($rate['live_rate']) : '' ?>
                 </td>
                 <td class="live-rate-last-updated"><?= ($rate['live_rate_updated'] > 0) ? $this->dt->datetime($rate['live_rate_updated']) : '' ?></td>
             </tr>

@@ -161,6 +161,13 @@ ul.currency-actions li {
     margin: 5px auto;
 }
 
+
+.reference-currency-live-rate .live-rate-icon {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    vertical-align: text-top;
+}
 .edit-comment-btn {
     float: right;
 }
@@ -182,7 +189,7 @@ tr.rate-results:hover .edit-comment-empty {
     font-size: .9em;
 }
 
-.live-rate .exchange-rate-icon {
+.live-rate .live-rate-icon {
     width: 20px;
     height: 20px;
     display: inline-block;

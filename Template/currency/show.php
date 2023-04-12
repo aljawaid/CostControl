@@ -36,7 +36,7 @@
                             <?= (n($this->model->currencyModel->getReferenceCurrency()['rate']) > 0) ? n($this->model->currencyModel->getReferenceCurrency()['rate']) : t('Not set') ?>
                         </span>
                         <span class="reference-currency-live-rate" title="<?= t('Live Rate Last Updated: ') . $this->dt->datetime($this->model->currencyModel->getReferenceCurrency()['live_rate_updated']) ?>">
-                            <span class="exchange-rate-icon"></span> <?= n($this->model->currencyModel->getReferenceCurrency()['live_rate']) ?>
+                            <span class="live-rate-icon"></span> <?= n($this->model->currencyModel->getReferenceCurrency()['live_rate']) ?>
                         </span>
                     <?php else: ?>
                         <span class="add-reference-currency">
@@ -96,7 +96,7 @@
                     <?php endif ?>
                 </td>
                 <td class="live-rate">
-                    <span class="exchange-rate-icon"></span> <?= ($rate['live_rate'] > 0) ? n($rate['live_rate']) : '' ?>
+                    <?= ($rate['live_rate'] > 0) ? '<span class="live-rate-icon"></span> '. n($rate['live_rate']) : '' ?>
                 </td>
                 <td class="live-rate-last-updated"><?= ($rate['live_rate_updated'] > 0) ? $this->dt->datetime($rate['live_rate_updated']) : '' ?></td>
             </tr>

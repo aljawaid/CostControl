@@ -10,7 +10,7 @@
             <?= $this->modal->medium('plus', t('Update Manual Rate'), 'CostController', 'create', array('plugin' => 'CostControl')) ?>
         </li>
         <?php if ($this->user->hasAccess('ConfigController', 'application')): ?>
-            <li class="">
+            <li class="change-base-currency">
                 <?= $this->modal->medium('edit', t('Change Base Currency'), 'CostController', 'change', array('plugin' => 'CostControl')) ?>
             </li>
             <li class="">

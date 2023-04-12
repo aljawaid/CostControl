@@ -184,6 +184,33 @@ fieldset.app-currencies legend {
     vertical-align: middle;
 }
 
+table#CurrenciesTable > tbody > tr > td {
+    padding: .4em 3px;
+}
+
+th.heading-code, th.heading-manual-rate, th.heading-last-modfied, th.heading-live-rate, th.heading-live-rate-updated {
+    text-align: center;
+    padding: 0 3px;
+    font-weight: 600;
+}
+
+th.heading-currency, th.heading-comment {
+    font-weight: 600;
+    padding-left: 10px;
+}
+
+td.row-code, td.row-manual-rate, td.row-manual-rate-last-modified, td.row-live-rate, td.row-live-rate-last-updated {
+    text-align: center;
+    padding: 0 3px;
+}
+
+table#CurrenciesTable > tbody > tr > td.row-currency, table#CurrenciesTable > tbody > tr > td.row-manual-rate-comment {
+    padding-left: 10px;
+}
+
+table#CurrenciesTable > tbody > tr > td.row-manual-rate-comment {
+    font-style: italic;
+}
 
 .row-live-rate .live-rate-icon {
     vertical-align: bottom;
@@ -201,6 +228,11 @@ fieldset.app-currencies legend {
     width: 20px;
     height: 20px;
 }
+
+td.row-live-rate {
+    font-weight: 700;
+}
+
 .base-currency-wrapper, .reference-currency-wrapper {
     min-width: 150px;
     display: inline-block;

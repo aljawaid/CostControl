@@ -29,19 +29,35 @@
                     <span class="base-currency-value"><span class="base-rate-home-icon"></span> 1.00</span>
                 </div>
                 <div class="reference-currency-wrapper">
+                    <span class="reference-currency-title"><?= t('Reference Currency') ?></span>
                     <?php if (!empty($this->model->configModel->get('cost_control_reference_currency', ''))): ?>
-                        <span class="reference-currency-title"><?= t('Reference Currency') ?></span>
                         <span class="reference-currency-code"><?= $this->model->configModel->get('cost_control_reference_currency', '') ?></span>
-                        <span class="reference-currency-manual-rate" title="<?= t('Manual Rate Last Modified: ') . $this->dt->datetime($this->model->currencyModel->getReferenceCurrency()['last_modified']) ?>">
-                            <?= (n($this->model->currencyModel->getReferenceCurrency()['rate']) > 0) ? '<span class="manual-rate-icon"></span> '. n($this->model->currencyModel->getReferenceCurrency()['rate']) : t('Not set') ?>
-                        </span>
-                        <span class="reference-currency-live-rate" title="<?= t('Live Rate Last Updated: ') . $this->dt->datetime($this->model->currencyModel->getReferenceCurrency()['live_rate_updated']) ?>">
-                            <span class="live-rate-icon"></span> <?= n($this->model->currencyModel->getReferenceCurrency()['live_rate']) ?>
+                        <span class="manual-live-wrapper">
+                            <span class="reference-currency-manual-rate" title="<?= t('Manual Rate Last Modified: ') . $this->dt->datetime($this->model->currencyModel->getReferenceCurrency()['last_modified']) ?>">
+                                <?= (n($this->model->currencyModel->getReferenceCurrency()['rate']) > 0) ? '<span class="manual-rate-icon"></span> '. n($this->model->currencyModel->getReferenceCurrency()['rate']) : '' ?>
+                            </span>
+                            <?= (n($this->model->currencyModel->getReferenceCurrency()['rate']) > 0) ? '<span class="spacer"></span>' : '' ?>
+                            <span class="reference-currency-live-rate" title="<?= t('Live Rate Last Updated: ') . $this->dt->datetime($this->model->currencyModel->getReferenceCurrency()['live_rate_updated']) ?>">
+                                <span class="live-rate-icon"></span> <?= n($this->model->currencyModel->getReferenceCurrency()['live_rate']) ?>
+                            </span>
                         </span>
                     <?php else: ?>
-                        <span class="add-reference-currency">
-                            <?= $this->url->link(t('Add Reference Currency'), 'ConfigController', 'application', array(), false, '', t('Go to Settings'), false, 'CostControlSettings') ?>
-                        </span>
+                        <?php if ($this->user->hasAccess('ConfigController', 'application')): ?>
+                            <span class="add-reference-currency">
+                                <span class="reference-currency-icon"></span>
+                                <span class="add-reference-currency-link">
+                                    <i class="fa fa-plus"></i> <?= $this->url->link(t('Add'), 'ConfigController', 'application', array(), false, '', t('Go to Settings'), false, 'CostControlSettings') ?>
+                                </span>
+                            </span>
+                        <?php else: ?>
+                            <span class="add-reference-currency">
+                                <span class="reference-currency-icon"></span>
+                                <span class="add-reference-currency-link">
+                                    <i class="not-set pp-grey"><?= t('Not set') ?></i>
+                                </span>
+                            </span>
+
+                        <?php endif ?>
                     <?php endif ?>
                 </div>
             </div>

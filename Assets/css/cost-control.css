@@ -180,6 +180,16 @@ fieldset.app-currencies legend {
     margin: 5px auto;
 }
 
+#CurrenciesTable tr.table-heading {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+#CurrenciesTable.table-striped tr.table-heading:hover {
+    background: initial !important;
+}
+
 #CurrenciesTable tr td {
     vertical-align: middle;
 }
@@ -192,11 +202,13 @@ th.heading-code, th.heading-manual-rate, th.heading-last-modfied, th.heading-liv
     text-align: center;
     padding: 0 3px;
     font-weight: 600;
+    background: rgba(165, 42, 42, .5);
 }
 
 th.heading-currency, th.heading-comment {
     font-weight: 600;
     padding-left: 10px;
+    background: rgba(165, 42, 42, .5);
 }
 
 td.row-code, td.row-manual-rate, td.row-manual-rate-last-modified, td.row-live-rate, td.row-live-rate-last-updated {

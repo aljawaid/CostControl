@@ -80,7 +80,7 @@
             <a id="PluginBottom" href="#PluginTop" title="<?= t('Go to the bottom of the page') ?>" class="btn-action"><i class="fa fa-level-down" aria-hidden="true"></i> <?= t('Bottom') ?></a>
         </div>
         <table id="CurrenciesTable" class="currencies-table table-striped">
-            <tr class="">
+            <tr class="table-heading">
                 <th class="heading-code column-7"><?= t('Code') ?></th>
                 <th class="heading-currency column-35"><?= t('Currency') ?></th>
                 <th class="heading-manual-rate column-8"><?= t('Manual Rate') ?></th>

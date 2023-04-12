@@ -92,9 +92,9 @@
             <?php foreach ($rates as $rate): ?>
             <tr class="rate-results">
                 <td class="">
-                    <span class="currency-coins-icon"></span> <strong><?= $this->text->e($rate['currency']) ?></strong>
+                    <strong><?= $this->text->e($rate['currency']) ?></strong>
                 </td>
-                <td class=""><?= substr($this->text->e($currencies[$rate['currency']]), 6) ?></td>
+                <td class=""><span class="currency-coins-icon"></span> <?= substr($this->text->e($currencies[$rate['currency']]), 6) ?></td>
                 <td class="">
                     <?= ($rate['rate'] > 0) ? n($rate['rate']) : '' ?>
                 </td>

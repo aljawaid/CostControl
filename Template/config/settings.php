@@ -14,8 +14,8 @@
             </div>
             <div class="c-control-options-section w-200">
                 <?= $this->form->label(t('Reference Currency'), 'cost_control_reference_currency', array('class="w-200"')) ?>
-                <?= $this->form->text('cost_control_reference_currency', $values, $errors, array('placeholder="EUR"')) ?>
-                <p class="form-help w-200"><?= t('Enter the three letter currency code') ?></p>
+                <?= $this->form->text('cost_control_reference_currency', $values, $errors, array('placeholder="EUR" pattern="[A-Z]{3}"')) ?>
+                <p class="form-help"><?= t('Enter the three letter currency code in capital letters') ?></p>
             </div>
         </div>
     </fieldset>

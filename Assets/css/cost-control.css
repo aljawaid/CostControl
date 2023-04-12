@@ -13,6 +13,7 @@
     --pp-green: #2EA02E;
     --pp-green-dark: #055D20;
     --pp-orange: #FF6500;
+    --pp-brown: #800000;
     --blue-icon-dark: #034CA6;
     --button-blue-gradient: linear-gradient(to bottom, #7892c2 80%, #476e9e 100%);
     --blue-border-gradient-match: #476E9E;
@@ -112,7 +113,7 @@
 .currency-filter input {
     padding: 3px 3px 4px 3px;
     font-size: 1em;
-    border: 2px solid #800000;
+    border: 2px solid var(--pp-brown);
     width: 375px;
     text-align: center;
     box-shadow: 1px 1px 7px 0px #000;

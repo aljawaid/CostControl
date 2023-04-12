@@ -180,6 +180,10 @@ fieldset.app-currencies legend {
     margin: 5px auto;
 }
 
+#CurrenciesTable tr td {
+    vertical-align: middle;
+}
+
 .base-currency-wrapper, .reference-currency-wrapper {
     min-width: 150px;
     display: inline-block;

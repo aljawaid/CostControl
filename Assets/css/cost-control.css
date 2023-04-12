@@ -184,6 +184,23 @@ fieldset.app-currencies legend {
     vertical-align: middle;
 }
 
+
+.row-live-rate .live-rate-icon {
+    vertical-align: bottom;
+    float: left;
+    width: 22px;
+    height: 22px;
+    display: inline-block;
+    opacity: .6;
+}
+
+.row-manual-rate .manual-rate-icon {
+    opacity: .6;
+    display: inline-block;
+    float: left;
+    width: 20px;
+    height: 20px;
+}
 .base-currency-wrapper, .reference-currency-wrapper {
     min-width: 150px;
     display: inline-block;
@@ -219,11 +236,11 @@ fieldset.app-currencies legend {
 .base-currency-code, .reference-currency-code {
     font-size: 1.5em;
     font-weight: 700;
+    margin-top: 5px;
 }
 
 .base-currency-value {
     font-size: 1.3em;
-    margin-top: 5px;
 }
 
 .reference-currency-wrapper {
@@ -250,6 +267,12 @@ fieldset.app-currencies legend {
     font-weight: 600;
     height: 30px;
     display: inline-block;
+}
+
+.reference-currency-manual-rate .manual-rate-icon {
+    vertical-align: text-top;
+    width: 27px;
+    height: 27px;
 }
 
 .reference-currency-live-rate .live-rate-icon {
@@ -311,14 +334,6 @@ tr.rate-results:hover .edit-comment-empty {
     font-size: .9em;
 }
 
-.live-rate .live-rate-icon {
-    width: 20px;
-    height: 20px;
-    display: inline-block;
-    vertical-align: bottom;
-    opacity: .6;
-}
-
 .base-currency-value .base-rate-home-icon {
     width: 24px;
     height: 24px;
@@ -328,4 +343,8 @@ tr.rate-results:hover .edit-comment-empty {
 .spacer {
     width: 25px;
     display: inline-block;
+}
+
+.rate-results .currency-coins-icon {
+    margin-right: 3px;
 }

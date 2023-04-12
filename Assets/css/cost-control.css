@@ -273,7 +273,25 @@ fieldset.app-currencies legend {
 }
 
 .edit-comment-btn {
-    float: right;
+    padding: 0 5px 3px 5px;
+    border-radius: var(--border-radius-cost-control);
+    border: 1px solid var(--pp-brown);
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    opacity: .6;
+}
+
+.edit-comment-btn:hover {
+    border-color: var(--pp-brown);
+    opacity: 1;
+}
+
+.edit-comment-btn svg {
+    width: 18px;
+    height: 18px;
+    vertical-align: sub;
+    pointer-events: none;
 }
 
 .edit-comment-empty {

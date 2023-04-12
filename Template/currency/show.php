@@ -81,24 +81,24 @@
         </div>
         <table id="CurrenciesTable" class="currencies-table table-striped">
             <tr class="">
-                <th class="column-7"><?= t('Code') ?></th>
-                <th class="column-35"><?= t('Currency') ?></th>
-                <th class="column-8"><?= t('Manual Rate') ?></th>
-                <th class="column-10"><?= t('Last Modified') ?></th>
-                <th class=""><?= t('Comment') ?></th>
-                <th class="column-8"><?= t('Live Rate') ?></th>
-                <th class="column-10"><?= t('Live Rate Updated') ?></th>
+                <th class="heading-code column-7"><?= t('Code') ?></th>
+                <th class="heading-currency column-35"><?= t('Currency') ?></th>
+                <th class="heading-manual-rate column-8"><?= t('Manual Rate') ?></th>
+                <th class="heading-last-modfied column-10"><?= t('Last Modified') ?></th>
+                <th class="heading-comment"><?= t('Comment') ?></th>
+                <th class="heading-live-rate column-8"><?= t('Live Rate') ?></th>
+                <th class="heading-live-rate-updated column-11"><?= t('Live Rate Updated') ?></th>
             </tr>
             <?php foreach ($rates as $rate): ?>
             <tr class="rate-results">
-                <td class="">
+                <td class="row-code">
                     <strong><?= $this->text->e($rate['currency']) ?></strong>
                 </td>
-                <td class=""><span class="currency-coins-icon"></span> <?= substr($this->text->e($currencies[$rate['currency']]), 6) ?></td>
-                <td class="">
-                    <?= ($rate['rate'] > 0) ? n($rate['rate']) : '' ?>
+                <td class="row-currency"><span class="currency-coins-icon"></span> <?= substr($this->text->e($currencies[$rate['currency']]), 6) ?></td>
+                <td class="row-manual-rate">
+                    <?= ($rate['rate'] > 0) ? '<span class="manual-rate-icon"></span> '. n($rate['rate']) : '' ?>
                 </td>
-                <td class="manual-rate-last-modified"><?= ($rate['last_modified'] > 0) ? $this->dt->datetime($rate['last_modified']) : '' ?></td>
+                <td class="row-manual-rate-last-modified"><?= ($rate['last_modified'] > 0) ? $this->dt->datetime($rate['last_modified']) : '' ?></td>
                 <td class="row-manual-rate-comment relative">
                     <?= ($rate['comment']) ?>
                     <?php if (!empty($rate['comment'])): ?>
@@ -115,10 +115,10 @@
                         </a>
                     <?php endif ?>
                 </td>
-                <td class="live-rate">
+                <td class="row-live-rate">
                     <?= ($rate['live_rate'] > 0) ? '<span class="live-rate-icon"></span> '. n($rate['live_rate']) : '' ?>
                 </td>
-                <td class="live-rate-last-updated"><?= ($rate['live_rate_updated'] > 0) ? $this->dt->datetime($rate['live_rate_updated']) : '' ?></td>
+                <td class="row-live-rate-last-updated"><?= ($rate['live_rate_updated'] > 0) ? $this->dt->datetime($rate['live_rate_updated']) : '' ?></td>
             </tr>
             <?php endforeach ?>
         </table>

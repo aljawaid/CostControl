@@ -131,7 +131,7 @@
 }
 
 .cost-control-page-header h2 {
-    margin-top: 0;
+    margin-top: 5px;
     font-weight: 600;
 }
 
@@ -148,6 +148,24 @@ ul.currency-actions li {
     margin-right: 15px;
 }
 
+fieldset.app-currencies {
+    width: fit-content;
+    margin: 25px auto 15px auto;
+    padding: 10px 25px 15px 25px;
+    border-color: var(--pp-brown);
+    border-radius: var(--border-radius-cost-control);
+}
+
+.app-currencies-wrapper {
+    margin: auto;
+    text-align: center;
+}
+
+fieldset.app-currencies legend {
+    font-weight: 600;
+    padding: 0 10px;
+}
+
 .top-detail-bar .json-last-checked {
     float: left;
     /*margin-bottom: 4px;*/
@@ -162,13 +180,94 @@ ul.currency-actions li {
     margin: 5px auto;
 }
 
+.base-currency-wrapper, .reference-currency-wrapper {
+    min-width: 150px;
+    display: inline-block;
+    height: 85px;
+    vertical-align: middle;
+    padding: 2px 5px;
+}
+
+.base-currency-title, .base-currency-code, .base-currency-value, .reference-currency-title, .reference-currency-code {
+    display: block;
+    text-align: center;
+}
+
+.reference-currency-manual-rate, .reference-currency-live-rate {}
+
+.base-currency-title, .reference-currency-title {
+    text-transform: uppercase;
+    font-size: .8em;
+    font-weight: 600;
+    color: var(--pp-grey);
+}
+
+.app-currency-list {}
+
+.base-currency-wrapper {
+    margin-right: 10px;
+    border: 1px solid var(--pp-brown);
+    border-radius: var(--border-radius-cost-control);
+}
+
+.base-currency-title {}
+
+.base-currency-code, .reference-currency-code {
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+.base-currency-value {
+    font-size: 1.3em;
+    margin-top: 5px;
+}
+
+.reference-currency-wrapper {
+    margin-left: 10px;
+    border: 1px solid var(--pp-brown);
+    border-radius: var(--border-radius-cost-control);
+}
+
+.manual-live-wrapper {
+    display: block;
+    text-align: center;
+}
+
+.reference-currency-title {}
+.reference-currency-code {}
+
+.reference-currency-manual-rate {
+    font-size: 1.3em;
+    color: var(--pp-grey);
+}
+
+.reference-currency-live-rate {
+    font-size: 1.3em;
+    font-weight: 600;
+    height: 30px;
+    display: inline-block;
+}
 
 .reference-currency-live-rate .live-rate-icon {
-    width: 30px;
-    height: 30px;
+    width: 28px;
+    height: 28px;
     display: inline-block;
     vertical-align: text-top;
 }
+
+.add-reference-currency .reference-currency-icon {
+    display: block;
+    margin: 10px auto 0 auto;
+    width: 40px;
+}
+
+.add-reference-currency .add-reference-currency-link {
+    text-align: center;
+    display: block;
+    font-size: .9em;
+    margin-top: 2px;
+}
+
 .edit-comment-btn {
     float: right;
 }
@@ -202,4 +301,9 @@ tr.rate-results:hover .edit-comment-empty {
     width: 24px;
     height: 24px;
     vertical-align: sub;
+}
+
+.spacer {
+    width: 25px;
+    display: inline-block;
 }

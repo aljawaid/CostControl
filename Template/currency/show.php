@@ -14,7 +14,7 @@
                 <?= $this->modal->medium('edit', t('Change Base Currency'), 'CostController', 'change', array('plugin' => 'CostControl')) ?>
             </li>
             <li class="">
-                <?= $this->url->link(t('Edit Reference Currency'), 'ConfigController', 'application', array(), false, '', t('Go to Settings'), false, 'CostControlSettings') ?>
+                <span class="reference-currency-icon"></span> <?= $this->url->link(t('Change Reference Currency'), 'ConfigController', 'application', array(), false, '', t('Go to Settings'), false, 'CostControlSettings') ?>
             </li>
         <?php endif ?>
     </ul>

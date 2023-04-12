@@ -6,7 +6,7 @@
         <span class="currency-wallet-icon"></span> <?= t('Exchange Rates') ?>
     </h2>
     <ul class="currency-actions">
-        <li class="">
+        <li class="update-manual-rate">
             <?= $this->modal->medium('plus', t('Update Manual Rate'), 'CostController', 'create', array('plugin' => 'CostControl')) ?>
         </li>
         <?php if ($this->user->hasAccess('ConfigController', 'application')): ?>

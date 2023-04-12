@@ -1,8 +1,5 @@
-<svg height="34px" width="34px" class="manual-rate-icon" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" xml:space="preserve">
+<svg height="24" width="24" class="manual-rate-icon" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 56" xml:space="preserve">
   <g stroke-width="0"/>
   <g stroke-linecap="round" stroke-linejoin="round"/>
-  <path fill="#800000" d="M22 31.6v3.7h93.9v47.4h3.6V31.6z"/>
-  <path fill="#800000" d="M15.3 42h93.9v47.4h3.6v-51H15.3z"/>
-  <path d="M23.9 45.4H8.5v51H106v-51H23.9zM102 60.2v21.2c-5.3 1.4-9.4 5.6-10.9 11H23.3c-1.4-5.4-5.6-9.5-10.9-11V60.2c5.3-1.4 9.4-5.6 10.9-11h67.8c1.3 5.4 5.5 9.6 10.9 11z"/>
-  <circle fill="#800000" cx="57.2" cy="70.9" r="18"/>
+  <path d="M47.533 0H8.467C3.798 0 0 3.798 0 8.467v39.066C0 52.202 3.798 56 8.467 56h39.066C52.202 56 56 52.202 56 47.533V8.467C56 3.798 52.202 0 47.533 0zM50 27a1 1 0 1 1-2 0v-6.586L34.167 34.247c.524.791.833 1.736.833 2.753 0 2.757-2.243 5-5 5s-5-2.243-5-5c0-1.017.309-1.962.833-2.753l-10.08-10.08a4.969 4.969 0 0 1-5.506 0l-6.54 6.54-1.414-1.414 6.54-6.54A4.969 4.969 0 0 1 8 20c0-2.757 2.243-5 5-5s5 2.243 5 5a4.969 4.969 0 0 1-.833 2.753l10.08 10.08a4.969 4.969 0 0 1 5.506 0L46.586 19H40a1 1 0 1 1 0-2h10v10z"/>
 </svg>

@@ -26,7 +26,7 @@
                 <div class="base-currency-wrapper">
                     <span class="base-currency-title"><?= t('Base Currency') ?></span>
                     <span class="base-currency-code"><?= $application_currency ?></span>
-                    <span class="base-currency-value">1.00</span>
+                    <span class="base-currency-value"><span class="base-rate-home-icon"></span> 1.00</span>
                 </div>
                 <div class="reference-currency-wrapper">
                     <?php if (!empty($this->model->configModel->get('cost_control_reference_currency', ''))): ?>

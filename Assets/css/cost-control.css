@@ -189,3 +189,9 @@ tr.rate-results:hover .edit-comment-empty {
     vertical-align: bottom;
     opacity: .6;
 }
+
+.base-currency-value .base-rate-home-icon {
+    width: 24px;
+    height: 24px;
+    vertical-align: sub;
+}

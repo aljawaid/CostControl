@@ -33,7 +33,7 @@
                         <span class="reference-currency-title"><?= t('Reference Currency') ?></span>
                         <span class="reference-currency-code"><?= $this->model->configModel->get('cost_control_reference_currency', '') ?></span>
                         <span class="reference-currency-manual-rate" title="<?= t('Manual Rate Last Modified: ') . $this->dt->datetime($this->model->currencyModel->getReferenceCurrency()['last_modified']) ?>">
-                            <?= (n($this->model->currencyModel->getReferenceCurrency()['rate']) > 0) ? n($this->model->currencyModel->getReferenceCurrency()['rate']) : t('Not set') ?>
+                            <?= (n($this->model->currencyModel->getReferenceCurrency()['rate']) > 0) ? '<span class="manual-rate-icon"></span> '. n($this->model->currencyModel->getReferenceCurrency()['rate']) : t('Not set') ?>
                         </span>
                         <span class="reference-currency-live-rate" title="<?= t('Live Rate Last Updated: ') . $this->dt->datetime($this->model->currencyModel->getReferenceCurrency()['live_rate_updated']) ?>">
                             <span class="live-rate-icon"></span> <?= n($this->model->currencyModel->getReferenceCurrency()['live_rate']) ?>

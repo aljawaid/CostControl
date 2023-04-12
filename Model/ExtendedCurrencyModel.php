@@ -150,7 +150,7 @@ class ExtendedCurrencyModel extends Base
             'UZS' => t('UZS - Uzbekistani Som'),
             'VES' => t('VBL - Venezuelan Bolívar'),
             'VND' => t('VND - Vietnamese Dong'),
-            'XDR' => t('XDR - International Monetary Fund (IMF) Special Drawing Rights [XDR/SDR]'),
+            'XDR' => t('XDR - IMF Special Drawing Rights [XDR/SDR]'),
             'XBT' => t('XBT - Bitcoin [XBT/BTC]'),
             'YER' => t('YER - Yemeni Rial'),
             'ZAR' => t('ZAR - South African Rand'),

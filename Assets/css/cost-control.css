@@ -190,6 +190,7 @@ fieldset.app-currencies legend {
     position: sticky;
     top: 0;
     z-index: 1;
+    background-color: #FFFFFF;
 }
 
 #CurrenciesTable.table-striped tr.table-heading:hover {

@@ -263,18 +263,15 @@ table#CurrenciesTable > tbody > tr > td.row-manual-rate-comment {
 }
 
 .row-live-rate .live-rate-icon {
-    vertical-align: bottom;
     float: left;
     width: 22px;
     height: 22px;
-    display: inline-block;
     opacity: .6;
     margin-top: -2px;
 }
 
 .row-manual-rate .manual-rate-icon {
     opacity: .6;
-    display: inline-block;
     float: left;
     width: 20px;
     height: 20px;

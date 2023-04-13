@@ -269,6 +269,7 @@ table#CurrenciesTable > tbody > tr > td.row-manual-rate-comment {
     height: 22px;
     display: inline-block;
     opacity: .6;
+    margin-top: -2px;
 }
 
 .row-manual-rate .manual-rate-icon {
@@ -277,6 +278,7 @@ table#CurrenciesTable > tbody > tr > td.row-manual-rate-comment {
     float: left;
     width: 20px;
     height: 20px;
+    margin-top: -2px;
 }
 
 td.row-live-rate {
@@ -425,4 +427,5 @@ tr.rate-results:hover .edit-comment-empty {
 
 .rate-results .currency-coins-icon {
     margin-right: 3px;
+    margin-top: -2px;
 }

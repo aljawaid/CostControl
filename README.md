@@ -79,6 +79,7 @@ Go to `Project` &#10562; Budget
 
 Go to `Settings` &#10562; Currency Rates
 
+Go to `Dashboard` &#10562; Cost Control
 
 Compatibility
 -------------
@@ -98,7 +99,7 @@ Compatibility
 - Database Changes:
   - `01` New database table created as `budget_lines`
   - `01` New database table created as `hourly_rates`
-  - `03` New columns added to the `currencies` table as `last_modified`, `live_rate`, `live_rate_updated`
+  - `04` New columns added to the `currencies` table as `last_modified`, `comment`, `live_rate`, `live_rate_updated`
 
 
 Changelog

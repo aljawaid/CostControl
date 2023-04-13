@@ -176,8 +176,14 @@ fieldset.app-currencies legend {
     font-style: italic;
 }
 
+.top-detail-bar {
+    margin: auto 3px;
+}
+
 #CurrenciesTable {
     margin: 5px auto;
+    border-collapse: separate;
+    border-spacing: 3px;
 }
 
 #CurrenciesTable tr.table-heading {
@@ -196,6 +202,38 @@ fieldset.app-currencies legend {
 
 table#CurrenciesTable > tbody > tr > td {
     padding: .4em 3px;
+}
+
+#CurrenciesTable th, #CurrenciesTable td {
+    border: 1px solid var(--pp-brown);
+}
+
+.table-row-hover tr.rate-results td, .table-row-hover tr.rate-results td .live-rate-icon, .table-row-hover tr.rate-results td .manual-rate-icon, tr.rate-results td a {
+    transition: ease-in-out all .4s;
+}
+
+.table-row-hover tr.rate-results:hover td {
+    background-color: rgba(165, 42, 42, .3);
+}
+
+.table-row-hover tr.rate-results:hover td .live-rate-icon, .table-row-hover tr.rate-results:hover td .manual-rate-icon {
+    opacity: 1;
+}
+
+#CurrenciesTable > tbody > tr.table-heading > th:first-child {
+    border-top-left-radius: var(--border-radius-cost-control);
+}
+
+#CurrenciesTable > tbody > tr.table-heading > th:last-child {
+    border-top-right-radius: var(--border-radius-cost-control);
+}
+
+#CurrenciesTable > tbody > tr.rate-results:last-child > td:first-child {
+    border-bottom-left-radius: var(--border-radius-cost-control);
+}
+
+#CurrenciesTable > tbody > tr.rate-results:last-child > td:last-child {
+    border-bottom-right-radius: var(--border-radius-cost-control);
 }
 
 th.heading-code, th.heading-manual-rate, th.heading-last-modfied, th.heading-live-rate, th.heading-live-rate-updated {
@@ -363,10 +401,6 @@ td.row-live-rate {
 
 .edit-comment-empty {
     visibility: hidden;
-}
-
-tr.rate-results td a{
-    transition: var(--transition-cost-control);
 }
 
 tr.rate-results:hover .edit-comment-empty {

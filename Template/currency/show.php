@@ -79,7 +79,7 @@
             <span class="json-last-checked"><?= t('Last Checked:') ?> <?= $this->dt->datetime($this->model->configModel->get('last_checked_liverates', time() - 86401)) ?></span>
             <a id="PluginBottom" href="#PluginTop" title="<?= t('Go to the bottom of the page') ?>" class="btn-action"><i class="fa fa-level-down" aria-hidden="true"></i> <?= t('Bottom') ?></a>
         </div>
-        <table id="CurrenciesTable" class="currencies-table table-striped">
+        <table id="CurrenciesTable" class="currencies-table table-row-hover">
             <tr class="table-heading">
                 <th class="heading-code column-7"><?= t('Code') ?></th>
                 <th class="heading-currency column-35"><?= t('Currency') ?></th>

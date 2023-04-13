@@ -82,12 +82,12 @@
         <table id="CurrenciesTable" class="currencies-table table-row-hover">
             <tr class="table-heading">
                 <th class="heading-code column-7"><?= t('Code') ?></th>
-                <th class="heading-currency column-35"><?= t('Currency') ?></th>
-                <th class="heading-manual-rate column-8"><?= t('Manual Rate') ?></th>
-                <th class="heading-last-modfied column-10"><?= t('Last Modified') ?></th>
+                <th class="heading-currency column-30"><?= t('Currency') ?></th>
+                <th class="heading-manual-rate column-10"><?= t('Manual Rate') ?></th>
+                <th class="heading-last-modfied column-13"><?= t('Last Modified') ?></th>
                 <th class="heading-comment"><?= t('Comment') ?></th>
-                <th class="heading-live-rate column-8"><?= t('Live Rate') ?></th>
-                <th class="heading-live-rate-updated column-11"><?= t('Live Rate Updated') ?></th>
+                <th class="heading-live-rate column-10"><?= t('Live Rate') ?></th>
+                <th class="heading-live-rate-updated column-14"><?= t('Live Rate Updated') ?></th>
             </tr>
             <?php foreach ($rates as $rate): ?>
             <tr class="rate-results">

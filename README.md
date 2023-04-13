@@ -50,11 +50,14 @@ Features
 Screenshots
 ----------
 
-**Application Currencies**
+**Cost Control**
 ![Application Currencies](../master/Screenshots/screenshot-exchange-rates.png)
 
 **Reference Currency with Manual and Live Rates**
 ![Reference Currency with Manual and Live Rates](../master/Screenshots/screenshot-app-currencies.png)
+
+**All Rates**
+![Reference Currency with Manual and Live Rates](../master/Screenshots/screenshot-rates-list.png)
 
 **Budget Lines**  
 ![Cost Lines](https://cloud.githubusercontent.com/assets/323546/20451620/965a4a2e-adc9-11e6-9131-3088ce6d8d78.png "Budget plugin imported feature")

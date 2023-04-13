@@ -73,7 +73,7 @@
                     <path d="M6 11.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
                 </svg>
             </label>
-            <input type="search" id="CurrencyCodeSearch" class="search-input" placeholder="<?= t('EUR') ?>" title="<?= t('Search Currency Code') ?>" autocomplete="off" autofocus="autofocus" onclick="this.value=''">
+            <input type="search" id="CurrencyCodeSearch" class="search-input" placeholder="<?= t('Enter currency code') ?>" title="<?= t('Filter currency data') ?>" autocomplete="off" autofocus="autofocus" onclick="this.value=''">
         </form>
         <div class="top-detail-bar">
             <span class="json-last-checked"><?= t('Last Checked:') ?> <?= $this->dt->datetime($this->model->configModel->get('last_checked_liverates', time() - 86401)) ?></span>

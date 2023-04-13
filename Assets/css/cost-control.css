@@ -295,8 +295,6 @@ td.row-live-rate {
     text-align: center;
 }
 
-.reference-currency-manual-rate, .reference-currency-live-rate {}
-
 .base-currency-title, .reference-currency-title {
     text-transform: uppercase;
     font-size: .8em;
@@ -304,15 +302,11 @@ td.row-live-rate {
     color: var(--pp-grey);
 }
 
-.app-currency-list {}
-
 .base-currency-wrapper {
     margin-right: 10px;
     border: 1px solid var(--pp-brown);
     border-radius: var(--border-radius-cost-control);
 }
-
-.base-currency-title {}
 
 .base-currency-code, .reference-currency-code {
     font-size: 1.5em;
@@ -334,9 +328,6 @@ td.row-live-rate {
     display: block;
     text-align: center;
 }
-
-.reference-currency-title {}
-.reference-currency-code {}
 
 .reference-currency-manual-rate {
     font-size: 1.3em;

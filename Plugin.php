@@ -47,8 +47,16 @@ class Plugin extends Base
         //  - Must have the corresponding action in the matching controller
         $this->route->addRoute('/project/:project_id/budget', 'BudgetController', 'show', 'CostControl');
         $this->route->addRoute('/project/:project_id/budget/lines', 'BudgetLineController', 'show', 'CostControl');
+        $this->route->addRoute('/project/:project_id/budget/lines/add', 'BudgetLineController', 'create', 'CostControl');
         $this->route->addRoute('/project/:project_id/budget/breakdown', 'BudgetController', 'breakdown', 'CostControl');
+        $this->route->addRoute('/user/:user_id/rate', 'HourlyRateController', 'show', 'CostControl');
+        $this->route->addRoute('/user/:user_id/rate/add', 'HourlyRateController', 'create', 'CostControl');
+        $this->route->addRoute('/user/:user_id/rate/delete/:rate_id', 'HourlyRateController', 'confirm', 'CostControl');
         $this->route->addRoute('/settings/currencies/rates', 'CurrencyController', 'show');
+        $this->route->addRoute('/cost-control/currencies/rates', 'CostController', 'showEveryone', 'CostControl');
+        $this->route->addRoute('/cost-control/currencies/rates/manual/add', 'CostController', 'create', 'CostControl');
+        $this->route->addRoute('/cost-control/currencies/base/change', 'CostController', 'change', 'CostControl');
+        $this->route->addRoute('/cost-control/currencies/:currency/:comment', 'CostController', 'editComment', 'CostControl');
 
         // Helper
         //  - Example: $this->helper->register('helperClassNameCamelCase', '\Kanboard\Plugin\PluginNameExampleStudlyCaps\Helper\HelperNameExampleStudlyCaps');

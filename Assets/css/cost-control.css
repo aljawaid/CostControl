@@ -132,12 +132,12 @@
     margin: var(--page-margin-cost-control);
 }
 
-.cost-control-page-header h2, .cost-control-page-header-create h2 {
+.cost-control-page-header h2, .cost-control-page-header-create h2, .cost-control-page-header-change h2, .cost-control-page-header-comment h2 {
     margin-top: 5px;
     font-weight: 600;
 }
 
-.cost-control-page-header-create h2 {
+.cost-control-page-header-create h2, .cost-control-page-header-change h2, .cost-control-page-header-comment h2 {
     margin-bottom: 20px;
 }
 
@@ -145,11 +145,17 @@
     vertical-align: bottom;
 }
 
-.cost-control-page-header-create, .cost-control-page-header-change {
+.cost-control-page-header-comment h2 svg {
+    width: 1.1em;
+    height: 1.1em;
+    vertical-align: sub;
+}
+
+.cost-control-page-header-create, .cost-control-page-header-change, .cost-control-page-header-comment {
     margin: var(--page-modal-cost-control);
 }
 
-.create-rate-comment label {
+.create-rate-comment label, .change-base-rate label, .edit-create-comment label {
     font-weight: 600;
 }
 

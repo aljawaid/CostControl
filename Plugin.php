@@ -49,8 +49,6 @@ class Plugin extends Base
         $this->route->addRoute('/project/:project_id/budget/lines', 'BudgetLineController', 'show', 'CostControl');
         $this->route->addRoute('/project/:project_id/budget/breakdown', 'BudgetController', 'breakdown', 'CostControl');
         $this->route->addRoute('/settings/currencies/rates', 'CurrencyController', 'show');
-        $this->route->addRoute('/settings/currencies/add', 'CostController', 'create', 'CostControl');
-        $this->route->addRoute('/settings/currencies/change', 'CurrencyController', 'change');
 
         // Helper
         //  - Example: $this->helper->register('helperClassNameCamelCase', '\Kanboard\Plugin\PluginNameExampleStudlyCaps\Helper\HelperNameExampleStudlyCaps');

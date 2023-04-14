@@ -447,15 +447,14 @@ tr.rate-results:hover .edit-comment-empty {
     display: inline-block;
 }
 
-.create-rate-comment .form-help {
-    display: inline-block;
-    margin-left: 5px;
-}
-
-.create-rate-comment .form-help, .create-rate-comment .form-errors {
+.create-rate-comment .form-help, .create-rate-comment .form-errors, .edit-create-comment .form-help {
     display: inline-block;
     margin-left: 5px;
     margin-bottom: 0;
+}
+
+#EditCommentModal form p.ml-0 {
+    margin-left: 0;
 }
 
 .create-rate-comment .form-errors {

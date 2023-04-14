@@ -62,6 +62,9 @@ Screenshots
 **Options**
 ![Options](../master/Screenshots/screenshot-options.png)
 
+**Settings**
+![Settings](../master/Screenshots/screenshot-settings.png)
+
 **Budget Lines**  
 ![Cost Lines](https://cloud.githubusercontent.com/assets/323546/20451620/965a4a2e-adc9-11e6-9131-3088ce6d8d78.png "Budget plugin imported feature")
 

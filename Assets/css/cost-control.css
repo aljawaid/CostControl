@@ -21,6 +21,7 @@
     --link-color-primary: #36C;
     --header-page-margin-cost-control: 5px 15px 10px 15px;
     --page-margin-cost-control: 0px 15px 0px 15px;
+    --page-modal-cost-control: 10px 10px 10px 10px;
     --title-margin-cost-control: 0px 15px 0px 15px;
     --border-radius-cost-control: 3px;
     --panel-background-cost-control: #EEEEEE;
@@ -69,6 +70,7 @@
     border: 2px solid;
     font-style: italic;
     padding: 5px 15px;
+    z-index: 0;
 }
 
 #PluginTop {
@@ -130,13 +132,25 @@
     margin: var(--page-margin-cost-control);
 }
 
-.cost-control-page-header h2 {
+.cost-control-page-header h2, .cost-control-page-header-create h2 {
     margin-top: 5px;
     font-weight: 600;
 }
 
+.cost-control-page-header-create h2 {
+    margin-bottom: 20px;
+}
+
 .cost-control-page-header h2 span {
     vertical-align: bottom;
+}
+
+.cost-control-page-header-create {
+    margin: var(--page-modal-cost-control);
+}
+
+.create-rate-comment label {
+    font-weight: 600;
 }
 
 ul.currency-actions {
@@ -417,4 +431,33 @@ tr.rate-results:hover .edit-comment-empty {
 .rate-results .currency-coins-icon {
     margin-right: 3px;
     margin-top: -2px;
+}
+
+#CreateRateModal h2 span.manual-rate-icon {
+    vertical-align: sub;
+}
+
+.create-rate-comment #form-rate, .create-rate-comment #form-comment {
+    display: inline-block;
+}
+
+.create-rate-comment .form-help {
+    display: inline-block;
+    margin-left: 5px;
+}
+
+.create-rate-comment .form-help, .create-rate-comment .form-errors {
+    display: inline-block;
+    margin-left: 5px;
+}
+
+.create-rate-comment .form-errors {
+    color: red;
+}
+
+#form-currency {
+    border-radius: var(--border-radius-cost-control);
+    border-width: 1px;
+    box-shadow: 0px 2px 3px 0px #000;
+    cursor: pointer;
 }

@@ -6,15 +6,15 @@
         <legend class=""><?= t('Currency Options') ?></legend>
         <p class="c-control-options-intro"><?= t('Set a reference currency to view and compare rates with the base currency at a glance') ?></p>
         <div class="c-control-options-section-area">
-            <div class="c-control-options-section w-200">
-                <?= $this->form->label(t('Base Currency'), 'application_currency', array('class="w-200"')) ?>
+            <div class="c-control-options-section">
+                <?= $this->form->label(t('Base Currency'), 'application_currency', array('class="app-currency-label"')) ?>
                 <?= $this->form->text('application_currency', $this->model->configModel->get('application_currency'), array(), array('value="'. $this->model->configModel->get('application_currency') .'" disabled')) ?>
-                <?= $this->modal->medium('edit', t('Edit Base Currency'), 'CostController', 'change', array('plugin' => 'CostControl')) ?>
-                <p class="form-help w-200"><?= t('The base currency is your main currency') ?></p>
+                <?= $this->modal->medium('edit', t('Edit'), 'CostController', 'change', array('plugin' => 'CostControl')) ?>
+                <p class="form-help"><?= t('The base currency is your main currency') ?></p>
             </div>
-            <div class="c-control-options-section w-200">
-                <?= $this->form->label(t('Reference Currency'), 'cost_control_reference_currency', array('class="w-200"')) ?>
-                <?= $this->form->text('cost_control_reference_currency', $values, $errors, array('placeholder="EUR" pattern="[A-Z]{3}"')) ?>
+            <div class="c-control-options-section">
+                <?= $this->form->label(t('Reference Currency'), 'cost_control_reference_currency', array('class="app-currency-label"')) ?>
+                <span class="reference-currency-icon"></span><?= $this->form->text('cost_control_reference_currency', $values, $errors, array('placeholder="EUR" pattern="[A-Z]{3}"')) ?>
                 <p class="form-help"><?= t('Enter the three letter currency code in capital letters') ?></p>
             </div>
         </div>

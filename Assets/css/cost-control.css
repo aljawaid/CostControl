@@ -145,7 +145,7 @@
     vertical-align: bottom;
 }
 
-.cost-control-page-header-create {
+.cost-control-page-header-create, .cost-control-page-header-change {
     margin: var(--page-modal-cost-control);
 }
 
@@ -433,7 +433,7 @@ tr.rate-results:hover .edit-comment-empty {
     margin-top: -2px;
 }
 
-#CreateRateModal h2 span.manual-rate-icon {
+#CreateRateModal h2 span.manual-rate-icon, #ChangeModal h2 span.base-rate-home-icon {
     vertical-align: sub;
 }
 
@@ -449,15 +449,21 @@ tr.rate-results:hover .edit-comment-empty {
 .create-rate-comment .form-help, .create-rate-comment .form-errors {
     display: inline-block;
     margin-left: 5px;
+    margin-bottom: 0;
 }
 
 .create-rate-comment .form-errors {
     color: red;
 }
 
-#form-currency {
+#form-currency, #form-application_currency {
     border-radius: var(--border-radius-cost-control);
     border-width: 1px;
     box-shadow: 0px 2px 3px 0px #000;
     cursor: pointer;
+}
+
+.change-base-rate .form-help {
+    margin-bottom: 0;
+    margin-top: 5px;
 }

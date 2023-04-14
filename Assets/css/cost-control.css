@@ -462,7 +462,7 @@ tr.rate-results:hover .edit-comment-empty {
     color: red;
 }
 
-#form-currency, #form-application_currency {
+#form-currency, .change-base-rate #form-application_currency {
     border-radius: var(--border-radius-cost-control);
     border-width: 1px;
     box-shadow: 0px 2px 3px 0px #000;
@@ -472,4 +472,52 @@ tr.rate-results:hover .edit-comment-empty {
 .change-base-rate .form-help {
     margin-bottom: 0;
     margin-top: 5px;
+}
+
+#CostControlSettings h3 {
+    margin-top: 0;
+    font-weight: 600;
+}
+
+#CostControlSettings h3 span.currency-wallet-icon {
+    vertical-align: sub;
+}
+
+.c-control-options-section .app-currency-label {
+    font-weight: 600;
+}
+
+.c-control-options-section #form-application_currency {
+    cursor: not-allowed;
+    color: var(--pp-grey) !important;
+}
+
+.c-control-options-section #form-application_currency, .c-control-options-section #form-cost_control_reference_currency {
+    width: 75px;
+    text-align: center;
+}
+
+section#config-section.sidebar-container div.sidebar-content form fieldset#CostControlSettings.panel.c-control-settings fieldset.c-control-options div.c-control-options-section-area div.c-control-options-section p.form-help {
+    display: inline-block;
+    margin-left: 10px;
+    margin-bottom: 0;
+}
+
+.c-control-radio-options label {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.c-control-options-section span.reference-currency-icon {
+    vertical-align: sub;
+    margin-right: 5px;
+}
+
+.c-control-options-section a i.fa-edit {
+    margin-left: 5px;
+}
+
+.c-control-options-section {
+    display: inline-block;
+    width: 48%;
 }

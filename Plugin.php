@@ -98,7 +98,7 @@ class Plugin extends Base
 
     public function getPluginDescription()
     {
-        return t('Manage your costs per project to budget and plan using over 100 currencies. Get automatic live daily updates to compare your saved currency rates to forecast your budgets more accurately. This plugin replaces and extends the features from the original Budget plugin. Extended features include allowing users to change and modify their base currencies for most countries. ');
+        return t('Use the new Cost Control section to enable currencies and budgeting in Kanboard. Get live currency rates automatically for over 120 currencies allowing users to compare with manually saved rates. This plugin replaces and extends the features from the original Budget plugin enabling projects to have an associated cost element.');
     }
 
     public function getPluginAuthor()

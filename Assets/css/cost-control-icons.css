@@ -56,3 +56,9 @@ li.cost-control-dropdown i.fa-question-circle::before {
     vertical-align: bottom;
     pointer-events: none;
 }
+
+.c-control-options-section a i.fa-edit:before {
+    content: url("data:image/svg+xml,%3Csvg width='20px' height='20px' class='base-rate-home-icon' fill='%23800000' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 245 256' xml:space='preserve'%3E%3Cg stroke-width='0'/%3E%3Cg stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M190 63.24V7h-31v27.73L122.97 1.82 1.94 110.15l18.4 20.74L39 114.04V254h167V115.08l18.36 16.85 18.89-20.22L190 63.24zm-80.37 139.89c-.24 0-39.18-38.76-39.18-38.76s15.14-14.91 15.38-14.91c.23 0 24.5 24.04 24.5 24.04l49.49-49.37 14.73 14.61s-64.51 64.39-64.92 64.39z'/%3E%3C/svg%3E");
+    vertical-align: sub;
+    pointer-events: none;
+}

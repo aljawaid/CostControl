@@ -514,8 +514,17 @@ tr.rate-results:hover .edit-comment-empty {
 }
 
 #CostControlSettings h3 {
-    margin-top: 0;
+    margin: 0;
     font-weight: 600;
+}
+
+#CostControlSettings fieldset {
+    margin-top: 15px;
+}
+
+#CostControlSettings fieldset legend {
+    font-size: 1.1em;
+    color: var(--pp-brown);
 }
 
 #CostControlSettings h3 span.currency-wallet-icon {
@@ -524,6 +533,11 @@ tr.rate-results:hover .edit-comment-empty {
 
 .c-control-options-section .app-currency-label {
     font-weight: 600;
+    margin-bottom: 3px;
+}
+
+.c-control-options-intro {
+    margin-block: 5px;
 }
 
 .c-control-options-section #form-application_currency {

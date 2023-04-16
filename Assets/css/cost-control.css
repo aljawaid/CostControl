@@ -198,6 +198,16 @@ ul.currency-actions li {
     margin-right: 15px;
 }
 
+ul.currency-actions li a, .bottom-detail-bar a.api-detail, .c-control-options-section a {
+    text-decoration: none;
+    transition: var(--transition-cost-control);
+    color: var(--color-primary);
+}
+
+ul.currency-actions li a:hover, .bottom-detail-bar a.api-detail:hover, .c-control-options-section a:hover {
+    color: var(--pp-brown);
+}
+
 fieldset.app-currencies {
     width: fit-content;
     margin: 25px auto 15px auto;

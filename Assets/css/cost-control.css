@@ -60,6 +60,7 @@
 
 #CostControlSidebar {
     min-width: fit-content;
+    padding-left: 5px;
 }
 
 #CostControlSidebar ul li a {
@@ -558,7 +559,7 @@ section#config-section.sidebar-container div.sidebar-content form fieldset#CostC
 
 .c-control-radio-options label {
     display: inline-block;
-    margin-right: 20px;
+    margin-right: 30px;
 }
 
 .c-control-options-section span.reference-currency-icon {

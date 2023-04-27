@@ -1,5 +1,5 @@
 # CostControl
-
+![GitHub All Releases](https://img.shields.io/github/downloads/aljawaid/CostControl/total?style=for-the-badge "GitHub All Downloads")
 #### _Plugin for [Kanboard](https://github.com/kanboard/kanboard "Kanboard - Kanban Project Management Software")_
 
 Use the new Cost Control section to enable currencies and budgeting in Kanboard. Get live currency rates automatically for over 120 currencies allowing users to compare with manually saved rates. This plugin replaces and extends the features from the original [Budget](https://github.com/kanboard/plugin-budget) plugin enabling projects to have an associated cost element.
@@ -7,7 +7,6 @@ Use the new Cost Control section to enable currencies and budgeting in Kanboard.
 
 Features
 -------------
-
 - Introducing a new Cost Control section allowing access for all users to use and update all currency rates
   - Access directly from the dashboard or from the user dropdown menu
   - New menu template hook for developers: `template:cost-control:sidebar`
@@ -80,16 +79,15 @@ Screenshots
 
 Usage
 -------------
-
 Go to `Project` &#10562; Budget  
 
 Go to `Settings` &#10562; Currency Rates
 
 Go to `Dashboard` &#10562; Cost Control
 
+
 Compatibility
 -------------
-
 - Requires [Kanboard](https://github.com/kanboard/kanboard "Kanboard - Kanban Project Management Software") ≥`1.0.37`
 
 #### Other Plugins & Action Plugins
@@ -110,7 +108,6 @@ Compatibility
 
 Changelog
 ---------
-
 Read the full [**Changelog**](../master/changelog.md "See changes")
  
 
@@ -121,13 +118,10 @@ Installation
 
 Translations
 ------------
-
-- _Contributors welcome_
 - _Starter template available_
 
 Authors & Contributors
 ----------------------
-
 - [@aljawaid](https://github.com/aljawaid) - Author
 - [Craig Crosby](https://github.com/creecros) - Contributor
 - [Frédéric Guillot](https://github.com/kanboard/plugin-budget) - Author (imported features from the Budget plugin)

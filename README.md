@@ -1,12 +1,11 @@
 # CostControl
-![GitHub All Releases](https://img.shields.io/github/downloads/aljawaid/CostControl/total?style=for-the-badge "GitHub All Downloads")
-#### _Plugin for [Kanboard](https://github.com/kanboard/kanboard "Kanboard - Kanban Project Management Software")_
+![GitHub All Releases](https://img.shields.io/github/downloads/aljawaid/CostControl/total?style=for-the-badge "GitHub All Downloads") - **_A Plugin for [Kanboard](https://github.com/kanboard/kanboard "Kanboard - Kanban Project Management Software")_** 
 
 Use the new Cost Control section to enable currencies and budgeting in Kanboard. Get live currency rates automatically for over 120 currencies allowing users to compare with manually saved rates. This plugin replaces and extends the features from the original [Budget](https://github.com/kanboard/plugin-budget) plugin enabling projects to have an associated cost element.
 
 
-Features
--------------
+## Features
+
 - Introducing a new Cost Control section allowing access for all users to use and update all currency rates
   - Access directly from the dashboard or from the user dropdown menu
   - New menu template hook for developers: `template:cost-control:sidebar`
@@ -33,21 +32,18 @@ Features
   - Each user can have a set hourly rate in `User Profile` &#10562; `Hourly Rate`
   - This feature is used for budget calculation
   - Each hourly rate shows an effective date with different currencies
-
-### Live Currency Rates
-- Live updated currency rates are retrieved daily from [ExchangeRate-API](https://www.exchangerate-api.com)
-- Show the last updated time when each currency was updated (except for currencies with a rate of `1.0`)
-- Show an alert notification to inform the user of the next update
-
-### Manual Currency Rates
-- Show the last modified date for manual currency rates
-- Add a comment for each manual rate for easy reference
-  - Replace previous comments directly when modifying manual rates
-- Add and edit comments individually
+- **Live Currency Rates**
+  - Live updated currency rates are retrieved daily from [ExchangeRate-API](https://www.exchangerate-api.com)
+  - Show the last updated time when each currency was updated (except for currencies with a rate of `1.0`)
+  - Show an alert notification to inform the user of the next update
+- **Manual Currency Rates**
+  - Show the last modified date for manual currency rates
+  - Add a comment for each manual rate for easy reference
+    - Replace previous comments directly when modifying manual rates
+  - Add and edit comments individually
 
 
-Screenshots
-----------
+## Screenshots
 
 **Cost Control**
 ![Application Currencies](../master/Screenshots/screenshot-exchange-rates.png)
@@ -77,8 +73,8 @@ Screenshots
 ![Hourly Rate](https://cloud.githubusercontent.com/assets/323546/20451622/965da606-adc9-11e6-9537-cd987abac06d.png "Budget plugin imported feature")
 
 
-Usage
--------------
+## Usage
+
 Go to `Project` &#10562; Budget  
 
 Go to `Settings` &#10562; Currency Rates
@@ -86,48 +82,51 @@ Go to `Settings` &#10562; Currency Rates
 Go to `Dashboard` &#10562; Cost Control
 
 
-Compatibility
--------------
-- Requires [Kanboard](https://github.com/kanboard/kanboard "Kanboard - Kanban Project Management Software") ≥`1.0.37`
+## Installation & Compatibility
 
-#### Other Plugins & Action Plugins
-- Compatible with [URLCleaner](https://github.com/aljawaid/URLCleaner), [PluginManager](https://github.com/aljawaid/PluginManager)
-- **Migrating data from the [Budget](https://github.com/kanboard/plugin-budget) plugin**
-  - Uninstall the Budget plugin
-    - _The data in the database is not deleted by default_
-  - Install the CostControl plugin
-    - _Database tables for the imported features are identical therefore data should be preserved_
-    - _The clean URLs will change therefore any saved bookmarks must be updated_
-#### Core Files & Templates
-- `03` template overrides
-- Database Changes:
-  - `01` New database table created as `budget_lines`
-  - `01` New database table created as `hourly_rates`
-  - `04` New columns added to the `currencies` table as `last_modified`, `comment`, `live_rate`, `live_rate_updated`
+<details>
+    <summary><strong>Installation</strong></summary>
 
-
-Changelog
----------
-Read the full [**Changelog**](../master/changelog.md "See changes")
- 
-
-Installation
-------------
 - Install via the **[Kanboard](https://github.com/kanboard/kanboard "Kanboard - Kanban Project Management Software") Plugin Directory** or see [INSTALL.md](../master/INSTALL.md)
+- Read the full [**Changelog**](../master/changelog.md "See changes") to see the latest updates
 
+</details>
+<details>
+    <summary><strong>Compatibility</strong></summary>
 
-Translations
-------------
+- Requires [Kanboard](https://github.com/kanboard/kanboard "Kanboard - Kanban Project Management Software") ≥`1.2.20`
+- **Other Plugins & Action Plugins**
+  - Compatible with [URLCleaner](https://github.com/aljawaid/URLCleaner), [PluginManager](https://github.com/aljawaid/PluginManager)
+  - **Migrating data from the [Budget](https://github.com/kanboard/plugin-budget) plugin**
+    - Uninstall the Budget plugin
+      - _The data in the database is not deleted by default_
+    - Install the CostControl plugin
+      - _Database tables for the imported features are identical therefore data should be preserved_
+      - _The clean URLs will change therefore any saved bookmarks must be updated_
+- **Core Files & Templates**
+  - `03` Template overrides
+  - Database Changes:
+    - `01` New database table created as `budget_lines`
+    - `01` New database table created as `hourly_rates`
+    - `04` New columns added to the `currencies` table as `last_modified`, `comment`, `live_rate`, `live_rate_updated`
+
+</details>
+<details>
+    <summary><strong>Translations</strong></summary>
+
 - _Starter template available_
 
-Authors & Contributors
-----------------------
+</details>
+ 
+
+## Authors & Contributors
+
 - [@aljawaid](https://github.com/aljawaid) - Author
 - [Craig Crosby](https://github.com/creecros) - Contributor
 - [Frédéric Guillot](https://github.com/kanboard/plugin-budget) - Author (imported features from the Budget plugin)
 - _Contributors welcome_
 
 
-License
--------
+## License
+
 - This project is distributed under the [MIT License](../master/LICENSE "Read The MIT license")

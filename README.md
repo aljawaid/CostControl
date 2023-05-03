@@ -1,16 +1,34 @@
 <h1 name="readme-top">CostControl</h1>
 <p align="center">
-    <img src="https://img.shields.io/github/v/release/aljawaid/CostControl?style=for-the-badge&color=brightgreen" alt="GitHub Latest Release (by date)" title="GitHub Latest Release (by date)">
-    <img src="https://img.shields.io/github/downloads/aljawaid/CostControl/total?style=for-the-badge&color=orange" alt="GitHub All Releases" title="GitHub All Downloads">
-    <img src="https://img.shields.io/github/directory-file-count/aljawaid/CostControl?style=for-the-badge&color=orange" alt="GitHub Repository File Count" title="GitHub Repository File Count">
-    <img src="https://img.shields.io/github/repo-size/aljawaid/CostControl?style=for-the-badge&color=orange" alt="GitHub Repository Size" title="GitHub Repository Size">
-    <img src="https://img.shields.io/github/languages/code-size/aljawaid/CostControl?style=for-the-badge&color=orange" alt="GitHub Code Size" title="GitHub Code Size">
+    <a href="https://github.com/aljawaid/CostControl/releases">
+        <img src="https://img.shields.io/github/v/release/aljawaid/CostControl?style=for-the-badge&color=brightgreen" alt="GitHub Latest Release (by date)" title="GitHub Latest Release (by date)">
+    </a>
+    <a href="https://github.com/aljawaid/CostControl/releases">
+        <img src="https://img.shields.io/github/downloads/aljawaid/CostControl/total?style=for-the-badge&color=orange" alt="GitHub All Releases" title="GitHub All Downloads">
+    </a>
+    <a href="https://github.com/aljawaid/CostControl/releases">
+        <img src="https://img.shields.io/github/directory-file-count/aljawaid/CostControl?style=for-the-badge&color=orange" alt="GitHub Repository File Count" title="GitHub Repository File Count">
+    </a>
+    <a href="https://github.com/aljawaid/CostControl/releases">
+        <img src="https://img.shields.io/github/repo-size/aljawaid/CostControl?style=for-the-badge&color=orange" alt="GitHub Repository Size" title="GitHub Repository Size">
+    </a>
+    <a href="https://github.com/aljawaid/CostControl/releases">
+        <img src="https://img.shields.io/github/languages/code-size/aljawaid/CostControl?style=for-the-badge&color=orange" alt="GitHub Code Size" title="GitHub Code Size">
+    </a>
 </p>
 <p align="center">
-    <img src="https://img.shields.io/github/discussions/aljawaid/CostControl?style=for-the-badge&color=blue" alt="GitHub Discussions" title="GitHub Discussions">
-    <img src="https://img.shields.io/github/commits-since/aljawaid/CostControl/latest?include_prereleases&style=for-the-badge&color=blue" alt="GitHub Commits Since Last Release" title="GitHub Commits Since Last Release">
-    <img src="https://img.shields.io/github/commit-activity/m/aljawaid/CostControl?style=for-the-badge&color=blue" alt="GitHub Commit Monthly Activity" title="GitHub Commit Monthly Activity">
-    <a href="https://github.com/kanboard/kanboard" title="Kanboard - Kanban Project Management Software"><img src="https://img.shields.io/badge/Plugin%20for-kanboard-D40000?style=for-the-badge" alt="Kanboard"></a>
+    <a href="https://github.com/aljawaid/CostControl/discussions">
+        <img src="https://img.shields.io/github/discussions/aljawaid/CostControl?style=for-the-badge&color=blue" alt="GitHub Discussions" title="Read Discussions">
+    </a>
+    <a href="https://github.com/aljawaid/CostControl/compare">
+        <img src="https://img.shields.io/github/commits-since/aljawaid/CostControl/latest?include_prereleases&style=for-the-badge&color=blue" alt="GitHub Commits Since Last Release" title="GitHub Commits Since Last Release">
+    </a>
+    <a href="https://github.com/aljawaid/CostControl/compare">
+        <img src="https://img.shields.io/github/commit-activity/m/aljawaid/CostControl?style=for-the-badge&color=blue" alt="GitHub Commit Monthly Activity" title="GitHub Commit Monthly Activity">
+    </a>
+    <a href="https://github.com/kanboard/kanboard" title="Kanboard - Kanban Project Management Software">
+        <img src="https://img.shields.io/badge/Plugin%20for-kanboard-D40000?style=for-the-badge&labelColor=000000" alt="Kanboard">
+    </a>
 </p>
 
 Use the new Cost Control section to enable currencies and budgeting in Kanboard. Get live currency rates automatically for over 120 currencies allowing users to compare with manually saved rates. This plugin replaces and extends the features from the original [Budget](https://github.com/kanboard/plugin-budget) plugin enabling projects to have an associated cost element.
@@ -149,5 +167,30 @@ Go to `Dashboard` &#10562; Cost Control
 
 - This project is distributed under the [MIT License](../master/LICENSE "Read The MIT license")
 
+---
+
+<h3 align="center">
+    <a href="https://github.com/aljawaid/CostControl/stargazers" title="View Stargazers">
+        <img src="https://img.shields.io/github/stars/aljawaid/CostControl?logo=github&style=flat-square" alt="CostControl">
+    </a>
+    <a href="https://github.com/aljawaid/CostControl/forks" title="See Forks">
+        <img src="https://img.shields.io/github/forks/aljawaid/CostControl?logo=github&style=flat-square" alt="CostControl">
+    </a>
+    <a href="https://github.com/aljawaid/CostControl/blob/master/LICENSE" title="Read License">
+        <img src="https://img.shields.io/github/license/aljawaid/CostControl?style=flat-square" alt="CostControl">
+    </a>
+    <a href="https://github.com/aljawaid/CostControl/issues" title="Open Issues">
+        <img src="https://img.shields.io/github/issues-raw/aljawaid/CostControl?style=flat-square" alt="CostControl">
+    </a>
+    <a href="https://github.com/aljawaid/CostControl/issues?q=is%3Aissue+is%3Aclosed" title="Closed Issues">
+        <img src="https://img.shields.io/github/issues-closed/aljawaid/CostControl?style=flat-square" alt="CostControl">
+    </a>
+    <a href="https://github.com/aljawaid/CostControl/discussions" title="Read Discussions">
+        <img src="https://img.shields.io/github/discussions/aljawaid/CostControl?style=flat-square" alt="CostControl">
+    </a>
+    <a href="https://github.com/aljawaid/CostControl/compare/" title="Latest Commits">
+        <img alt="GitHub commits since latest release (by date)" src="https://img.shields.io/github/commits-since/aljawaid/CostControl/latest?style=flat-square">
+    </a>
+</h3>
 <a name="readme-bottom"></a>
 <p align="right">[<a href="#readme-top">&#8593; Top</a>]</p>

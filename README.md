@@ -1,4 +1,4 @@
-<h1 name="readme-top">CostControl</h1>
+<h1 name="user-content-top">CostControl</h1>
 <p align="center">
     <a href="https://github.com/aljawaid/CostControl/releases">
         <img src="https://img.shields.io/github/v/release/aljawaid/CostControl?style=for-the-badge&color=brightgreen" alt="GitHub Latest Release (by date)" title="GitHub Latest Release (by date)">
@@ -33,7 +33,7 @@
 
 Use the new Cost Control section to enable currencies and budgeting in Kanboard. Get live currency rates automatically for over 120 currencies allowing users to compare with manually saved rates. This plugin replaces and extends the features from the original [Budget](https://github.com/kanboard/plugin-budget) plugin enabling projects to have an associated cost element.
 
-<p align="right">[<a href="#readme-bottom">&#8595; Bottom</a>] [<a href="#screenshots">&#8594; Next</a>] [<a href="#readme-top">&#8593; Top</a>]</p>
+<p align="right">[<a href="#user-content-bottom">&#8595; Bottom</a>] [<a href="#screenshots">&#8594; Next</a>] [<a href="#user-content-top">&#8593; Top</a>]</p>
 
 ## Features
 
@@ -73,7 +73,7 @@ Use the new Cost Control section to enable currencies and budgeting in Kanboard.
     - Replace previous comments directly when modifying manual rates
   - Add and edit comments individually
 
-<p align="right">[<a href="#readme-bottom">&#8595; Bottom</a>] [<a href="#features">&#8592; Previous</a>] [<a href="#usage">&#8594; Next</a>] [<a href="#readme-top">&#8593; Top</a>]</p>
+<p align="right">[<a href="#user-content-bottom">&#8595; Bottom</a>] [<a href="#features">&#8592; Previous</a>] [<a href="#usage">&#8594; Next</a>] [<a href="#user-content-top">&#8593; Top</a>]</p>
 
 ## Screenshots
 
@@ -104,7 +104,7 @@ Use the new Cost Control section to enable currencies and budgeting in Kanboard.
 **Hourly Rate**  
 ![Hourly Rate](https://cloud.githubusercontent.com/assets/323546/20451622/965da606-adc9-11e6-9537-cd987abac06d.png "Budget plugin imported feature")
 
-<p align="right">[<a href="#readme-bottom">&#8595; Bottom</a>] [<a href="#features">&#8592; Previous</a>] [<a href="#installation--compatibility">&#8594; Next</a>] [<a href="#readme-top">&#8593; Top</a>]</p>
+<p align="right">[<a href="#user-content-bottom">&#8595; Bottom</a>] [<a href="#features">&#8592; Previous</a>] [<a href="#installation--compatibility">&#8594; Next</a>] [<a href="#user-content-top">&#8593; Top</a>]</p>
 
 ## Usage
 
@@ -114,7 +114,7 @@ Go to `Settings` &#10562; Currency Rates
 
 Go to `Dashboard` &#10562; Cost Control
 
-<p align="right">[<a href="#readme-bottom">&#8595; Bottom</a>] [<a href="#screenshots">&#8592; Previous</a>] [<a href="#authors--contributors">&#8594; Next</a>] [<a href="#readme-top">&#8593; Top</a>]</p>
+<p align="right">[<a href="#user-content-bottom">&#8595; Bottom</a>] [<a href="#screenshots">&#8592; Previous</a>] [<a href="#authors--contributors">&#8594; Next</a>] [<a href="#user-content-top">&#8593; Top</a>]</p>
 
 ## Installation & Compatibility
 
@@ -152,7 +152,7 @@ Go to `Dashboard` &#10562; Cost Control
 
 </details>
  
-<p align="right">[<a href="#readme-bottom">&#8595; Bottom</a>] [<a href="#usage">&#8592; Previous</a>] [<a href="#license">&#8594; Next</a>] [<a href="#readme-top">&#8593; Top</a>]</p>
+<p align="right">[<a href="#user-content-bottom">&#8595; Bottom</a>] [<a href="#usage">&#8592; Previous</a>] [<a href="#license">&#8594; Next</a>] [<a href="#user-content-top">&#8593; Top</a>]</p>
 
 ## Authors & Contributors
 
@@ -161,7 +161,7 @@ Go to `Dashboard` &#10562; Cost Control
 - [Frédéric Guillot](https://github.com/kanboard/plugin-budget) - Author (imported features from the Budget plugin)
 - _Contributors welcome_
 
-<p align="right">[<a href="#readme-bottom">&#8595; Bottom</a>] [<a href="#installation--compatibility">&#8592; Previous</a>] [<a href="#readme-top">&#8593; Top</a>]</p>
+<p align="right">[<a href="#user-content-bottom">&#8595; Bottom</a>] [<a href="#installation--compatibility">&#8592; Previous</a>] [<a href="#user-content-top">&#8593; Top</a>]</p>
 
 ## License
 
@@ -169,7 +169,7 @@ Go to `Dashboard` &#10562; Cost Control
 
 ---
 
-<h3 align="center">
+<p align="center">
     <a href="https://github.com/aljawaid/CostControl/stargazers" title="View Stargazers">
         <img src="https://img.shields.io/github/stars/aljawaid/CostControl?logo=github&style=flat-square" alt="CostControl">
     </a>
@@ -191,6 +191,6 @@ Go to `Dashboard` &#10562; Cost Control
     <a href="https://github.com/aljawaid/CostControl/compare/" title="Latest Commits">
         <img alt="GitHub commits since latest release (by date)" src="https://img.shields.io/github/commits-since/aljawaid/CostControl/latest?style=flat-square">
     </a>
-</h3>
-<a name="readme-bottom"></a>
-<p align="right">[<a href="#readme-top">&#8593; Top</a>]</p>
+</p>
+<a name="user-content-bottom"></a>
+<p align="right">[<a href="#user-content-top">&#8593; Top</a>]</p>

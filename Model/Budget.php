@@ -64,22 +64,22 @@ class Budget extends Base
         return $this->db
                     ->table(SubtaskTimeTrackingModel::TABLE)
                     ->columns(
-                        SubtaskTimeTrackingModel::TABLE.'.id',
-                        SubtaskTimeTrackingModel::TABLE.'.user_id',
-                        SubtaskTimeTrackingModel::TABLE.'.subtask_id',
-                        SubtaskTimeTrackingModel::TABLE.'.start',
-                        SubtaskTimeTrackingModel::TABLE.'.time_spent',
-                        SubtaskModel::TABLE.'.task_id',
-                        SubtaskModel::TABLE.'.title AS subtask_title',
-                        TaskModel::TABLE.'.title AS task_title',
-                        TaskModel::TABLE.'.project_id',
-                        UserModel::TABLE.'.username',
-                        UserModel::TABLE.'.name'
+                        SubtaskTimeTrackingModel::TABLE . '.id',
+                        SubtaskTimeTrackingModel::TABLE . '.user_id',
+                        SubtaskTimeTrackingModel::TABLE . '.subtask_id',
+                        SubtaskTimeTrackingModel::TABLE . '.start',
+                        SubtaskTimeTrackingModel::TABLE . '.time_spent',
+                        SubtaskModel::TABLE . '.task_id',
+                        SubtaskModel::TABLE . '.title AS subtask_title',
+                        TaskModel::TABLE . '.title AS task_title',
+                        TaskModel::TABLE . '.project_id',
+                        UserModel::TABLE . '.username',
+                        UserModel::TABLE . '.name'
                     )
                     ->join(SubtaskModel::TABLE, 'id', 'subtask_id')
                     ->join(TaskModel::TABLE, 'id', 'task_id', SubtaskModel::TABLE)
                     ->join(UserModel::TABLE, 'id', 'user_id')
-                    ->eq(TaskModel::TABLE.'.project_id', $project_id)
+                    ->eq(TaskModel::TABLE . '.project_id', $project_id)
                     ->callback(array($this, 'applyUserRate'));
     }
 

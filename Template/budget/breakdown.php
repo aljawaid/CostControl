@@ -11,7 +11,7 @@
             <th class="column-25"><?= $paginator->order(t('Subtask'), 'subtask_title') ?></th>
             <th class="column-20"><?= $paginator->order(t('User'), 'username') ?></th>
             <th class="column-10"><?= t('Cost') ?></th>
-            <th class="column-10"><?= $paginator->order(t('Time spent'), \Kanboard\Model\SubtaskTimeTrackingModel::TABLE.'.time_spent') ?></th>
+            <th class="column-10"><?= $paginator->order(t('Time spent'), \Kanboard\Model\SubtaskTimeTrackingModel::TABLE . '.time_spent') ?></th>
             <th class="column-15"><?= $paginator->order(t('Date'), 'start') ?></th>
         </tr>
         <?php foreach ($paginator->getCollection() as $record): ?>
@@ -25,7 +25,7 @@
                 <td class=""><?= $this->url->link($this->helper->text->e($record['name'] ?: $record['username']), 'UserViewController', 'show', array('user_id' => $record['user_id'])) ?>
                 </td>
                 <td class=""><?= n($record['cost']) ?></td>
-                <td class=""><?= n($record['time_spent']).' '.t('hours') ?></td>
+                <td class=""><?= n($record['time_spent']) . ' ' . t('hours') ?></td>
                 <td class=""><?= $this->dt->date($record['start']) ?></td>
             </tr>
         <?php endforeach ?>

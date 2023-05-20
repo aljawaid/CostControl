@@ -8,7 +8,7 @@
         <div class="c-control-options-section-area">
             <div class="c-control-options-section">
                 <?= $this->form->label(t('Base Currency'), 'application_currency', array('class="app-currency-label"')) ?>
-                <?= $this->form->text('application_currency', $this->model->configModel->get('application_currency'), array(), array('value="'. $this->model->configModel->get('application_currency') .'" disabled')) ?>
+                <?= $this->form->text('application_currency', $this->model->configModel->get('application_currency'), array(), array('value="' . $this->model->configModel->get('application_currency') . '" disabled')) ?>
                 <?= $this->modal->medium('edit', t('Edit'), 'CostController', 'change', array('plugin' => 'CostControl')) ?>
                 <p class="form-help"><?= t('The base currency is your main currency') ?></p>
             </div>

@@ -34,7 +34,7 @@
                         <span class="reference-currency-code"><?= $this->model->configModel->get('cost_control_reference_currency', '') ?></span>
                         <span class="manual-live-wrapper">
                             <span class="reference-currency-manual-rate" title="<?= t('Manual Rate Last Modified: ') . $this->dt->datetime($this->model->currencyModel->getReferenceCurrency()['last_modified']) ?>">
-                                <?= (n($this->model->currencyModel->getReferenceCurrency()['rate']) > 0) ? '<span class="manual-rate-icon"></span> '. n($this->model->currencyModel->getReferenceCurrency()['rate']) : '' ?>
+                                <?= (n($this->model->currencyModel->getReferenceCurrency()['rate']) > 0) ? '<span class="manual-rate-icon"></span> ' . n($this->model->currencyModel->getReferenceCurrency()['rate']) : '' ?>
                             </span>
                             <?= (n($this->model->currencyModel->getReferenceCurrency()['rate']) > 0) ? '<span class="spacer"></span>' : '' ?>
                             <span class="reference-currency-live-rate" title="<?= t('Live Rate Last Updated: ') . $this->dt->datetime($this->model->currencyModel->getReferenceCurrency()['live_rate_updated']) ?>">
@@ -64,7 +64,7 @@
         </div>
     </fieldset>
 
-    <?php if (! empty($rates)): ?>
+    <?php if (!empty($rates)): ?>
         <form class="currency-filter">
             <label for="CurrencyCodeSearch">
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-filter-square" viewBox="0 0 16 16">
@@ -96,7 +96,7 @@
                 </td>
                 <td class="row-currency"><span class="currency-coins-icon"></span> <?= substr($this->text->e($currencies[$rate['currency']]), 6) ?></td>
                 <td class="row-manual-rate">
-                    <?= ($rate['rate'] > 0) ? '<span class="manual-rate-icon"></span> '. n($rate['rate']) : '' ?>
+                    <?= ($rate['rate'] > 0) ? '<span class="manual-rate-icon"></span> ' . n($rate['rate']) : '' ?>
                 </td>
                 <td class="row-manual-rate-last-modified"><?= ($rate['last_modified'] > 0) ? $this->dt->datetime($rate['last_modified']) : '' ?></td>
                 <td class="row-manual-rate-comment relative">
@@ -116,7 +116,7 @@
                     <?php endif ?>
                 </td>
                 <td class="row-live-rate">
-                    <?= ($rate['live_rate'] > 0) ? '<span class="live-rate-icon"></span> '. n($rate['live_rate']) : '' ?>
+                    <?= ($rate['live_rate'] > 0) ? '<span class="live-rate-icon"></span> ' . n($rate['live_rate']) : '' ?>
                 </td>
                 <td class="row-live-rate-last-updated"><?= ($rate['live_rate_updated'] > 0) ? $this->dt->datetime($rate['live_rate_updated']) : '' ?></td>
             </tr>

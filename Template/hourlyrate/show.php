@@ -6,7 +6,7 @@
         </li>
     </ul>
 </div>
-<?php if (! empty($rates)): ?>
+<?php if (!empty($rates)): ?>
     <table class="">
         <tr class="">
             <th class=""><?= t('Hourly Rate') ?></th>

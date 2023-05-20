@@ -6,7 +6,7 @@
         </li>
     </ul>
 </div>
-<?php if (! empty($lines)): ?>
+<?php if (!empty($lines)): ?>
     <table class="table-fixed table-striped">
         <tr class="">
             <th class="column-20"><?= t('Budget Line') ?></th>

@@ -4,7 +4,7 @@
 ## v1.1
 
 _(most recent changes are listed on top):_
-- 58c98a3 FIX: Change Database Column Type for `live_rate` thanks @creecros
+- FIX: Change Database Column Type for `live_rate` thanks @creecros
 
 
 ## v1.0

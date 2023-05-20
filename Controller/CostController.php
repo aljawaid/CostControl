@@ -166,13 +166,12 @@ class CostController extends \Kanboard\Controller\BaseController
         //list($valid, $errors) = $this->currencyValidator->validateCreation($values);
 
         //if ($valid) {
-            if ($this->currencyModel->editComment($values)) {
-                $this->flash->success(t('Comment updated successfully'));
-                $this->response->redirect($this->helper->url->to('CostController', 'showEveryone', array('plugin' => 'CostControl')));
-            } else {
-                $this->flash->failure(t('Unable to update this comment'));
-            }
+        if ($this->currencyModel->editComment($values)) {
+            $this->flash->success(t('Comment updated successfully'));
+            $this->response->redirect($this->helper->url->to('CostController', 'showEveryone', array('plugin' => 'CostControl')));
+        } else {
+            $this->flash->failure(t('Unable to update this comment'));
+        }
         //}
-
     }
 }

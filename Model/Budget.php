@@ -99,7 +99,7 @@ class Budget extends Base
         foreach ($time_slots as $slot) {
             $date = date('Y-m-d', $slot['start']);
 
-            if (! isset($out[$date])) {
+            if (!isset($out[$date])) {
                 $out[$date] = 0;
             }
 
@@ -107,18 +107,16 @@ class Budget extends Base
         }
 
         $start = key($in) ?: key($out);
-        $end = new DateTime;
+        $end = new DateTime();
         $left = 0;
         $serie = array();
 
         for ($today = new DateTime($start); $today <= $end; $today->add(new DateInterval('P1D'))) {
-
             $date = $today->format('Y-m-d');
             $today_in = isset($in[$date]) ? (int) $in[$date] : 0;
             $today_out = isset($out[$date]) ? (int) $out[$date] : 0;
 
             if ($today_in > 0 || $today_out > 0) {
-
                 $left += $today_in;
                 $left -= $today_out;
 
@@ -146,7 +144,6 @@ class Budget extends Base
         $rates = $this->hourlyRate->getAllByProject($records[0]['project_id']);
 
         foreach ($records as &$record) {
-
             $hourly_price = 0;
 
             foreach ($rates as $rate) {

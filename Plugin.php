@@ -7,8 +7,8 @@ use Kanboard\Core\Translator;
 use Kanboard\Core\Security\Role;
 use Kanboard\Plugin\CostControl\Model\ExtendedCurrencyModel;
 use Kanboard\Model\CurrencyModel;
-use Kanboard\Plugin\CostControl\Helper\CostControlLayoutHelper;  // Helper Class and Filename should be exact
-use Kanboard\Helper;  // Add core Helper for using forms etc. inside external templates
+use Kanboard\Plugin\CostControl\Helper\CostControlLayoutHelper;
+use Kanboard\Helper;
 
 class Plugin extends Base
 {
@@ -74,7 +74,7 @@ class Plugin extends Base
         // CHECK FOR LIVE RATES ONE MIN AFTER NEXT SCHEDULED UPDATE FROM THE JSON
         if (time() - $this->configModel->get('cost_control_next_update', time() - 61) > 60) {
             // SAVE DATE WHEN CHECKED
-            $this->configModel->save(['cost_control_last_checked_live_rates'=> time()]);
+            $this->configModel->save(['cost_control_last_checked_live_rates' => time()]);
             // CHECK JSON API
             $this->currencyModel->getLiveRates();
         }

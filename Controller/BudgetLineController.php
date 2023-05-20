@@ -50,7 +50,6 @@ class BudgetLineController extends BaseController
         list($valid, $errors) = $this->budget->validateCreation($values);
 
         if ($valid) {
-
             if ($this->budget->create($values['project_id'], $values['amount'], $values['comment'], $values['date'])) {
                 $this->flash->success(t('The budget line have been created successfully.'));
                 $this->response->redirect($this->helper->url->to('BudgetLineController', 'create', array('plugin' => 'CostControl', 'project_id' => $project['id'])), true);

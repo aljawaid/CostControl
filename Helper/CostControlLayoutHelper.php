@@ -22,11 +22,11 @@ class CostControlLayoutHelper extends Base
      */
     public function customLayout($template, array $params)
     {
-        if (! isset($params['values'])) {
+        if (!isset($params['values'])) {
             $params['values'] = $this->configModel->getAll();
         }
 
-        if (! isset($params['errors'])) {
+        if (!isset($params['errors'])) {
             $params['errors'] = array();
         }
 

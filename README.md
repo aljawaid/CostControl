@@ -166,7 +166,7 @@ Go to `Dashboard` &#10562; Cost Control
 - _Starter template available_
 
 </details>
- 
+
 <p align="right">[<a href="#user-content-readme-bottom">&#8595; Bottom</a>] [<a href="#usage">&#8592; Previous</a>] [<a href="#license">&#8594; Next</a>] [<a href="#user-content-readme-top">&#8593; Top</a>]</p>
 
 ## Authors & Contributors

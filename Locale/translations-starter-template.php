@@ -22,4 +22,13 @@ return array(
     // Controller/BudgetController.php
     //
     'Budget' => '',
+    //
+    // Controller/BudgetLineController.php
+    //
+    'Budget lines' => '',
+    'Budget lines' => '',
+    'The budget line have been created successfully.' => '',
+    'Unable to create the budget line.' => '',
+    'Budget line removed successfully.' => '',
+    'Unable to remove this budget line.' => '',
 );

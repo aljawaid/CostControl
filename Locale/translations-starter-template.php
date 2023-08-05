@@ -30,4 +30,16 @@ return array(
     'Unable to create the budget line.' => '',
     'Budget line removed successfully.' => '',
     'Unable to remove this budget line.' => '',
+    //
+    // Controller/CostController.php
+    //
+    'Settings' => '',
+    'Currency Rates' => '',
+    'Cost Control' => '',
+    'The manual currency rate has been added successfully' => '',
+    'Unable to add this manual currency rate' => '',
+    'Settings saved successfully' => '',
+    'Unable to save your settings' => '',
+    'Comment updated successfully' => '',
+    'Unable to update this comment' => '',
 );

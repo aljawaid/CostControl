@@ -26,7 +26,6 @@ return array(
     // Controller/BudgetLineController.php
     //
     'Budget lines' => '',
-    'Budget lines' => '',
     'The budget line have been created successfully.' => '',
     'Unable to create the budget line.' => '',
     'Budget line removed successfully.' => '',

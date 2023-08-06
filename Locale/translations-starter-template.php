@@ -42,4 +42,11 @@ return array(
     'Unable to save your settings' => '',
     'Comment updated successfully' => '',
     'Unable to update this comment' => '',
+    //
+    // Controller/HourlyRateController.php
+    //
+    'Hourly rate created successfully.' => '',
+    'Unable to save the hourly rate.' => '',
+    'Rate removed successfully.' => '',
+    'Unable to remove this rate.' => '',
 );

@@ -49,4 +49,8 @@ return array(
     'Unable to save the hourly rate.' => '',
     'Rate removed successfully.' => '',
     'Unable to remove this rate.' => '',
+    //
+    // Controller/SubscriptionController.php
+    //
+    'Subscriptions' => '',
 );

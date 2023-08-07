@@ -53,4 +53,8 @@ return array(
     // Controller/SubscriptionController.php
     //
     'Subscriptions' => '',
+    //
+    // Model/Budget.php
+    //
+    'Field required' => '',
 );

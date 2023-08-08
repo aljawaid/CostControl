@@ -186,4 +186,8 @@ return array(
     'ZAR - South African Rand' => '',
     'ZMW - Zambian Kwacha' => '',
     'ZWL - Zimbabwean Dollar' => '',
+    //
+    // Model/HourlyRate.php
+    //
+    'This value must be numeric' => '',
 );

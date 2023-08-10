@@ -190,4 +190,16 @@ return array(
     // Model/HourlyRate.php
     //
     'This value must be numeric' => '',
+    //
+    // Template/budget/breakdown.php
+    //
+    'Cost Breakdown' => '',
+    'There is nothing to show.' => '',
+    'Task' => '',
+    'Subtask' => '',
+    'User' => '',
+    'Cost' => '',
+    'Time Spent' => '',
+    'Date' => '',
+    'hours' => '',
 );

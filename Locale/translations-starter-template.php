@@ -212,4 +212,8 @@ return array(
     'Type' => '',
     'Budget Line' => '',
     'There is not enough data to show something.' => '',
+    //
+    // Template/budget/sidebar.php
+    //
+    'Budget Lines' => '',
 );

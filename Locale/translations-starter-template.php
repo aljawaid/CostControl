@@ -202,4 +202,14 @@ return array(
     'Time Spent' => '',
     'Date' => '',
     'hours' => '',
+    //
+    // Template/budget/show.php
+    //
+    'Budget Overview' => '',
+    'Expenses' => '',
+    'Remaining' => '',
+    'Amount' => '',
+    'Type' => '',
+    'Budget Line' => '',
+    'There is not enough data to show something.' => '',
 );

@@ -216,4 +216,9 @@ return array(
     // Template/budget/sidebar.php
     //
     'Budget Lines' => '',
+    //
+    // Template/budget_lines/create.php
+    //
+    'New Budget Line' => '',
+    'Comment' => '',
 );

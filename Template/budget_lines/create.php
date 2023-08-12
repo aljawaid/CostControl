@@ -1,5 +1,5 @@
 <div class="page-header">
-    <h2 class=""><?= t('New budget line') ?></h2>
+    <h2 class=""><?= t('New Budget Line') ?></h2>
 </div>
 
 <form method="post" class="" action="<?= $this->url->href('BudgetLineController', 'save', array('plugin' => 'CostControl', 'project_id' => $project['id'])) ?>" autocomplete="off">

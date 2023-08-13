@@ -226,4 +226,11 @@ return array(
     //
     'Remove Budget Line' => '',
     'Do you really want to remove this budget line?' => '',
+    //
+    // Template/budget_lines/show.php
+    //
+    'Budget lines' => '',
+    'Action' => '',
+    'Remove' => '',
+    'There is no budget line.' => '',
 );

@@ -221,4 +221,9 @@ return array(
     //
     'New Budget Line' => '',
     'Comment' => '',
+    //
+    // Template/budget_lines/remove.php
+    //
+    'Remove Budget Line' => '',
+    'Do you really want to remove this budget line?' => '',
 );

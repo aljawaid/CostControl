@@ -17,7 +17,7 @@ class BudgetLineController extends BaseController
         $this->response->html($this->helper->layout->project('costControl:budget_lines/show', array(
             'lines' => $this->budget->getAll($project['id']),
             'project' => $project,
-            'title' => t('Budget lines')
+            'title' => t('Budget Lines')
         ), 'costControl:budget/sidebar'));
     }
 
@@ -33,7 +33,7 @@ class BudgetLineController extends BaseController
             'values' => $values + array('project_id' => $project['id']),
             'errors' => $errors,
             'project' => $project,
-            'title' => t('Budget lines')
+            'title' => t('Budget Lines')
         ), 'costControl:budget/sidebar'));
     }
 

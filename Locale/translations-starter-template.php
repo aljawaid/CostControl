@@ -233,4 +233,21 @@ return array(
     'Action' => '',
     'Remove' => '',
     'There is no budget line.' => '',
+    //
+    // Template/config/settings.php
+    //
+    'Currency Options' => '',
+    'Set a reference currency to view and compare rates with the base currency at a glance' => '',
+    'Base Currency' => '',
+    'Edit' => '',
+    'The base currency is your main currency' => '',
+    'Reference Currency' => '',
+    'Enter the three letter currency code in capital letters' => '',
+    'Comment Options' => '',
+    'Control how comments are saved against manual rates' => '',
+    'Replace the previous comment when editing a manual rate' => '',
+    'Keep the previous comment when editing a manual rate' => '',
+    'Saves any changes made on this page' => '',
+    'Save Settings' => '',
+    'Go to Cost Control' => '',
 );

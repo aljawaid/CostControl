@@ -2,7 +2,7 @@
     <h2 class=""><?= t('Budget lines') ?></h2>
     <ul class="">
         <li class="">
-            <?= $this->modal->medium('plus', t('New budget line'), 'BudgetLineController', 'create', array('plugin' => 'CostControl', 'project_id' => $project['id'])) ?>
+            <?= $this->modal->medium('plus', t('New Budget Line'), 'BudgetLineController', 'create', array('plugin' => 'CostControl', 'project_id' => $project['id'])) ?>
         </li>
     </ul>
 </div>

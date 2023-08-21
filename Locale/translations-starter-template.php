@@ -311,4 +311,9 @@ return array(
     //
     'Remove Hourly Rate' => '',
     'Do you really want to remove this hourly rate?' => '',
+    //
+    // Template/hourlyrate/show.php
+    //
+    'New hourly rate' => '',
+    'There is no hourly rate defined.' => '',
 );

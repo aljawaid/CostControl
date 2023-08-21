@@ -313,4 +313,9 @@ return array(
     'Add new rate' => '',
     'Hourly Rate' => '',
     'Effective Date' => '',
+    //
+    // Template/hourlyrate/remove.php
+    //
+    'Remove Hourly Rate' => '',
+    'Do you really want to remove this hourly rate?' => '',
 );

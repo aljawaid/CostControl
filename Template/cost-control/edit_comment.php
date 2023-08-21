@@ -23,8 +23,10 @@
             <?= $this->form->csrf() ?>
             <input type="hidden" id="currency" name="currency" value="<?= $currency ?>">
             <?= $this->form->label(t('New Comment'), 'comment') ?>
-            <?= $this->form->text('comment', $values, array(), array('placeholder="Add a short note for this currency"', 'value="' . $comment . '"'), 'form-text') ?>
-            <p class="form-help ml-0"><?= t('Leaving this comment blank or entering a new comment will replace any previously saved comment for this currency code') ?></p>
+            <?= $this->form->text('comment', $values, array(), array('placeholder="' . t('Add a short note for this currency') . '"', 'value="' . $comment . '"'), 'form-text') ?>
+            <p class="form-help ml-0">
+                <?= t('Leaving this comment blank or entering a new comment will replace any previously saved comment for this currency code') ?>
+            </p>
             <?= $this->modal->submitButtons() ?>
         </form>
     <?php endif ?>

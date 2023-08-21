@@ -419,6 +419,11 @@ td.row-live-rate {
     margin-top: 2px;
 }
 
+.add-reference-currency-link a {
+    transition: var(--transition-cost-control);
+    text-decoration: none;
+}
+
 .edit-comment-btn {
     padding: 0 5px 3px 5px;
     border-radius: var(--border-radius-cost-control);
@@ -564,4 +569,9 @@ section#config-section.sidebar-container div.sidebar-content form fieldset#CostC
 .c-control-options-section {
     display: inline-block;
     width: 48%;
+}
+
+.c-control-options-section a, .cost-control-btn {
+    transition: var(--transition-cost-control);
+    text-decoration: none;
 }

@@ -307,4 +307,10 @@ return array(
     'Live Rates by' => '',
     'Last Update to Live Rate Data: %s' => '',
     'Next Update to Live Rate Data: %s' => '',
+    //
+    // Template/hourlyrate/create.php
+    //
+    'Add new rate' => '',
+    'Hourly Rate' => '',
+    'Effective Date' => '',
 );

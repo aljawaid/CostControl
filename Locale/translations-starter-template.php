@@ -257,4 +257,10 @@ return array(
     'New Comment' => '',
     'Add a short note for this currency' => '',
     'Leaving this comment blank or entering a new comment will replace any previously saved comment for this currency code' => '',
+    //
+    // Template/currency/change.php
+    //
+    'Change Base Currency' => '',
+    'Base Currency' => '',
+    'The application currency is known as the base currency and associates the base rate (1.00) against other currencies' => '',
 );

@@ -25,7 +25,6 @@ return array(
     //
     // Controller/BudgetLineController.php
     //
-    'Budget Lines' => '',
     'The budget line have been created successfully.' => '',
     'Unable to create the budget line.' => '',
     'Budget line removed successfully.' => '',
@@ -250,4 +249,12 @@ return array(
     'Saves any changes made on this page' => '',
     'Save Settings' => '',
     'Go to Cost Control' => '',
+    //
+    // Template/cost-control/edit_comment.php
+    //
+    'Edit Comment' => '',
+    'Leave empty to clear the comment' => '',
+    'New Comment' => '',
+    'Add a short note for this currency' => '',
+    'Leaving this comment blank or entering a new comment will replace any previously saved comment for this currency code' => '',
 );

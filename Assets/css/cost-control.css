@@ -575,3 +575,7 @@ section#config-section.sidebar-container div.sidebar-content form fieldset#CostC
     transition: var(--transition-cost-control);
     text-decoration: none;
 }
+
+input[type="text"]#form-comment::placeholder, input[type="text"]#CurrencyCodeSearch::placeholder, input[type="text"]#form-rate::placeholder, input[type="number"]#form-rate::placeholder, input[type="text"]#form-cost_control_reference_currency::placeholder {
+    color: var(--pp-grey);
+}

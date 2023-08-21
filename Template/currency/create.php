@@ -11,7 +11,7 @@
             <?= $this->form->number('rate', $values, $errors, array('autofocus placeholder="1.00"'), 'form-numeric') ?>
             <p class="form-help"><?= t('Enter \'0\' to clear the previous rate') ?></p>
             <?= $this->form->label(t('New Comment'), 'comment') ?>
-            <?= $this->form->text('comment', $values, array(), array('placeholder="Add a short note for this currency"'), 'form-text') ?>
+            <?= $this->form->text('comment', $values, array(), array('placeholder="' . t('Add a short note for this currency') . '"'), 'form-text') ?>
             <p class="form-help"><?= t('Leaving this comment blank or entering a new comment will replace any previously saved comment for this currency code') ?></p>
             <?= $this->modal->submitButtons() ?>
         </form>

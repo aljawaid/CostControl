@@ -265,7 +265,7 @@ table#CurrenciesTable > tbody > tr > td {
 }
 
 .table-row-hover tr.rate-results:hover td {
-    background-color: rgba(165, 42, 42, .3);
+    background-color: rgb(165, 42, 42, .3);
 }
 
 .table-row-hover tr.rate-results:hover td .live-rate-icon, .table-row-hover tr.rate-results:hover td .manual-rate-icon {
@@ -292,13 +292,13 @@ th.heading-code, th.heading-manual-rate, th.heading-last-modfied, th.heading-liv
     text-align: center;
     padding: 0 3px;
     font-weight: 600;
-    background: rgba(165, 42, 42, .5);
+    background: rgb(165, 42, 42, .5);
 }
 
 th.heading-currency, th.heading-comment {
     font-weight: 600;
     padding-left: 10px;
-    background: rgba(165, 42, 42, .5);
+    background: rgb(165, 42, 42, .5);
 }
 
 td.row-code, td.row-manual-rate, td.row-manual-rate-last-modified, td.row-live-rate, td.row-live-rate-last-updated {

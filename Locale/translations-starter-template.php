@@ -37,6 +37,8 @@ return array(
     'Cost Control' => '',
     'The manual currency rate has been added successfully' => '',
     'Unable to add this manual currency rate' => '',
+    'Invalid currency' => '',
+    'Invalid comment' => '',
     'Settings saved successfully' => '',
     'Unable to save your settings' => '',
     'Comment updated successfully' => '',

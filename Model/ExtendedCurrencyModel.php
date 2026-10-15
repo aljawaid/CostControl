@@ -11,6 +11,7 @@ use Kanboard\Core\Base;
  * @author   Frederic Guillot
  * @author   aljawaid
  * @author   Craig Crosby
+ * @see tests/security_contract.php
  */
 class ExtendedCurrencyModel extends Base
 {
@@ -168,6 +169,17 @@ class ExtendedCurrencyModel extends Base
     public function getAll()
     {
         return $this->db->table(self::TABLE)->findAll();
+    }
+
+    /**
+     * Get one persisted currency record.
+     *
+     * @param string $currency
+     * @return array
+     */
+    public function getByCurrency($currency)
+    {
+        return $this->db->table(self::TABLE)->eq('currency', $currency)->findOne();
     }
 
     /**
@@ -338,28 +350,11 @@ class ExtendedCurrencyModel extends Base
      * EDIT COMMENT
      *
      * @access public
-     * @param  string    $currency
-     * @param  float     $rate
-     * @return boolean|integer
-     */
-    public function editComment($values)
-    {
-        if ($this->db->table(self::TABLE)->eq('currency', $values['currency'])->exists()) {
-            return $this->updateComment($values['currency'], $values['comment']);
-        }
-
-        return $this->db->table(self::TABLE)->insert(array('currency' => $values['currency'], 'comment' => $values['comment']));
-    }
-
-    /**
-     * UPDATE COMMENT
-     *
-     * @access public
-     * @param  string    $currency
-     * @param  float     $rate
+     * @param  string $currency
+     * @param  string $comment
      * @return boolean
      */
-    public function updateComment($currency, $comment)
+    public function editComment($currency, $comment)
     {
         return $this->db->table(self::TABLE)->eq('currency', $currency)->update(array('comment' => $comment));
     }

@@ -10,6 +10,11 @@ use Kanboard\Model\CurrencyModel;
 use Kanboard\Plugin\CostControl\Helper\CostControlLayoutHelper;
 use Kanboard\Helper;
 
+/**
+ * Register CostControl routes, helpers and access boundaries.
+ *
+ * Related test: tests/security_contract.php.
+ */
 class Plugin extends Base
 {
     public function initialize()
@@ -56,6 +61,8 @@ class Plugin extends Base
         $this->route->addRoute('/cost-control/currencies/rates', 'CostController', 'showEveryone', 'CostControl');
         $this->route->addRoute('/cost-control/currencies/rates/manual/add', 'CostController', 'create', 'CostControl');
         $this->route->addRoute('/cost-control/currencies/base/change', 'CostController', 'change', 'CostControl');
+        $this->route->addRoute('/cost-control/currencies/:currency', 'CostController', 'editComment', 'CostControl');
+        // Retain old bookmarks without trusting or using the comment stored in the URL.
         $this->route->addRoute('/cost-control/currencies/:currency/:comment', 'CostController', 'editComment', 'CostControl');
 
         // Helper
@@ -64,7 +71,11 @@ class Plugin extends Base
         $this->helper->register('costControlLayoutHelper', '\Kanboard\Plugin\CostControl\Helper\CostControlLayoutHelper');
 
         $this->applicationAccessMap->add('HourlyRateController', '*', Role::APP_ADMIN);
+        // Default CostController actions to administrators, then preserve documented user rate/comment actions.
+        $this->applicationAccessMap->add('CostController', '*', Role::APP_ADMIN);
+        $this->applicationAccessMap->add('CostController', array('showEveryone', 'create', 'save', 'saveWithoutComment', 'editComment', 'saveCommentForm'), Role::APP_USER);
         $this->projectAccessMap->add('BudgetController', '*', Role::PROJECT_MANAGER);
+        $this->projectAccessMap->add('BudgetLineController', '*', Role::PROJECT_MANAGER);
 
         // Replace Model
         $this->container['currencyModel'] = $this->container->factory(function ($c) {

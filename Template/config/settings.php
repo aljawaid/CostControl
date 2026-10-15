@@ -1,3 +1,9 @@
+<?php
+
+// Related security coverage: tests/security_contract.php.
+
+?>
+
 <fieldset id="CostControlSettings" class="panel c-control-settings">
     <h3 class="">
         <span class="currency-wallet-icon"></span> Cost Control <?= t('Settings') ?>
@@ -8,7 +14,7 @@
         <div class="c-control-options-section-area">
             <div class="c-control-options-section">
                 <?= $this->form->label(t('Base Currency'), 'application_currency', array('class="app-currency-label"')) ?>
-                <?= $this->form->text('application_currency', $this->model->configModel->get('application_currency'), array(), array('value="' . $this->model->configModel->get('application_currency') . '" disabled')) ?>
+                <?= $this->form->text('application_currency', array('application_currency' => $this->model->configModel->get('application_currency')), array(), array('disabled')) ?>
                 <?= $this->modal->medium('edit', t('Edit'), 'CostController', 'change', array('plugin' => 'CostControl')) ?>
                 <p class="form-help"><?= t('The base currency is your main currency') ?></p>
             </div>

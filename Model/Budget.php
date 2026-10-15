@@ -17,6 +17,7 @@ use Kanboard\Model\SubtaskModel;
  *
  * @package  model
  * @author   Frederic Guillot
+ * @see tests/security_contract.php
  */
 class Budget extends Base
 {
@@ -37,6 +38,21 @@ class Budget extends Base
     public function getAll($project_id)
     {
         return $this->db->table(self::TABLE)->eq('project_id', $project_id)->desc('date')->findAll();
+    }
+
+    /**
+     * Get a budget line only when it belongs to the authorized project.
+     *
+     * @param integer $budget_id
+     * @param integer $project_id
+     * @return array
+     */
+    public function getById($budget_id, $project_id)
+    {
+        return $this->db->table(self::TABLE)
+            ->eq('id', $budget_id)
+            ->eq('project_id', $project_id)
+            ->findOne();
     }
 
     /**
@@ -186,11 +202,15 @@ class Budget extends Base
      *
      * @access public
      * @param  integer    $budget_id
+     * @param  integer    $project_id
      * @return boolean
      */
-    public function remove($budget_id)
+    public function remove($budget_id, $project_id)
     {
-        return $this->db->table(self::TABLE)->eq('id', $budget_id)->remove();
+        return $this->db->table(self::TABLE)
+            ->eq('id', $budget_id)
+            ->eq('project_id', $project_id)
+            ->remove();
     }
 
     /**

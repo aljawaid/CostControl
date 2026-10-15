@@ -4,6 +4,11 @@ namespace Kanboard\Plugin\CostControl\Controller;
 
 use Kanboard\Controller\BaseController;
 
+/**
+ * Manage project-bound budget lines.
+ *
+ * Related test: tests/security_contract.php.
+ */
 class BudgetLineController extends BaseController
 {
     public function show()
@@ -47,6 +52,8 @@ class BudgetLineController extends BaseController
         $project = $this->getProject();
 
         $values = $this->request->getValues();
+        // The authorized route project is authoritative; never trust a posted project id.
+        $values['project_id'] = $project['id'];
         list($valid, $errors) = $this->budget->validateCreation($values);
 
         if ($valid) {
@@ -70,10 +77,17 @@ class BudgetLineController extends BaseController
     public function confirm()
     {
         $project = $this->getProject();
+        $budget_id = $this->request->getIntegerParam('budget_id');
+
+        if (empty($this->budget->getById($budget_id, $project['id']))) {
+            $this->flash->failure(t('Unable to remove this budget line.'));
+            $this->response->redirect($this->helper->url->to('BudgetLineController', 'show', array('plugin' => 'CostControl', 'project_id' => $project['id'])), true);
+            return;
+        }
 
         $this->response->html($this->template->render('costControl:budget_lines/remove', array(
             'project' => $project,
-            'budget_id' => $this->request->getIntegerParam('budget_id'),
+            'budget_id' => $budget_id,
         )));
     }
 
@@ -87,7 +101,7 @@ class BudgetLineController extends BaseController
         $this->checkCSRFParam();
         $project = $this->getProject();
 
-        if ($this->budget->remove($this->request->getIntegerParam('budget_id'))) {
+        if ($this->budget->remove($this->request->getIntegerParam('budget_id'), $project['id'])) {
             $this->flash->success(t('Budget line removed successfully.'));
         } else {
             $this->flash->failure(t('Unable to remove this budget line.'));

@@ -3,15 +3,15 @@
 namespace Kanboard\Plugin\CostControl\Controller;
 
 use Kanboard\Controller\BaseController;
-use Kanboard\Core\Plugin\Directory;
 
 /**
  * Plugin CostControl
  * Class CostController
  * @author @aljawaid
+ * @see tests/security_contract.php
  */
 
-class CostController extends \Kanboard\Controller\BaseController
+class CostController extends BaseController
 {
     /**
      * Display all currency rates
@@ -65,6 +65,16 @@ class CostController extends \Kanboard\Controller\BaseController
         $values = $this->request->getValues();
         list($valid, $errors) = $this->currencyValidator->validateCreation($values);
 
+        if ($valid && !$this->isSupportedCurrency($values['currency'])) {
+            $valid = false;
+            $errors['currency'][] = t('Invalid currency');
+        }
+
+        if ($valid && (!isset($values['comment']) || !is_string($values['comment']))) {
+            $valid = false;
+            $errors['comment'][] = t('Invalid comment');
+        }
+
         if ($valid) {
             if ($this->currencyModel->create($values['currency'], $values['rate'], $values['comment'])) {
                 $this->flash->success(t('The manual currency rate has been added successfully'));
@@ -86,6 +96,11 @@ class CostController extends \Kanboard\Controller\BaseController
     {
         $values = $this->request->getValues();
         list($valid, $errors) = $this->currencyValidator->validateCreation($values);
+
+        if ($valid && !$this->isSupportedCurrency($values['currency'])) {
+            $valid = false;
+            $errors['currency'][] = t('Invalid currency');
+        }
 
         if ($valid) {
             if ($this->currencyModel->createWithoutComment($values['currency'], $values['rate'])) {
@@ -127,8 +142,15 @@ class CostController extends \Kanboard\Controller\BaseController
     public function update()
     {
         $values = $this->request->getValues();
+        $currency = isset($values['application_currency']) ? $values['application_currency'] : '';
 
-        if ($this->configModel->save($values)) {
+        if (!$this->isSupportedCurrency($currency)) {
+            $this->flash->failure(t('Unable to save your settings'));
+            $this->change($values, array('application_currency' => array(t('Invalid currency'))));
+            return;
+        }
+
+        if ($this->configModel->save(array('application_currency' => $currency))) {
             $this->flash->success(t('Settings saved successfully'));
         } else {
             $this->flash->failure(t('Unable to save your settings'));
@@ -141,17 +163,20 @@ class CostController extends \Kanboard\Controller\BaseController
      * EDIT COMMENT
      *
      * @access public
-     * @param array $values
-     * @param array $errors
      */
-    public function editComment(array $values = array())
+    public function editComment()
     {
-        $values = $this->request->getValues();
+        $currency = $this->request->getStringParam('currency');
+        $values = $this->currencyModel->getByCurrency($currency);
+
+        if (!$this->isSupportedCurrency($currency) || empty($values)) {
+            $this->flash->failure(t('Unable to update this comment'));
+            $this->response->redirect($this->helper->url->to('CostController', 'showEveryone', array('plugin' => 'CostControl')));
+            return;
+        }
 
         $this->response->html($this->template->render('costControl:cost-control/edit_comment', array(
-            'values'     => $values,
-            'currency'   => $this->request->getStringParam('currency'),
-            'comment'    => $this->request->getStringParam('comment'),
+            'values' => $values,
         )));
     }
 
@@ -163,15 +188,29 @@ class CostController extends \Kanboard\Controller\BaseController
     public function saveCommentForm()
     {
         $values = $this->request->getValues();
-        //list($valid, $errors) = $this->currencyValidator->validateCreation($values);
 
-        //if ($valid) {
-        if ($this->currencyModel->editComment($values)) {
+        if (
+            isset($values['currency'], $values['comment'])
+            && is_string($values['comment'])
+            && $this->isSupportedCurrency($values['currency'])
+            && $this->currencyModel->editComment($values['currency'], $values['comment'])
+        ) {
             $this->flash->success(t('Comment updated successfully'));
-            $this->response->redirect($this->helper->url->to('CostController', 'showEveryone', array('plugin' => 'CostControl')));
         } else {
             $this->flash->failure(t('Unable to update this comment'));
         }
-        //}
+
+        $this->response->redirect($this->helper->url->to('CostController', 'showEveryone', array('plugin' => 'CostControl')));
+    }
+
+    /**
+     * Accept only currency codes exposed by the current Kanboard currency list.
+     *
+     * @param string $currency
+     * @return boolean
+     */
+    private function isSupportedCurrency($currency)
+    {
+        return is_string($currency) && array_key_exists($currency, $this->currencyModel->getCurrencies());
     }
 }

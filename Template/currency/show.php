@@ -1,3 +1,9 @@
+<?php
+
+// Related security coverage: tests/security_contract.php.
+
+?>
+
 <div class="cost-control-page-header relative">
     <div id="RateReminder" class="alert alert-error alert-fade-out" style="">
         <?= t('The next update for live rates will be on %s', $this->dt->datetime($this->model->configModel->get('cost_control_next_update', time()))) ?>
@@ -24,14 +30,14 @@
             <div class="app-currency-list">
                 <div class="base-currency-wrapper">
                     <span class="base-currency-title"><?= t('Base Currency') ?></span>
-                    <span class="base-currency-code"><?= $application_currency ?></span>
+                    <span class="base-currency-code"><?= $this->text->e($application_currency) ?></span>
                     <span class="base-currency-value"><span class="base-rate-home-icon"></span> 1.00</span>
                 </div>
                 <div class="reference-currency-wrapper">
                     <span class="reference-currency-title"><?= t('Reference Currency') ?></span>
                     <?php if (!empty($this->model->configModel->get('cost_control_reference_currency', ''))): ?>
                         <span class="reference-currency-code">
-                            <?= $this->model->configModel->get('cost_control_reference_currency', '') ?>
+                            <?= $this->text->e($this->model->configModel->get('cost_control_reference_currency', '')) ?>
                         </span>
                         <span class="manual-live-wrapper">
                             <span class="reference-currency-manual-rate" title="<?= t('Manual Rate Last Modified: %s', $this->dt->datetime($this->model->currencyModel->getReferenceCurrency()['last_modified'])) ?>">
@@ -106,15 +112,15 @@
                         <?= ($rate['last_modified'] > 0) ? $this->dt->datetime($rate['last_modified']) : '' ?>
                     </td>
                     <td class="row-manual-rate-comment relative">
-                        <?= ($rate['comment']) ?>
+                        <?= $this->text->e($rate['comment']) ?>
                         <?php if (!empty($rate['comment'])): ?>
-                            <a href="<?= $this->url->href('CostController', 'editComment', array('plugin' => 'CostControl', 'currency' => $rate['currency'], 'comment' => $rate['comment']), false, '', false) ?>" class="js-modal-small btn edit-comment-btn" title="<?= t('Edit Comment') ?>">
+                            <a href="<?= $this->url->href('CostController', 'editComment', array('plugin' => 'CostControl', 'currency' => $rate['currency']), false, '', false) ?>" class="js-modal-small btn edit-comment-btn" title="<?= t('Edit Comment') ?>">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sticky-fill" viewBox="0 0 16 16">
                                     <path d="M2.5 1A1.5 1.5 0 0 0 1 2.5v11A1.5 1.5 0 0 0 2.5 15h6.086a1.5 1.5 0 0 0 1.06-.44l4.915-4.914A1.5 1.5 0 0 0 15 8.586V2.5A1.5 1.5 0 0 0 13.5 1h-11zm6 8.5a1 1 0 0 1 1-1h4.396a.25.25 0 0 1 .177.427l-5.146 5.146a.25.25 0 0 1-.427-.177V9.5z"/>
                                 </svg>
                             </a>
                         <?php else: ?>
-                            <a href="<?= $this->url->href('CostController', 'editComment', array('plugin' => 'CostControl', 'currency' => $rate['currency'], 'comment' => $rate['comment']), false, '', false) ?>" class="js-modal-small btn edit-comment-btn edit-comment-empty" title="<?= t('Add Comment') ?>">
+                            <a href="<?= $this->url->href('CostController', 'editComment', array('plugin' => 'CostControl', 'currency' => $rate['currency']), false, '', false) ?>" class="js-modal-small btn edit-comment-btn edit-comment-empty" title="<?= t('Add Comment') ?>">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sticky" viewBox="0 0 16 16">
                                     <path d="M2.5 1A1.5 1.5 0 0 0 1 2.5v11A1.5 1.5 0 0 0 2.5 15h6.086a1.5 1.5 0 0 0 1.06-.44l4.915-4.914A1.5 1.5 0 0 0 15 8.586V2.5A1.5 1.5 0 0 0 13.5 1h-11zM2 2.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 .5.5V8H9.5A1.5 1.5 0 0 0 8 9.5V14H2.5a.5.5 0 0 1-.5-.5v-11zm7 11.293V9.5a.5.5 0 0 1 .5-.5h4.293L9 13.793z"/>
                                 </svg>

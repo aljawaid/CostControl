@@ -1,6 +1,7 @@
 <?php
 
-// Related coverage: tests/security_contract.php and tests/live_rate_reliability.php.
+// Related coverage: tests/security_contract.php, tests/live_rate_reliability.php
+// and tests/visual_contract.php.
 
 $lastChecked = (int) $this->model->configModel->getOption('cost_control_last_checked_live_rates', 0);
 $lastUpdated = (int) $this->model->configModel->getOption('cost_control_last_updated', 0);
@@ -91,7 +92,7 @@ $nextUpdate = (int) $this->model->configModel->getOption('cost_control_next_upda
             </span>
             <a id="PluginBottom" href="#PluginTop" title="<?= t('Go to the bottom of the page') ?>" class="btn-action"><i class="fa fa-level-down" aria-hidden="true"></i> <?= t('Bottom') ?></a>
         </div>
-        <table id="CurrenciesTable" class="currencies-table table-row-hover">
+        <table id="CurrenciesTable" class="currencies-table table-row-hover table-scrolling">
             <tr class="table-heading">
                 <th class="heading-code column-7"><?= t('Code') ?></th>
                 <th class="heading-currency column-30"><?= t('Currency') ?></th>

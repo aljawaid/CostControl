@@ -589,6 +589,34 @@ input[type="text"]#form-comment::placeholder, input[type="text"]#CurrencyCodeSea
     color: var(--pp-grey);
 }
 
+.task-cost-status {
+    display: inline-block;
+    margin-left: 5px;
+    padding: 1px 5px;
+    border: 1px solid currentcolor;
+    border-radius: var(--border-radius-cost-control);
+    font-size: .85em;
+    font-weight: 600;
+}
+
+.task-cost-status-pending {
+    color: var(--alert-color-default, var(--pp-orange));
+}
+
+.task-cost-status-confirmed {
+    color: var(--alert-color-error, var(--pp-red-alt-2));
+}
+
+.task-cost-summary-heading h2 {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.task-cost-summary-table th, .task-cost-summary-table td {
+    text-align: center;
+}
+
 @media (max-width: 768px) {
     #RateReminder {
         position: static;

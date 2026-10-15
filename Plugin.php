@@ -13,7 +13,8 @@ use Kanboard\Plugin\CostControl\Helper\CostControlLayoutHelper;
  * Register CostControl routes, helpers and access boundaries.
  *
  * Related tests: tests/security_contract.php, tests/live_rate_reliability.php,
- * tests/live_rate_integration.php and tests/maintenance_contract.php.
+ * tests/live_rate_integration.php, tests/maintenance_contract.php and
+ * tests/static_task_cost_integration.php.
  */
 class Plugin extends Base
 {
@@ -46,6 +47,10 @@ class Plugin extends Base
         $this->template->hook->attach('template:header:dropdown', 'costControl:header/user_dropdown');
         // TOP DASHBOARD MENU FOR ALL USERS TO ACCESS
         $this->template->hook->attach('template:dashboard:page-header:menu', 'costControl:dashboard/layout');
+        // Reuse Kanboard task hooks for the manager action and status-aware cost detail.
+        $this->template->hook->attach('template:task:dropdown:after-basic-actions', 'costControl:task_cost/action');
+        $this->template->hook->attach('template:task:sidebar:after-basic-actions', 'costControl:task_cost/action');
+        $this->template->hook->attach('template:task:details:third-column', 'costControl:task_cost/details');
 
         // Extra Page - Routes
         //  - Example: $this->route->addRoute('/my/custom/route', 'MyController', 'show', 'PluginNameExampleStudlyCaps');
@@ -54,6 +59,7 @@ class Plugin extends Base
         $this->route->addRoute('/project/:project_id/budget/lines', 'BudgetLineController', 'show', 'CostControl');
         $this->route->addRoute('/project/:project_id/budget/lines/add', 'BudgetLineController', 'create', 'CostControl');
         $this->route->addRoute('/project/:project_id/budget/breakdown', 'BudgetController', 'breakdown', 'CostControl');
+        $this->route->addRoute('/project/:project_id/task/:task_id/static-cost', 'TaskCostController', 'edit', 'CostControl');
         $this->route->addRoute('/user/:user_id/rate', 'HourlyRateController', 'show', 'CostControl');
         $this->route->addRoute('/user/:user_id/rate/add', 'HourlyRateController', 'create', 'CostControl');
         $this->route->addRoute('/user/:user_id/rate/delete/:rate_id', 'HourlyRateController', 'confirm', 'CostControl');
@@ -76,6 +82,7 @@ class Plugin extends Base
         $this->applicationAccessMap->add('CostController', array('showEveryone', 'create', 'save', 'saveWithoutComment', 'editComment', 'saveCommentForm'), Role::APP_USER);
         $this->projectAccessMap->add('BudgetController', '*', Role::PROJECT_MANAGER);
         $this->projectAccessMap->add('BudgetLineController', '*', Role::PROJECT_MANAGER);
+        $this->projectAccessMap->add('TaskCostController', '*', Role::PROJECT_MANAGER);
 
         // Replace Model
         $this->container['currencyModel'] = $this->container->factory(function ($c) {
@@ -97,6 +104,7 @@ class Plugin extends Base
             'Plugin\CostControl\Model' => array(
                 'HourlyRate',
                 'Budget',
+                'TaskCost',
             )
         );
     }

@@ -10,7 +10,17 @@ namespace Kanboard\Plugin\CostControl\Schema;
 
 use PDO;
 
-const VERSION = 3;
+const VERSION = 4;
+
+function version_4(PDO $pdo)
+{
+    // Store one fixed-scale static cost per task and remove it with its parent task.
+    $pdo->exec('CREATE TABLE IF NOT EXISTS cost_control_task_costs (
+        task_id INTEGER NOT NULL PRIMARY KEY,
+        amount NUMERIC(19,6) NOT NULL,
+        FOREIGN KEY(task_id) REFERENCES tasks(id) ON DELETE CASCADE
+    )');
+}
 
 function version_3(PDO $pdo)
 {

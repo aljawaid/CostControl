@@ -4,7 +4,8 @@
  * Verify CostControl navigation icons, theme safety and responsive contracts.
  *
  * Related files: Template/dashboard/layout.php, Template/header/user_dropdown.php,
- * Template/currency/show.php, Assets/css/cost-control.css,
+ * Template/currency/show.php, Template/task_cost/details.php,
+ * Assets/css/cost-control.css,
  * Assets/css/cost-control-icons.css and
  * Assets/icons/currency-wallet-icon.svg.
  */
@@ -15,6 +16,7 @@ $navigationTemplates = array(
     $pluginRoot . '/Template/header/user_dropdown.php',
 );
 $currencyTemplate = file_get_contents($pluginRoot . '/Template/currency/show.php');
+$taskCostTemplate = file_get_contents($pluginRoot . '/Template/task_cost/details.php');
 $stylesheet = file_get_contents($pluginRoot . '/Assets/css/cost-control.css');
 $iconStylesheet = file_get_contents($pluginRoot . '/Assets/css/cost-control-icons.css');
 $walletIcon = file_get_contents($pluginRoot . '/Assets/icons/currency-wallet-icon.svg');
@@ -45,6 +47,17 @@ foreach ($navigationTemplates as $templatePath) {
 
 foreach (
     array(
+        'task-cost-status-',
+        "'pending' : 'confirmed'",
+    ) as $snippet
+) {
+    if (strpos($taskCostTemplate, $snippet) === false) {
+        $failures[] = 'The task cost detail is missing its status contract: ' . $snippet;
+    }
+}
+
+foreach (
+    array(
         'class="currencies-table table-row-hover table-scrolling"',
         'tests/visual_contract.php',
     ) as $snippet
@@ -62,6 +75,8 @@ foreach (
         '@media (max-width: 768px)',
         '@media (max-width: 480px)',
         'border-left: 5px solid transparent;',
+        'var(--alert-color-default, var(--pp-orange))',
+        'var(--alert-color-error, var(--pp-red-alt-2))',
         'tests/visual_contract.php',
     ) as $snippet
 ) {

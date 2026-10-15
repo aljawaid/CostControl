@@ -60,6 +60,10 @@ Use the new Cost Control section to enable currencies and budgeting in Kanboard.
   - Show expenses representing user costs
   - Show budget lines as the provisioned budget
   - Display the remaining budget at any given time
+- **Static Task Costs**
+  - Project managers can record a fixed contractor, invoice or other direct cost against a task
+  - Active task costs are pending and closed task costs are confirmed
+  - The budget overview compares provisioned budget with pending and confirmed static costs
 - **User Hourly Rate** - _Budget plugin imported feature_
   - Each user can have a set hourly rate in `User Profile` &#10562; `Hourly Rate`
   - This feature is used for budget calculation
@@ -112,6 +116,8 @@ Use the new Cost Control section to enable currencies and budgeting in Kanboard.
 
 Go to `Project` &#10562; Budget  
 
+Use a task action to set its static cost. The amount uses the application base currency. Kanboard's open or closed task status controls whether the cost is pending or confirmed; a column name alone does not change the cost status.
+
 Go to `Settings` &#10562; Currency Rates
 
 Go to `Dashboard` &#10562; Cost Control
@@ -155,6 +161,7 @@ Go to `Dashboard` &#10562; Cost Control
   - Database Changes:
     - `01` New database table created as `budget_lines`, using fixed-scale financial values and a project/date lookup index
     - `01` New database table created as `hourly_rates`, using fixed-scale financial values and a user/date lookup index
+    - `01` New database table created as `cost_control_task_costs`, using one fixed-scale static cost per task with automatic deletion when its task is removed
     - `04` New columns added to the `currencies` table as `last_modified`, `comment`, `live_rate`, `live_rate_updated`
     - Existing CostControl budget and hourly-rate records are preserved when their financial columns are upgraded
 

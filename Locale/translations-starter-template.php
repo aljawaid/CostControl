@@ -30,6 +30,13 @@ return array(
     'Budget line removed successfully.' => '',
     'Unable to remove this budget line.' => '',
     //
+    // Controller/TaskCostController.php
+    //
+    'Static task cost saved successfully.' => '',
+    'Unable to save the static task cost.' => '',
+    'Static task cost removed successfully.' => '',
+    'Unable to remove the static task cost.' => '',
+    //
     // Controller/CostController.php
     //
     'Settings' => '',
@@ -191,6 +198,7 @@ return array(
     // Model/HourlyRate.php
     //
     'This value must be numeric' => '',
+    'This value is outside the supported financial range' => '',
     //
     // Template/budget/breakdown.php
     //
@@ -213,6 +221,10 @@ return array(
     'Type' => '',
     'Budget Line' => '',
     'There is not enough data to show something.' => '',
+    'Static Task Cost Overview' => '',
+    'Pending' => '',
+    'Confirmed' => '',
+    'Static costs use the application base currency. Active tasks are pending and closed tasks are confirmed. Hourly subtask labour remains in the budget chart above.' => '',
     //
     // Template/budget/sidebar.php
     //
@@ -318,4 +330,15 @@ return array(
     //
     'New hourly rate' => '',
     'There is no hourly rate defined.' => '',
+    //
+    // Template/task_cost/*.php
+    //
+    'Set static cost' => '',
+    'Static cost:' => '',
+    'Static Task Cost' => '',
+    'The cost uses the base currency %s.' => '',
+    'An active task is pending. A closed task is confirmed, regardless of its column name. Configure Kanboard to close tasks automatically in a completion column if required. Hourly subtask labour remains separate.' => '',
+    'Remove static cost' => '',
+    'Remove Static Task Cost' => '',
+    'This cost will be permanently removed.' => '',
 );

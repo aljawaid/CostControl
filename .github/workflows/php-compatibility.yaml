@@ -98,6 +98,7 @@ jobs:
           php "plugins/$PLUGIN_NAME/tests/maintenance_contract.php"
           php "plugins/$PLUGIN_NAME/tests/live_rate_integration.php" "$PWD"
           php "plugins/$PLUGIN_NAME/tests/financial_model_integration.php" "$PWD"
+          php "plugins/$PLUGIN_NAME/tests/static_task_cost_integration.php" "$PWD"
 
   database-compatibility:
     name: Database migrations

@@ -50,7 +50,7 @@ function resetDatabase(PDO $pdo, $driver)
         $pdo->exec('SET FOREIGN_KEY_CHECKS = 0');
     }
 
-    foreach (array('hourly_rates', 'budget_lines', 'currencies', 'users', 'projects') as $table) {
+    foreach (array('cost_control_task_costs', 'hourly_rates', 'budget_lines', 'tasks', 'currencies', 'users', 'projects') as $table) {
         $suffix = $driver === 'postgres' ? ' CASCADE' : '';
         $pdo->exec('DROP TABLE IF EXISTS ' . $table . $suffix);
     }
@@ -66,18 +66,25 @@ function createCoreTables(PDO $pdo, $driver)
         $pdo->exec('CREATE TABLE projects (id INT NOT NULL PRIMARY KEY) ENGINE=InnoDB');
         $pdo->exec('CREATE TABLE users (id INT NOT NULL PRIMARY KEY) ENGINE=InnoDB');
         $pdo->exec('CREATE TABLE currencies (currency CHAR(3) NOT NULL PRIMARY KEY, rate FLOAT DEFAULT 0) ENGINE=InnoDB');
+        $pdo->exec('CREATE TABLE tasks (id INT NOT NULL PRIMARY KEY, project_id INT NOT NULL, is_active TINYINT NOT NULL DEFAULT 1,
+            FOREIGN KEY(project_id) REFERENCES projects(id) ON DELETE CASCADE) ENGINE=InnoDB');
     } elseif ($driver === 'postgres') {
         $pdo->exec('CREATE TABLE projects (id INTEGER PRIMARY KEY)');
         $pdo->exec('CREATE TABLE users (id INTEGER PRIMARY KEY)');
         $pdo->exec('CREATE TABLE currencies (currency CHAR(3) NOT NULL PRIMARY KEY, rate REAL DEFAULT 0)');
+        $pdo->exec('CREATE TABLE tasks (id INTEGER PRIMARY KEY, project_id INTEGER NOT NULL, is_active BOOLEAN NOT NULL DEFAULT TRUE,
+            FOREIGN KEY(project_id) REFERENCES projects(id) ON DELETE CASCADE)');
     } else {
         $pdo->exec('CREATE TABLE projects (id INTEGER PRIMARY KEY)');
         $pdo->exec('CREATE TABLE users (id INTEGER PRIMARY KEY)');
         $pdo->exec('CREATE TABLE currencies (currency TEXT NOT NULL PRIMARY KEY, rate REAL DEFAULT 0)');
+        $pdo->exec('CREATE TABLE tasks (id INTEGER PRIMARY KEY, project_id INTEGER NOT NULL, is_active INTEGER NOT NULL DEFAULT 1,
+            FOREIGN KEY(project_id) REFERENCES projects(id) ON DELETE CASCADE)');
     }
 
     $pdo->exec('INSERT INTO projects (id) VALUES (1)');
     $pdo->exec('INSERT INTO users (id) VALUES (1)');
+    $pdo->exec('INSERT INTO tasks (id, project_id) VALUES (1, 1)');
     $pdo->exec("INSERT INTO currencies (currency, rate) VALUES ('USD', 1)");
 }
 
@@ -146,14 +153,18 @@ function verifyCurrentSchema(PDO $pdo, $driver, $scenario)
 {
     $amount = getColumnMetadata($pdo, $driver, 'budget_lines', 'amount');
     $rate = getColumnMetadata($pdo, $driver, 'hourly_rates', 'rate');
+    $taskCost = getColumnMetadata($pdo, $driver, 'cost_control_task_costs', 'amount');
     $expectedType = $driver === 'mysql' ? 'decimal' : ($driver === 'postgres' ? 'numeric' : 'NUMERIC(19,6)');
 
     assertMigration($amount !== false && $amount['type'] === $expectedType, $scenario . ': budget amount type is not fixed-scale.');
     assertMigration($rate !== false && $rate['type'] === $expectedType, $scenario . ': hourly rate type is not fixed-scale.');
+    assertMigration($taskCost !== false && $taskCost['type'] === $expectedType, $scenario . ': static task cost type is not fixed-scale.');
     assertMigration((int) $amount['precision_value'] === 19 && (int) $amount['scale_value'] === 6, $scenario . ': budget amount precision is incorrect.');
     assertMigration((int) $rate['precision_value'] === 19 && (int) $rate['scale_value'] === 6, $scenario . ': hourly rate precision is incorrect.');
+    assertMigration((int) $taskCost['precision_value'] === 19 && (int) $taskCost['scale_value'] === 6, $scenario . ': static task cost precision is incorrect.');
     assertMigration($amount['nullable_value'] === 'NO', $scenario . ': budget amount permits null values.');
     assertMigration($rate['nullable_value'] === 'NO', $scenario . ': hourly rate permits null values.');
+    assertMigration($taskCost['nullable_value'] === 'NO', $scenario . ': static task cost permits null values.');
     assertMigration(hasIndex($pdo, $driver, 'cost_control_budget_project_date_idx'), $scenario . ': budget lookup index is missing.');
     assertMigration(hasIndex($pdo, $driver, 'cost_control_hourly_user_date_idx'), $scenario . ': hourly-rate lookup index is missing.');
 }
@@ -176,22 +187,30 @@ try {
         VALUES (11, 1, 12345.123456, '2026-10-15', 'fresh')");
     $pdo->exec("INSERT INTO hourly_rates (id, user_id, rate, date_effective, currency)
         VALUES (12, 1, 98.765432, 1792022400, 'GBP')");
+    $pdo->exec('INSERT INTO cost_control_task_costs (task_id, amount)
+        VALUES (1, 456.123456)');
     assertMigration(number_format((float) $pdo->query('SELECT amount FROM budget_lines WHERE id = 11')->fetchColumn(), 6, '.', '') === '12345.123456', 'Fresh install: budget precision did not round-trip.');
     assertMigration(number_format((float) $pdo->query('SELECT rate FROM hourly_rates WHERE id = 12')->fetchColumn(), 6, '.', '') === '98.765432', 'Fresh install: hourly-rate precision did not round-trip.');
+    assertMigration(number_format((float) $pdo->query('SELECT amount FROM cost_control_task_costs WHERE task_id = 1')->fetchColumn(), 6, '.', '') === '456.123456', 'Fresh install: static task cost precision did not round-trip.');
+    $pdo->exec('DELETE FROM tasks WHERE id = 1');
+    assertMigration((int) $pdo->query('SELECT COUNT(*) FROM cost_control_task_costs')->fetchColumn() === 0, 'Fresh install: static task cost did not cascade with its task.');
 
     resetDatabase($pdo, $driver);
     createCoreTables($pdo, $driver);
-    runSchemaVersions($namespace, 1, $latestVersion - 1, $pdo);
+    // Reproduce an upgrade from the original schema so every historical repair remains exercised.
+    runSchemaVersions($namespace, 1, 1, $pdo);
     $pdo->exec("INSERT INTO budget_lines (id, project_id, amount, date, comment)
         VALUES (41, 1, 12345.123456, '2026-10-14', 'preserve me')");
     $pdo->exec("INSERT INTO hourly_rates (id, user_id, rate, date_effective, currency)
         VALUES (42, 1, 98.765432, 1791936000, 'EUR')");
     $pdo->exec("INSERT INTO hourly_rates (id, user_id, rate, date_effective, currency)
         VALUES (43, 1, NULL, 1792022400, 'GBP')");
-    runSchemaVersions($namespace, $latestVersion, $latestVersion, $pdo);
+    runSchemaVersions($namespace, 2, $latestVersion, $pdo);
     // A failed MySQL DDL transaction can be retried before Kanboard records the new schema version.
     runSchemaVersions($namespace, $latestVersion, $latestVersion, $pdo);
     verifyCurrentSchema($pdo, $driver, 'Upgrade');
+    $pdo->exec('INSERT INTO cost_control_task_costs (task_id, amount)
+        VALUES (1, 321.654321)');
 
     $budget = $pdo->query('SELECT * FROM budget_lines WHERE id = 41')->fetch(PDO::FETCH_ASSOC);
     $hourlyRate = $pdo->query('SELECT * FROM hourly_rates WHERE id = 42')->fetch(PDO::FETCH_ASSOC);
@@ -200,6 +219,7 @@ try {
     assertMigration((int) $hourlyRate['user_id'] === 1 && trim($hourlyRate['currency']) === 'EUR', 'Upgrade: hourly-rate row metadata was not preserved.');
     assertMigration(number_format((float) $hourlyRate['rate'], 6, '.', '') === '98.765432', 'Upgrade: hourly rate was not preserved.');
     assertMigration((float) $pdo->query('SELECT rate FROM hourly_rates WHERE id = 43')->fetchColumn() === 0.0, 'Upgrade: null hourly rate was not repaired.');
+    assertMigration(number_format((float) $pdo->query('SELECT amount FROM cost_control_task_costs WHERE task_id = 1')->fetchColumn(), 6, '.', '') === '321.654321', 'Upgrade: static task cost precision did not round-trip.');
 
     resetDatabase($pdo, $driver);
 } catch (Throwable $exception) {

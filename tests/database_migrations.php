@@ -205,6 +205,19 @@ try {
         VALUES (42, 1, 98.765432, 1791936000, 'EUR')");
     $pdo->exec("INSERT INTO hourly_rates (id, user_id, rate, date_effective, currency)
         VALUES (43, 1, NULL, 1792022400, 'GBP')");
+    // Legacy FLOAT and REAL columns may already have rounded the input; preserve the stored value.
+    $legacyBudgetAmount = number_format(
+        (float) $pdo->query('SELECT amount FROM budget_lines WHERE id = 41')->fetchColumn(),
+        6,
+        '.',
+        ''
+    );
+    $legacyHourlyRate = number_format(
+        (float) $pdo->query('SELECT rate FROM hourly_rates WHERE id = 42')->fetchColumn(),
+        6,
+        '.',
+        ''
+    );
     runSchemaVersions($namespace, 2, $latestVersion, $pdo);
     // A failed MySQL DDL transaction can be retried before Kanboard records the new schema version.
     runSchemaVersions($namespace, $latestVersion, $latestVersion, $pdo);
@@ -215,9 +228,9 @@ try {
     $budget = $pdo->query('SELECT * FROM budget_lines WHERE id = 41')->fetch(PDO::FETCH_ASSOC);
     $hourlyRate = $pdo->query('SELECT * FROM hourly_rates WHERE id = 42')->fetch(PDO::FETCH_ASSOC);
     assertMigration((int) $budget['project_id'] === 1 && $budget['comment'] === 'preserve me' && $budget['date'] === '2026-10-14', 'Upgrade: budget row metadata was not preserved.');
-    assertMigration(number_format((float) $budget['amount'], 6, '.', '') === '12345.123456', 'Upgrade: budget amount was not preserved.');
+    assertMigration(number_format((float) $budget['amount'], 6, '.', '') === $legacyBudgetAmount, 'Upgrade: budget amount was not preserved.');
     assertMigration((int) $hourlyRate['user_id'] === 1 && trim($hourlyRate['currency']) === 'EUR', 'Upgrade: hourly-rate row metadata was not preserved.');
-    assertMigration(number_format((float) $hourlyRate['rate'], 6, '.', '') === '98.765432', 'Upgrade: hourly rate was not preserved.');
+    assertMigration(number_format((float) $hourlyRate['rate'], 6, '.', '') === $legacyHourlyRate, 'Upgrade: hourly rate was not preserved.');
     assertMigration((float) $pdo->query('SELECT rate FROM hourly_rates WHERE id = 43')->fetchColumn() === 0.0, 'Upgrade: null hourly rate was not repaired.');
     assertMigration(number_format((float) $pdo->query('SELECT amount FROM cost_control_task_costs WHERE task_id = 1')->fetchColumn(), 6, '.', '') === '321.654321', 'Upgrade: static task cost precision did not round-trip.');
 

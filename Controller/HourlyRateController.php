@@ -9,6 +9,7 @@ use Kanboard\Controller\BaseController;
  *
  * @package  controller
  * @author   Frederic Guillot
+ * @see tests/financial_integrity.php
  */
 class HourlyRateController extends BaseController
 {
@@ -38,7 +39,10 @@ class HourlyRateController extends BaseController
 
     public function save()
     {
+        $user = $this->getUser();
         $values = $this->request->getValues();
+        // Bind financial records to the authorised route user rather than posted identifiers.
+        $values['user_id'] = $user['id'];
         list($valid, $errors) = $this->hourlyRate->validateCreation($values);
 
         if ($valid) {
@@ -57,9 +61,16 @@ class HourlyRateController extends BaseController
     public function confirm()
     {
         $user = $this->getUser();
+        $rate_id = $this->request->getIntegerParam('rate_id');
+
+        if (empty($this->hourlyRate->getById($rate_id, $user['id']))) {
+            $this->flash->failure(t('Unable to remove this rate.'));
+            $this->response->redirect($this->helper->url->to('HourlyRateController', 'show', array('plugin' => 'CostControl', 'user_id' => $user['id'])), true);
+            return;
+        }
 
         $this->response->html($this->template->render('costControl:hourlyrate/remove', array(
-            'rate_id' => $this->request->getIntegerParam('rate_id'),
+            'rate_id' => $rate_id,
             'user' => $user,
         )));
     }
@@ -69,10 +80,10 @@ class HourlyRateController extends BaseController
         $this->checkCSRFParam();
         $user = $this->getUser();
 
-        if ($this->hourlyRate->remove($this->request->getIntegerParam('rate_id'))) {
+        if ($this->hourlyRate->remove($this->request->getIntegerParam('rate_id'), $user['id'])) {
             $this->flash->success(t('Rate removed successfully.'));
         } else {
-            $this->flash->success(t('Unable to remove this rate.'));
+            $this->flash->failure(t('Unable to remove this rate.'));
         }
 
         $this->response->redirect($this->helper->url->to('HourlyRateController', 'show', array('plugin' => 'CostControl', 'user_id' => $user['id'])), true);

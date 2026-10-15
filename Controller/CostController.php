@@ -11,6 +11,7 @@ use Kanboard\Controller\BaseController;
  * @see tests/security_contract.php
  * @see tests/live_rate_reliability.php
  * @see tests/live_rate_integration.php
+ * @see tests/financial_integrity.php
  */
 
 class CostController extends BaseController
@@ -78,6 +79,11 @@ class CostController extends BaseController
             $errors['currency'][] = t('Invalid currency');
         }
 
+        if ($valid && !$this->isSupportedRate($values['rate'])) {
+            $valid = false;
+            $errors['rate'][] = t('Invalid rate');
+        }
+
         if ($valid && (!isset($values['comment']) || !is_string($values['comment']))) {
             $valid = false;
             $errors['comment'][] = t('Invalid comment');
@@ -108,6 +114,11 @@ class CostController extends BaseController
         if ($valid && !$this->isSupportedCurrency($values['currency'])) {
             $valid = false;
             $errors['currency'][] = t('Invalid currency');
+        }
+
+        if ($valid && !$this->isSupportedRate($values['rate'])) {
+            $valid = false;
+            $errors['rate'][] = t('Invalid rate');
         }
 
         if ($valid) {
@@ -220,5 +231,19 @@ class CostController extends BaseController
     private function isSupportedCurrency($currency)
     {
         return is_string($currency) && array_key_exists($currency, $this->currencyModel->getCurrencies());
+    }
+
+    /**
+     * Accept only finite non-negative rates within the fixed-scale database range.
+     *
+     * @param mixed $rate
+     * @return boolean
+     */
+    private function isSupportedRate($rate)
+    {
+        return is_numeric($rate)
+            && is_finite((float) $rate)
+            && (float) $rate >= 0
+            && (float) $rate <= \Kanboard\Plugin\CostControl\Model\ExtendedCurrencyModel::MAX_FINANCIAL_VALUE;
     }
 }

@@ -14,9 +14,11 @@ use Kanboard\Core\Base;
  * @see tests/security_contract.php
  * @see tests/live_rate_reliability.php
  * @see tests/live_rate_integration.php
+ * @see tests/financial_model_integration.php
  */
 class ExtendedCurrencyModel extends Base
 {
+    public const MAX_FINANCIAL_VALUE = 9999999999999;
     public const LIVE_RATE_API_URL = 'https://open.er-api.com/v6/latest/';
     public const LIVE_RATE_UPDATE_GRACE = 60;
     public const LIVE_RATE_FAILURE_RETRY = 900;
@@ -227,7 +229,7 @@ class ExtendedCurrencyModel extends Base
             $rates = $rates === null ? $this->db->hashtable(self::TABLE)->getAll('currency', 'rate') : $rates;
             $rate = isset($rates[$currency]) ? $rates[$currency] : 1;
 
-            return $rate * $price;
+            return round((float) $rate * (float) $price, 6);
         }
 
         return $price;
@@ -247,7 +249,11 @@ class ExtendedCurrencyModel extends Base
             return $this->updateWithLive($currency, $live_rate, $live_rate_updated);
         }
 
-        return $this->db->table(self::TABLE)->insert(array('currency' => $currency, 'live_rate' => $live_rate, 'live_rate_updated' => $live_rate_updated));
+        return $this->db->table(self::TABLE)->insert(array(
+            'currency' => $currency,
+            'live_rate' => $this->normalizeFinancialValue($live_rate),
+            'live_rate_updated' => $live_rate_updated,
+        ));
     }
 
     /**
@@ -264,7 +270,12 @@ class ExtendedCurrencyModel extends Base
             return $this->update($currency, $rate, $comment);
         }
 
-        return $this->db->table(self::TABLE)->insert(array('currency' => $currency, 'rate' => $rate, 'last_modified' => time(), 'comment' => $comment));
+        return $this->db->table(self::TABLE)->insert(array(
+            'currency' => $currency,
+            'rate' => $this->normalizeFinancialValue($rate),
+            'last_modified' => time(),
+            'comment' => $comment,
+        ));
     }
 
     /**
@@ -281,7 +292,11 @@ class ExtendedCurrencyModel extends Base
             return $this->updateWithoutComment($currency, $rate);
         }
 
-        return $this->db->table(self::TABLE)->insert(array('currency' => $currency, 'rate' => $rate, 'last_modified' => time()));
+        return $this->db->table(self::TABLE)->insert(array(
+            'currency' => $currency,
+            'rate' => $this->normalizeFinancialValue($rate),
+            'last_modified' => time(),
+        ));
     }
 
     /**
@@ -294,7 +309,11 @@ class ExtendedCurrencyModel extends Base
      */
     public function update($currency, $rate, $comment)
     {
-        return $this->db->table(self::TABLE)->eq('currency', $currency)->update(array('rate' => $rate, 'last_modified' => time(), 'comment' => $comment));
+        return $this->db->table(self::TABLE)->eq('currency', $currency)->update(array(
+            'rate' => $this->normalizeFinancialValue($rate),
+            'last_modified' => time(),
+            'comment' => $comment,
+        ));
     }
 
     /**
@@ -307,7 +326,10 @@ class ExtendedCurrencyModel extends Base
      */
     public function updateWithoutComment($currency, $rate)
     {
-        return $this->db->table(self::TABLE)->eq('currency', $currency)->update(array('rate' => $rate, 'last_modified' => time()));
+        return $this->db->table(self::TABLE)->eq('currency', $currency)->update(array(
+            'rate' => $this->normalizeFinancialValue($rate),
+            'last_modified' => time(),
+        ));
     }
 
     /**
@@ -320,7 +342,10 @@ class ExtendedCurrencyModel extends Base
      */
     public function updateWithLive($currency, $live_rate, $live_rate_updated)
     {
-        return $this->db->table(self::TABLE)->eq('currency', $currency)->update(array('live_rate' => $live_rate, 'live_rate_updated' => $live_rate_updated));
+        return $this->db->table(self::TABLE)->eq('currency', $currency)->update(array(
+            'live_rate' => $this->normalizeFinancialValue($live_rate),
+            'live_rate_updated' => $live_rate_updated,
+        ));
     }
 
     /**
@@ -369,12 +394,14 @@ class ExtendedCurrencyModel extends Base
         }
 
         // Reserve a short retry window before the request to prevent bursts from concurrent page loads.
-        if (! $this->configModel->save(
-            array(
-                'cost_control_last_checked_live_rates' => $checkedAt,
-                'cost_control_next_live_rate_attempt' => $checkedAt + self::LIVE_RATE_FAILURE_RETRY,
+        if (
+            !$this->configModel->save(
+                array(
+                    'cost_control_last_checked_live_rates' => $checkedAt,
+                    'cost_control_next_live_rate_attempt' => $checkedAt + self::LIVE_RATE_FAILURE_RETRY,
+                )
             )
-        )) {
+        ) {
             $this->logger->warning('CostControl: unable to record the live-rate refresh attempt.');
             return false;
         }
@@ -399,13 +426,15 @@ class ExtendedCurrencyModel extends Base
             return false;
         }
 
-        if (! $this->configModel->save(
-            array(
-                'cost_control_last_updated' => $updatedAt,
-                'cost_control_next_update' => $nextUpdate,
-                'cost_control_next_live_rate_attempt' => $nextUpdate + self::LIVE_RATE_UPDATE_GRACE,
+        if (
+            !$this->configModel->save(
+                array(
+                    'cost_control_last_updated' => $updatedAt,
+                    'cost_control_next_update' => $nextUpdate,
+                    'cost_control_next_live_rate_attempt' => $nextUpdate + self::LIVE_RATE_UPDATE_GRACE,
+                )
             )
-        )) {
+        ) {
             $this->logger->warning('CostControl: live rates were stored but their update metadata could not be saved.');
             return false;
         }
@@ -438,7 +467,13 @@ class ExtendedCurrencyModel extends Base
         }
 
         foreach ($payload['rates'] as $currency => $rate) {
-            if (!is_string($currency) || !is_numeric($rate) || !is_finite((float) $rate) || (float) $rate <= 0) {
+            if (
+                !is_string($currency)
+                || !is_numeric($rate)
+                || !is_finite((float) $rate)
+                || (float) $rate <= 0
+                || (float) $rate > self::MAX_FINANCIAL_VALUE
+            ) {
                 return false;
             }
         }
@@ -474,6 +509,17 @@ class ExtendedCurrencyModel extends Base
         $this->db->closeTransaction();
 
         return true;
+    }
+
+    /**
+     * Normalise financial input to the database scale.
+     *
+     * @param mixed $value
+     * @return string
+     */
+    private function normalizeFinancialValue($value)
+    {
+        return number_format(round((float) $value, 6), 6, '.', '');
     }
 
     /**

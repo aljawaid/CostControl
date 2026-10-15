@@ -18,9 +18,13 @@ use Kanboard\Model\SubtaskModel;
  * @package  model
  * @author   Frederic Guillot
  * @see tests/security_contract.php
+ * @see tests/financial_integrity.php
+ * @see tests/financial_model_integration.php
  */
 class Budget extends Base
 {
+    public const MAX_FINANCIAL_VALUE = 9999999999999;
+
     /**
      * SQL table name
      *
@@ -65,7 +69,7 @@ class Budget extends Base
     public function getTotal($project_id)
     {
         $result = $this->db->table(self::TABLE)->columns('SUM(amount) as total')->eq('project_id', $project_id)->findOne();
-        return isset($result['total']) ? (float) $result['total'] : 0;
+        return isset($result['total']) ? round((float) $result['total'], 6) : 0.0;
     }
 
     /**
@@ -109,8 +113,18 @@ class Budget extends Base
     public function getDailyBudgetBreakdown($project_id)
     {
         $out = array();
-        $in = $this->db->hashtable(self::TABLE)->eq('project_id', $project_id)->gt('amount', 0)->asc('date')->getAll('date', 'amount');
+        $in = array();
+        $budgetLines = $this->db->table(self::TABLE)->eq('project_id', $project_id)->asc('date')->findAll();
         $time_slots = $this->getSubtaskBreakdown($project_id)->findAll();
+
+        foreach ($budgetLines as $line) {
+            if (!isset($in[$line['date']])) {
+                $in[$line['date']] = 0.0;
+            }
+
+            // Multiple adjustments on one day must be accumulated without dropping fractional values.
+            $in[$line['date']] = round($in[$line['date']] + (float) $line['amount'], 6);
+        }
 
         foreach ($time_slots as $slot) {
             $date = date('Y-m-d', $slot['start']);
@@ -119,27 +133,26 @@ class Budget extends Base
                 $out[$date] = 0;
             }
 
-            $out[$date] += $slot['cost'];
+            $out[$date] = round($out[$date] + (float) $slot['cost'], 6);
         }
 
         $start = key($in) ?: key($out);
         $end = new DateTime();
-        $left = 0;
+        $left = 0.0;
         $serie = array();
 
         for ($today = new DateTime($start); $today <= $end; $today->add(new DateInterval('P1D'))) {
             $date = $today->format('Y-m-d');
-            $today_in = isset($in[$date]) ? (int) $in[$date] : 0;
-            $today_out = isset($out[$date]) ? (int) $out[$date] : 0;
+            $today_in = isset($in[$date]) ? (float) $in[$date] : 0.0;
+            $today_out = isset($out[$date]) ? (float) $out[$date] : 0.0;
 
-            if ($today_in > 0 || $today_out > 0) {
-                $left += $today_in;
-                $left -= $today_out;
+            if ($today_in != 0.0 || $today_out != 0.0) {
+                $left = round($left + $today_in - $today_out, 6);
 
                 $serie[] = array(
                     'date' => $date,
-                    'in' => $today_in,
-                    'out' => -$today_out,
+                    'in' => round($today_in, 6),
+                    'out' => round(-$today_out, 6),
                     'left' => $left,
                 );
             }
@@ -157,6 +170,10 @@ class Budget extends Base
      */
     public function applyUserRate(array $records)
     {
+        if (empty($records)) {
+            return array();
+        }
+
         $rates = $this->hourlyRate->getAllByProject($records[0]['project_id']);
 
         foreach ($records as &$record) {
@@ -169,7 +186,7 @@ class Budget extends Base
                 }
             }
 
-            $record['cost'] = $hourly_price * $record['time_spent'];
+            $record['cost'] = round((float) $hourly_price * (float) $record['time_spent'], 6);
         }
 
         return $records;
@@ -189,7 +206,7 @@ class Budget extends Base
     {
         $values = array(
             'project_id' => $project_id,
-            'amount' => $amount,
+            'amount' => $this->normalizeFinancialValue($amount),
             'comment' => $comment,
             'date' => $date ?: date('Y-m-d'),
         );
@@ -225,11 +242,26 @@ class Budget extends Base
         $v = new Validator($values, array(
             new Validators\Required('project_id', t('Field required')),
             new Validators\Required('amount', t('Field required')),
+            new Validators\Numeric('amount', t('This value must be numeric')),
+            new Validators\Range('amount', t('This value is outside the supported financial range'), -self::MAX_FINANCIAL_VALUE, self::MAX_FINANCIAL_VALUE),
+            new Validators\Required('date', t('Field required')),
+            new Validators\Date('date', t('Invalid date'), $this->dateParser->getParserFormats()),
         ));
 
         return array(
             $v->execute(),
             $v->getErrors()
         );
+    }
+
+    /**
+     * Normalise financial input to the database scale.
+     *
+     * @param mixed $value
+     * @return string
+     */
+    private function normalizeFinancialValue($value)
+    {
+        return number_format(round((float) $value, 6), 6, '.', '');
     }
 }

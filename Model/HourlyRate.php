@@ -11,9 +11,13 @@ use SimpleValidator\Validators;
  *
  * @package  model
  * @author   Frederic Guillot
+ * @see tests/financial_integrity.php
+ * @see tests/financial_model_integration.php
  */
 class HourlyRate extends Base
 {
+    public const MAX_FINANCIAL_VALUE = 9999999999999;
+
     /**
      * SQL table name
      *
@@ -52,6 +56,18 @@ class HourlyRate extends Base
     }
 
     /**
+     * Get one hourly rate only when it belongs to the authorised user.
+     *
+     * @param integer $rate_id
+     * @param integer $user_id
+     * @return array
+     */
+    public function getById($rate_id, $user_id)
+    {
+        return $this->db->table(self::TABLE)->eq('id', $rate_id)->eq('user_id', $user_id)->findOne();
+    }
+
+    /**
      * Get current rate for a given user
      *
      * @access public
@@ -60,7 +76,7 @@ class HourlyRate extends Base
      */
     public function getCurrentRate($user_id)
     {
-        return $this->db->table(self::TABLE)->eq('user_id', $user_id)->desc('date_effective')->findOneColumn('rate') ?: 0;
+        return (float) ($this->db->table(self::TABLE)->eq('user_id', $user_id)->desc('date_effective')->findOneColumn('rate') ?: 0);
     }
 
     /**
@@ -77,7 +93,7 @@ class HourlyRate extends Base
     {
         $values = array(
             'user_id' => $user_id,
-            'rate' => $rate,
+            'rate' => $this->normalizeFinancialValue($rate),
             'currency' => $currency,
             'date_effective' => $this->dateParser->removeTimeFromTimestamp($this->dateParser->getTimestamp($date)),
         );
@@ -90,11 +106,12 @@ class HourlyRate extends Base
      *
      * @access public
      * @param  integer    $rate_id
+     * @param  integer    $user_id
      * @return boolean
      */
-    public function remove($rate_id)
+    public function remove($rate_id, $user_id)
     {
-        return $this->db->table(self::TABLE)->eq('id', $rate_id)->remove();
+        return $this->db->table(self::TABLE)->eq('id', $rate_id)->eq('user_id', $user_id)->remove();
     }
 
     /**
@@ -110,13 +127,34 @@ class HourlyRate extends Base
             new Validators\Required('user_id', t('Field required')),
             new Validators\Required('rate', t('Field required')),
             new Validators\Numeric('rate', t('This value must be numeric')),
+            new Validators\Range('rate', t('This value is outside the supported financial range'), 0, self::MAX_FINANCIAL_VALUE),
             new Validators\Required('date_effective', t('Field required')),
+            new Validators\Date('date_effective', t('Invalid date'), $this->dateParser->getParserFormats()),
             new Validators\Required('currency', t('Field required')),
         ));
 
+        $valid = $v->execute();
+        $errors = $v->getErrors();
+
+        if ($valid && !array_key_exists($values['currency'], $this->currencyModel->getCurrencies())) {
+            $valid = false;
+            $errors['currency'][] = t('Invalid currency');
+        }
+
         return array(
-            $v->execute(),
-            $v->getErrors()
+            $valid,
+            $errors
         );
+    }
+
+    /**
+     * Normalise financial input to the database scale.
+     *
+     * @param mixed $value
+     * @return string
+     */
+    private function normalizeFinancialValue($value)
+    {
+        return number_format(round((float) $value, 6), 6, '.', '');
     }
 }

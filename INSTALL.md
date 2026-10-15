@@ -17,6 +17,13 @@
 
 _Note: The `/plugins` folder is case-sensitive._
 
+## Database upgrade safety
+
+- Back up the Kanboard database before installing or upgrading CostControl.
+- Kanboard runs the CostControl schema migrations during plugin installation and upgrades.
+- The financial precision migration preserves existing budget-line and hourly-rate records, including their identifiers.
+- To roll back after a failed migration, restore the database backup and the previous CostControl plugin files together.
+
 ## Daily live-rate refresh
 
 Schedule the following command once per day, after Kanboard's normal `cronjob` command:

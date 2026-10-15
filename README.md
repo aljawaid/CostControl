@@ -150,9 +150,10 @@ Go to `Dashboard` &#10562; Cost Control
 - **Core Files & Templates**
   - `03` Template overrides
   - Database Changes:
-    - `01` New database table created as `budget_lines`
-    - `01` New database table created as `hourly_rates`
+    - `01` New database table created as `budget_lines`, using fixed-scale financial values and a project/date lookup index
+    - `01` New database table created as `hourly_rates`, using fixed-scale financial values and a user/date lookup index
     - `04` New columns added to the `currencies` table as `last_modified`, `comment`, `live_rate`, `live_rate_updated`
+    - Existing CostControl budget and hourly-rate records are preserved when their financial columns are upgraded
 
 </details>
 <details>

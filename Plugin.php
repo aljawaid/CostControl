@@ -7,15 +7,13 @@ use Kanboard\Core\Translator;
 use Kanboard\Core\Security\Role;
 use Kanboard\Plugin\CostControl\Model\ExtendedCurrencyModel;
 use Kanboard\Plugin\CostControl\Console\RefreshLiveRatesCommand;
-use Kanboard\Model\CurrencyModel;
 use Kanboard\Plugin\CostControl\Helper\CostControlLayoutHelper;
-use Kanboard\Helper;
 
 /**
  * Register CostControl routes, helpers and access boundaries.
  *
- * Related tests: tests/security_contract.php, tests/live_rate_reliability.php
- * and tests/live_rate_integration.php.
+ * Related tests: tests/security_contract.php, tests/live_rate_reliability.php,
+ * tests/live_rate_integration.php and tests/maintenance_contract.php.
  */
 class Plugin extends Base
 {
@@ -29,7 +27,7 @@ class Plugin extends Base
         // JS - Asset Hook
         //  - Keep filename lowercase
         $this->hook->on('template:layout:js', array('template' => 'plugins/CostControl/Assets/js/cost-control.js'));
-        if (!file_exists('plugins/PluginManager')) {
+        if (!is_dir(PLUGINS_DIR . DIRECTORY_SEPARATOR . 'PluginManager')) {
             $this->hook->on('template:layout:js', array('template' => 'plugins/CostControl/Assets/js/cost-control-top-btn.js'));
         }
 
@@ -70,7 +68,7 @@ class Plugin extends Base
         // Helper
         //  - Example: $this->helper->register('helperClassNameCamelCase', '\Kanboard\Plugin\PluginNameExampleStudlyCaps\Helper\HelperNameExampleStudlyCaps');
         //  - Add each Helper in the 'use' section at the top of this file
-        $this->helper->register('costControlLayoutHelper', '\Kanboard\Plugin\CostControl\Helper\CostControlLayoutHelper');
+        $this->helper->register('costControlLayoutHelper', CostControlLayoutHelper::class);
 
         $this->applicationAccessMap->add('HourlyRateController', '*', Role::APP_ADMIN);
         // Default CostController actions to administrators, then preserve documented user rate/comment actions.
@@ -81,7 +79,7 @@ class Plugin extends Base
 
         // Replace Model
         $this->container['currencyModel'] = $this->container->factory(function ($c) {
-                return new ExtendedCurrencyModel($c);
+            return new ExtendedCurrencyModel($c);
         });
 
         // Register a scheduler-safe refresh command instead of contacting the provider during web bootstrap.
@@ -127,9 +125,7 @@ class Plugin extends Base
 
     public function getCompatibleVersion()
     {
-        // Examples: '>=1.0.37' '<1.0.37' '<=1.0.37'
-        // Tested on KB v1.2.20 upto plugin v1.1.0, then KB v1.2.32+
-        return '>=1.2.20';
+        return '>=1.2.54';
     }
 
     public function getPluginHomepage()

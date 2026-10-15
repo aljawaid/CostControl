@@ -1,37 +1,33 @@
 // KANBOARD PLUGIN ASSET FILE
+// Filters currency rows without jQuery. Related coverage: tests/maintenance_contract.php.
 
-// FILTER CURRENCY LIST TABLE http://jsfiddle.net/7BUmG/2/
-$(document).ready(function(){
-    var $rows = $('#CurrenciesTable tr.rate-results');
-    $('#CurrencyCodeSearch').keyup(function() {
-        var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
-
-        $rows.show().filter(function() {
-            var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
-            return !~text.indexOf(val);
-        }).hide();
-    });
-});
-
-// PREVENTS ENTER KEY FROM BEING USED FOR THIS FORM
-$(document).ready(function() {
-    $("#CurrencyCodeSearch").on("keypress", function (event) {
-        //console.log("Enter key pressed on input field inside form");
-        var keyPressed = event.keyCode || event.which;
-        if (keyPressed === 13) {
-            alert("The enter key is ignored as it is not required in this filter");
-            event.preventDefault();
-            return false;
-        }
-    });
-});
-
-// SELECT INPUT ON MOUSOVER
-$(document).ready(function() {
+document.addEventListener("DOMContentLoaded", () => {
     const input = document.getElementById("CurrencyCodeSearch");
-    if (input !== null) {
-        input.addEventListener('mouseover', () => {
-            input.select();
-        })
+    const table = document.getElementById("CurrenciesTable");
+
+    if (input === null || table === null) {
+        return;
     }
+
+    const rows = table.querySelectorAll("tr.rate-results");
+
+    input.addEventListener("input", () => {
+        const value = input.value.trim().replace(/ +/g, " ").toLowerCase();
+
+        rows.forEach((row) => {
+            const text = row.textContent.replace(/\s+/g, " ").toLowerCase();
+            row.hidden = !text.includes(value);
+        });
+    });
+
+    if (input.form !== null) {
+        input.form.addEventListener("submit", (event) => {
+            event.preventDefault();
+            window.alert("The enter key is ignored as it is not required in this filter");
+        });
+    }
+
+    input.addEventListener("mouseenter", () => {
+        input.select();
+    });
 });

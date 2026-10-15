@@ -1,32 +1,33 @@
+<!-- Related maintenance coverage: tests/maintenance_contract.php. -->
 <h1 name="user-content-readme-top">CostControl</h1>
 <p align="center">
-    <a href="https://github.com/aljawaid/CostControl/releases">
+    <a rel="noopener noreferrer" href="https://github.com/aljawaid/CostControl/releases">
         <img src="https://img.shields.io/github/v/release/aljawaid/CostControl?style=for-the-badge&color=brightgreen" alt="GitHub Latest Release (by date)" title="GitHub Latest Release (by date)">
     </a>
-    <a href="https://github.com/aljawaid/CostControl/releases">
+    <a rel="noopener noreferrer" href="https://github.com/aljawaid/CostControl/releases">
         <img src="https://img.shields.io/github/downloads/aljawaid/CostControl/total?style=for-the-badge&color=orange" alt="GitHub All Releases" title="GitHub All Downloads">
     </a>
-    <a href="https://github.com/aljawaid/CostControl/releases">
+    <a rel="noopener noreferrer" href="https://github.com/aljawaid/CostControl/releases">
         <img src="https://img.shields.io/github/directory-file-count/aljawaid/CostControl?style=for-the-badge&color=orange" alt="GitHub Repository File Count" title="GitHub Repository File Count">
     </a>
-    <a href="https://github.com/aljawaid/CostControl/releases">
+    <a rel="noopener noreferrer" href="https://github.com/aljawaid/CostControl/releases">
         <img src="https://img.shields.io/github/repo-size/aljawaid/CostControl?style=for-the-badge&color=orange" alt="GitHub Repository Size" title="GitHub Repository Size">
     </a>
-    <a href="https://github.com/aljawaid/CostControl/releases">
+    <a rel="noopener noreferrer" href="https://github.com/aljawaid/CostControl/releases">
         <img src="https://img.shields.io/github/languages/code-size/aljawaid/CostControl?style=for-the-badge&color=orange" alt="GitHub Code Size" title="GitHub Code Size">
     </a>
 </p>
 <p align="center">
-    <a href="https://github.com/aljawaid/CostControl/discussions">
+    <a rel="noopener noreferrer" href="https://github.com/aljawaid/CostControl/discussions">
         <img src="https://img.shields.io/github/discussions/aljawaid/CostControl?style=for-the-badge&color=blue" alt="GitHub Discussions" title="Read Discussions">
     </a>
-    <a href="https://github.com/aljawaid/CostControl/compare">
+    <a rel="noopener noreferrer" href="https://github.com/aljawaid/CostControl/compare">
         <img src="https://img.shields.io/github/commits-since/aljawaid/CostControl/latest?include_prereleases&style=for-the-badge&color=blue" alt="GitHub Commits Since Last Release" title="GitHub Commits Since Last Release">
     </a>
-    <a href="https://github.com/aljawaid/CostControl/compare">
+    <a rel="noopener noreferrer" href="https://github.com/aljawaid/CostControl/compare">
         <img src="https://img.shields.io/github/commit-activity/m/aljawaid/CostControl?style=for-the-badge&color=blue" alt="GitHub Commit Monthly Activity" title="GitHub Commit Monthly Activity">
     </a>
-    <a href="https://github.com/kanboard/kanboard" title="Kanboard - Kanban Project Management Software">
+    <a rel="noopener noreferrer" href="https://github.com/kanboard/kanboard" title="Kanboard - Kanban Project Management Software">
         <img src="https://img.shields.io/badge/Plugin%20for-kanboard-D40000?style=for-the-badge&labelColor=000000" alt="Kanboard">
     </a>
 </p>
@@ -120,10 +121,10 @@ Go to `Dashboard` &#10562; Cost Control
 ## Installation & Compatibility
 
 <p align="left">
-    <a href="https://github.com/aljawaid/CostControl/actions/workflows/linter.yml">
+    <a rel="noopener noreferrer" href="https://github.com/aljawaid/CostControl/actions/workflows/linter.yml">
         <img src="https://github.com/aljawaid/CostControl/actions/workflows/linter.yml/badge.svg?branch=master&event=push" alt="Code Scanning" title="View Test">
     </a>
-    <a href="https://github.com/aljawaid/CostControl/actions/workflows/php-compatibility.yaml">
+    <a rel="noopener noreferrer" href="https://github.com/aljawaid/CostControl/actions/workflows/php-compatibility.yaml">
         <img src="https://github.com/aljawaid/CostControl/actions/workflows/php-compatibility.yaml/badge.svg?branch=master&event=push" alt="PHP Compatibility Test" title="View Test">
     </a>
 </p>
@@ -138,7 +139,9 @@ Go to `Dashboard` &#10562; Cost Control
 <details>
     <summary><strong>Compatibility</strong></summary>
 
-- Requires [Kanboard](https://github.com/kanboard/kanboard "Kanboard - Kanban Project Management Software") ≥`1.2.20`
+- Requires [Kanboard](https://github.com/kanboard/kanboard "Kanboard - Kanban Project Management Software") ≥`1.2.54`
+- Tested with PHP `8.2`–`8.5`
+- SQLite, MySQL `8.4` and PostgreSQL `18` have dedicated compatibility tests
 - **Other Plugins & Action Plugins**
   - Compatible with [URLCleaner](https://github.com/aljawaid/URLCleaner), [PluginManager](https://github.com/aljawaid/PluginManager)
   - **Migrating data from the [Budget](https://github.com/kanboard/plugin-budget) plugin**
@@ -169,6 +172,7 @@ Go to `Dashboard` &#10562; Cost Control
 
 - [@aljawaid](https://github.com/aljawaid) - Author
 - [Craig Crosby](https://github.com/creecros) - Contributor
+- [Chaosmeister](https://github.com/chaosmeister) - Contributor
 - [Frédéric Guillot](https://github.com/kanboard/plugin-budget) - Author (imported features from the Budget plugin)
 - _Contributors welcome_
 
@@ -181,25 +185,25 @@ Go to `Dashboard` &#10562; Cost Control
 ---
 
 <p align="center">
-    <a href="https://github.com/aljawaid/CostControl/stargazers" title="View Stargazers">
+    <a rel="noopener noreferrer" href="https://github.com/aljawaid/CostControl/stargazers" title="View Stargazers">
         <img src="https://img.shields.io/github/stars/aljawaid/CostControl?logo=github&style=flat-square" alt="CostControl">
     </a>
-    <a href="https://github.com/aljawaid/CostControl/forks" title="See Forks">
+    <a rel="noopener noreferrer" href="https://github.com/aljawaid/CostControl/forks" title="See Forks">
         <img src="https://img.shields.io/github/forks/aljawaid/CostControl?logo=github&style=flat-square" alt="CostControl">
     </a>
-    <a href="https://github.com/aljawaid/CostControl/blob/master/LICENSE" title="Read License">
+    <a rel="noopener noreferrer" href="https://github.com/aljawaid/CostControl/blob/master/LICENSE" title="Read License">
         <img src="https://img.shields.io/github/license/aljawaid/CostControl?style=flat-square" alt="CostControl">
     </a>
-    <a href="https://github.com/aljawaid/CostControl/issues" title="Open Issues">
+    <a rel="noopener noreferrer" href="https://github.com/aljawaid/CostControl/issues" title="Open Issues">
         <img src="https://img.shields.io/github/issues-raw/aljawaid/CostControl?style=flat-square" alt="CostControl">
     </a>
-    <a href="https://github.com/aljawaid/CostControl/issues?q=is%3Aissue+is%3Aclosed" title="Closed Issues">
+    <a rel="noopener noreferrer" href="https://github.com/aljawaid/CostControl/issues?q=is%3Aissue+is%3Aclosed" title="Closed Issues">
         <img src="https://img.shields.io/github/issues-closed/aljawaid/CostControl?style=flat-square" alt="CostControl">
     </a>
-    <a href="https://github.com/aljawaid/CostControl/discussions" title="Read Discussions">
+    <a rel="noopener noreferrer" href="https://github.com/aljawaid/CostControl/discussions" title="Read Discussions">
         <img src="https://img.shields.io/github/discussions/aljawaid/CostControl?style=flat-square" alt="CostControl">
     </a>
-    <a href="https://github.com/aljawaid/CostControl/compare/" title="Latest Commits">
+    <a rel="noopener noreferrer" href="https://github.com/aljawaid/CostControl/compare/" title="Latest Commits">
         <img alt="GitHub commits since latest release (by date)" src="https://img.shields.io/github/commits-since/aljawaid/CostControl/latest?style=flat-square">
     </a>
 </p>

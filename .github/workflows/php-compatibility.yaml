@@ -1,3 +1,4 @@
+---
 name: PHP Compatibility
 
 on:
@@ -94,6 +95,7 @@ jobs:
           php "plugins/$PLUGIN_NAME/tests/live_rate_reliability.php"
           php "plugins/$PLUGIN_NAME/tests/financial_integrity.php"
           php "plugins/$PLUGIN_NAME/tests/visual_contract.php"
+          php "plugins/$PLUGIN_NAME/tests/maintenance_contract.php"
           php "plugins/$PLUGIN_NAME/tests/live_rate_integration.php" "$PWD"
           php "plugins/$PLUGIN_NAME/tests/financial_model_integration.php" "$PWD"
 

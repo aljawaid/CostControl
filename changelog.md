@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+
+- Enforce administrator and project-manager write boundaries with complete CSRF validation.
+- Preserve the last good currency rates when scheduled provider updates fail validation.
+- Preserve fixed-scale budget and hourly-rate values across SQLite, MySQL and PostgreSQL upgrades.
+- Restore the Cost Control wallet icon and responsive currency layouts (#10).
+- Modernise browser interactions and continuous-integration checks for Kanboard 1.2.54 and PHP 8.2–8.5.
+- Preserve and clarify original author and contributor acknowledgements.
+
 ## v1.2
 
 _(most recent changes are listed on top):_

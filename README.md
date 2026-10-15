@@ -65,6 +65,7 @@ Use the new Cost Control section to enable currencies and budgeting in Kanboard.
   - Each hourly rate shows an effective date with different currencies
 - **Live Currency Rates**
   - Live updated currency rates are retrieved daily from [ExchangeRate-API](https://www.exchangerate-api.com)
+  - `XBT` remains available for manual rates because the live-rate provider does not publish that code
   - Show the last updated time when each currency was updated (except for currencies with a rate of `1.0`)
   - Show an alert notification to inform the user of the next update
 - **Manual Currency Rates**

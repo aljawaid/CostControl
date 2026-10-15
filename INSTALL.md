@@ -12,10 +12,20 @@
   - Download the `.zip` file and decompress everything under the directory `/plugins`
   - The folder inside the `.zip` must not contain any branch names and must be exact case (matching the plugin name)
 
-_Note: The `/plugins` folder is case-sensitive._
-
 - **Install using Git CLI**
   - `git clone` (_or ftp upload_) and extract the `.zip` file into this folder: `.\plugins\` (must be exact case)
+
+_Note: The `/plugins` folder is case-sensitive._
+
+## Daily live-rate refresh
+
+Schedule the following command once per day, after Kanboard's normal `cronjob` command:
+
+```shell
+5 8 * * * cd /path/to/kanboard && ./cli cost-control:refresh-rates >/dev/null 2>&1
+```
+
+The command observes the provider's next-update time and keeps the last good rates if the provider is unavailable or returns invalid data. Administrators can run `./cli cost-control:refresh-rates --force` for a controlled immediate refresh. If no scheduler is configured, CostControl performs the same guarded refresh when the currency rates page is opened.
 
 ---
 

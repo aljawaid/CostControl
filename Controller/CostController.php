@@ -9,6 +9,8 @@ use Kanboard\Controller\BaseController;
  * Class CostController
  * @author @aljawaid
  * @see tests/security_contract.php
+ * @see tests/live_rate_reliability.php
+ * @see tests/live_rate_integration.php
  */
 
 class CostController extends BaseController
@@ -20,6 +22,9 @@ class CostController extends BaseController
      */
     public function show()
     {
+        // Keep the rates page useful when the recommended scheduled command has not run.
+        $this->currencyModel->refreshLiveRatesIfDue();
+
         $this->response->html($this->helper->layout->config('costControl:currency/show', array(
             'application_currency' => $this->configModel->get('application_currency'),
             'rates'                => $this->currencyModel->getAll(),
@@ -30,6 +35,9 @@ class CostController extends BaseController
 
     public function showEveryone()
     {
+        // Keep the rates page useful when the recommended scheduled command has not run.
+        $this->currencyModel->refreshLiveRatesIfDue();
+
         $this->response->html($this->helper->costControlLayoutHelper->customLayout('costControl:currency/show', array(
             'application_currency' => $this->configModel->get('application_currency'),
             'rates'                => $this->currencyModel->getAll(),

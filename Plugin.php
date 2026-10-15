@@ -6,6 +6,7 @@ use Kanboard\Core\Plugin\Base;
 use Kanboard\Core\Translator;
 use Kanboard\Core\Security\Role;
 use Kanboard\Plugin\CostControl\Model\ExtendedCurrencyModel;
+use Kanboard\Plugin\CostControl\Console\RefreshLiveRatesCommand;
 use Kanboard\Model\CurrencyModel;
 use Kanboard\Plugin\CostControl\Helper\CostControlLayoutHelper;
 use Kanboard\Helper;
@@ -13,7 +14,8 @@ use Kanboard\Helper;
 /**
  * Register CostControl routes, helpers and access boundaries.
  *
- * Related test: tests/security_contract.php.
+ * Related tests: tests/security_contract.php, tests/live_rate_reliability.php
+ * and tests/live_rate_integration.php.
  */
 class Plugin extends Base
 {
@@ -82,13 +84,8 @@ class Plugin extends Base
                 return new ExtendedCurrencyModel($c);
         });
 
-        // CHECK FOR LIVE RATES ONE MIN AFTER NEXT SCHEDULED UPDATE FROM THE JSON
-        if (time() - $this->configModel->get('cost_control_next_update', time() - 61) > 60) {
-            // SAVE DATE WHEN CHECKED
-            $this->configModel->save(['cost_control_last_checked_live_rates' => time()]);
-            // CHECK JSON API
-            $this->currencyModel->getLiveRates();
-        }
+        // Register a scheduler-safe refresh command instead of contacting the provider during web bootstrap.
+        $this->cli->add(new RefreshLiveRatesCommand($this->container));
     }
 
     public function onStartup()

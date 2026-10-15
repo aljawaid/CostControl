@@ -1,12 +1,16 @@
 <?php
 
-// Related security coverage: tests/security_contract.php.
+// Related coverage: tests/security_contract.php and tests/live_rate_reliability.php.
+
+$lastChecked = (int) $this->model->configModel->getOption('cost_control_last_checked_live_rates', 0);
+$lastUpdated = (int) $this->model->configModel->getOption('cost_control_last_updated', 0);
+$nextUpdate = (int) $this->model->configModel->getOption('cost_control_next_update', 0);
 
 ?>
 
 <div class="cost-control-page-header relative">
     <div id="RateReminder" class="alert alert-error alert-fade-out" style="">
-        <?= t('The next update for live rates will be on %s', $this->dt->datetime($this->model->configModel->get('cost_control_next_update', time()))) ?>
+        <?= $nextUpdate > 0 ? t('The next update for live rates will be on %s', $this->dt->datetime($nextUpdate)) : t('Live rates have not been retrieved yet') ?>
     </div>
     <h2 class="">
         <span class="currency-wallet-icon"></span> <?= t('Exchange Rates') ?>
@@ -83,7 +87,7 @@
         </form>
         <div class="top-detail-bar">
             <span class="json-last-checked">
-                <?= t('Last Checked: %s', $this->dt->datetime($this->model->configModel->get('last_checked_liverates', time() - 86401))) ?>
+                <?= $lastChecked > 0 ? t('Last Checked: %s', $this->dt->datetime($lastChecked)) : t('Last Checked: Not yet') ?>
             </span>
             <a id="PluginBottom" href="#PluginTop" title="<?= t('Go to the bottom of the page') ?>" class="btn-action"><i class="fa fa-level-down" aria-hidden="true"></i> <?= t('Bottom') ?></a>
         </div>
@@ -142,10 +146,10 @@
                 <?= t('Live Rates by') ?> <span class="exchange-rate-api-logo"></span>
             </a>
             <span class="last-update-detail">
-                <?= t('Last Update to Live Rate Data: %s', $this->dt->datetime($this->model->configModel->get('cost_control_last_updated', time()))) ?>
+                <?= $lastUpdated > 0 ? t('Last Update to Live Rate Data: %s', $this->dt->datetime($lastUpdated)) : t('Last Update to Live Rate Data: Not yet') ?>
             </span>
             <span class="next-update-detail">
-                <?= t('Next Update to Live Rate Data: %s', $this->dt->datetime($this->model->configModel->get('cost_control_next_update', time()))) ?>
+                <?= $nextUpdate > 0 ? t('Next Update to Live Rate Data: %s', $this->dt->datetime($nextUpdate)) : t('Next Update to Live Rate Data: Not yet') ?>
             </span>
         </div>
     <?php endif ?>

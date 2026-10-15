@@ -205,15 +205,15 @@ try {
         VALUES (42, 1, 98.765432, 1791936000, 'EUR')");
     $pdo->exec("INSERT INTO hourly_rates (id, user_id, rate, date_effective, currency)
         VALUES (43, 1, NULL, 1792022400, 'GBP')");
-    // Legacy FLOAT and REAL columns may already have rounded the input; preserve the stored value.
+    // Cast legacy FLOAT and REAL values as the target type so database conversion remains authoritative.
     $legacyBudgetAmount = number_format(
-        (float) $pdo->query('SELECT amount FROM budget_lines WHERE id = 41')->fetchColumn(),
+        (float) $pdo->query('SELECT CAST(amount AS DECIMAL(19,6)) FROM budget_lines WHERE id = 41')->fetchColumn(),
         6,
         '.',
         ''
     );
     $legacyHourlyRate = number_format(
-        (float) $pdo->query('SELECT rate FROM hourly_rates WHERE id = 42')->fetchColumn(),
+        (float) $pdo->query('SELECT CAST(rate AS DECIMAL(19,6)) FROM hourly_rates WHERE id = 42')->fetchColumn(),
         6,
         '.',
         ''

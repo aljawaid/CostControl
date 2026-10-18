@@ -52,6 +52,7 @@ foreach (
         'public function save()',
         'public function confirm()',
         'public function remove()',
+        '$this->checkCSRFForm();',
         '$this->checkCSRFParam();',
         "getByTaskId(\$task['id'], \$project['id'])",
         "save(\$task['id'], \$project['id'], \$values['amount'])",

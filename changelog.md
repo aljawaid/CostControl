@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.2.3
+
+- FIX: Validate the static task-cost POST token from the submitted form so authorised managers can save costs.
+- FIX: Extend the security contract to distinguish form CSRF validation from URL-token validation.
+
 ## v1.2.2
 
 - FIX: Resolve the registered task-cost model through Kanboard's template model helper so task pages render normally.

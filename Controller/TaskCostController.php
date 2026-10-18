@@ -44,7 +44,7 @@ class TaskCostController extends BaseController
      */
     public function save()
     {
-        $this->checkCSRFParam();
+        $this->checkCSRFForm();
         $project = $this->getProject();
         $task = $this->getTask();
         $values = $this->request->getValues();

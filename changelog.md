@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.2.2
+
+- FIX: Resolve the registered task-cost model through Kanboard's template model helper so task pages render normally.
+- FIX: Add a visual contract preventing task-cost detail hooks from using an undefined template identifier.
+
 ## v1.2.1
 
 - Enforce administrator and project-manager write boundaries with complete CSRF validation.

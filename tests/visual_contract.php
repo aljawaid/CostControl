@@ -47,6 +47,7 @@ foreach ($navigationTemplates as $templatePath) {
 
 foreach (
     array(
+        'model->taskCost->getByTaskId',
         'task-cost-status-',
         "'pending' : 'confirmed'",
     ) as $snippet

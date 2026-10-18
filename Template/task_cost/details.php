@@ -1,5 +1,12 @@
+<?php
+/**
+ * Render a manager-only static task cost in task details.
+ *
+ * Related tests: tests/security_contract.php and tests/visual_contract.php.
+ */
+?>
 <?php if ($this->user->hasProjectAccess('TaskCostController', 'edit', $task['project_id'])): ?>
-    <?php $taskCost = $this->taskCost->getByTaskId($task['id'], $task['project_id']) ?>
+    <?php $taskCost = $this->model->taskCost->getByTaskId($task['id'], $task['project_id']) ?>
     <?php if (! empty($taskCost)): ?>
         <li>
             <strong><?= t('Static cost:') ?></strong>

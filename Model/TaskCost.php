@@ -89,7 +89,7 @@ class TaskCost extends Base
         }
 
         $values['task_id'] = $taskId;
-        return $this->db->table(self::TABLE)->persist($values);
+        return $this->db->table(self::TABLE)->insert($values);
     }
 
     /**

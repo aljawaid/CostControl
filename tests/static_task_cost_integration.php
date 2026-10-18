@@ -51,9 +51,13 @@ if (! isset($loadedPlugins['CostControl'])) {
             $failures[] = 'A negative static task cost passed validation.';
         }
 
-        $container['taskCost']->save($pendingTaskId, $projectId, '125.1234564');
+        $initialSave = $container['taskCost']->save($pendingTaskId, $projectId, '125.1234564');
         $container['taskCost']->save($confirmedTaskId, $projectId, '75.5000004');
         $container['taskCost']->save($pendingTaskId, $projectId, '150.6543214');
+
+        if (! $initialSave) {
+            $failures[] = 'Initial static task cost insert returned a false failure signal.';
+        }
 
         $storedCost = $container['taskCost']->getByTaskId($pendingTaskId, $projectId);
         $rowCount = $container['db']->table('cost_control_task_costs')->eq('task_id', $pendingTaskId)->count();

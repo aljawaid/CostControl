@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.2.4
+
+- FIX: Return the boolean insert result for task-keyed costs so MySQL does not report a successful write as a failure.
+- FIX: Assert that an initial static task-cost insert returns a successful controller signal.
+
 ## v1.2.3
 
 - FIX: Validate the static task-cost POST token from the submitted form so authorised managers can save costs.

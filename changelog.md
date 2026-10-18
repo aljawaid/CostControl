@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## v1.2.1
 
 - Enforce administrator and project-manager write boundaries with complete CSRF validation.
 - Preserve the last good currency rates when scheduled provider updates fail validation.

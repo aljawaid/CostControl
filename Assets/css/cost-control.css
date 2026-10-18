@@ -40,6 +40,31 @@
 .pp-dark-green { color: var(--pp-green-dark); fill: var(--pp-green-dark); }
 .pp-orange { color: var(--pp-orange); fill: var(--pp-orange); }
 
+/* Keep C3 chart labels, axes and grids readable in Kanboard's Light and Dark themes. */
+#budget-chart .c3,
+#task-cost-summary-chart .c3 {
+    color: var(--color-medium, var(--pp-grey));
+}
+
+#budget-chart .c3 text,
+#task-cost-summary-chart .c3 text {
+    fill: currentColor;
+}
+
+#budget-chart .c3-axis path,
+#budget-chart .c3-axis line,
+#task-cost-summary-chart .c3-axis path,
+#task-cost-summary-chart .c3-axis line {
+    stroke: currentColor;
+    opacity: .65;
+}
+
+#budget-chart .c3-grid line,
+#task-cost-summary-chart .c3-grid line {
+    stroke: currentColor;
+    opacity: .35;
+}
+
 .display-none, .d-none { display: none }
 
 .font-weight-bold { font-weight: bold; }

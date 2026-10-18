@@ -71,6 +71,14 @@ foreach (
 foreach (
     array(
         '.cost-control-dropdown .cost-control-navigation-icon',
+        '#budget-chart .c3 text,',
+        '#task-cost-summary-chart .c3 text',
+        'fill: currentColor;',
+        '#budget-chart .c3-axis path,',
+        '#task-cost-summary-chart .c3-axis line',
+        '#budget-chart .c3-grid line,',
+        '#task-cost-summary-chart .c3-grid line',
+        'stroke: currentColor;',
         'max-width: 100%;',
         'background-color: var(--table-header-background-color, #FFFFFF);',
         '@media (max-width: 768px)',

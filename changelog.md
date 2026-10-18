@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.2.5
+
+- FIX: Make budget-chart labels, axes and grid lines inherit Kanboard theme colours so they remain readable in Dark theme.
+- FIX: Extend the visual contract to prevent fixed black C3 chart text and guides from returning.
+
 ## v1.2.4
 
 - FIX: Return the boolean insert result for task-keyed costs so MySQL does not report a successful write as a failure.

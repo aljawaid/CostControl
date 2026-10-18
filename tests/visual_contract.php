@@ -73,6 +73,7 @@ foreach (
         '.cost-control-dropdown .cost-control-navigation-icon',
         '#budget-chart .c3 text,',
         '#task-cost-summary-chart .c3 text',
+        'color: var(--color-primary, var(--pp-grey));',
         'fill: currentColor;',
         '#budget-chart .c3-axis path,',
         '#task-cost-summary-chart .c3-axis line',

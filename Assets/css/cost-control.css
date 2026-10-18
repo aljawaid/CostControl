@@ -43,7 +43,7 @@
 /* Keep C3 chart labels, axes and grids readable in Kanboard's Light and Dark themes. */
 #budget-chart .c3,
 #task-cost-summary-chart .c3 {
-    color: var(--color-medium, var(--pp-grey));
+    color: var(--color-primary, var(--pp-grey));
 }
 
 #budget-chart .c3 text,

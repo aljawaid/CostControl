@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.2.6
+
+- FIX: Use Kanboard's primary theme colour for chart text and guides so Dark-theme labels meet readable contrast.
+- FIX: Assert the primary-colour inheritance in the chart visual contract.
+
 ## v1.2.5
 
 - FIX: Make budget-chart labels, axes and grid lines inherit Kanboard theme colours so they remain readable in Dark theme.

@@ -2,6 +2,7 @@
 
 ## v1.2.6
 
+_(most recent changes are listed on top):_
 - FIX: Use Kanboard's primary theme colour for chart text and guides so Dark-theme labels meet readable contrast.
 - FIX: Assert the primary-colour inheritance in the chart visual contract.
 

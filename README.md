@@ -145,7 +145,7 @@ Go to `Dashboard` &#10562; Cost Control
 <details>
     <summary><strong>Compatibility</strong></summary>
 
-- CostControl `1.2.6` requires [Kanboard](https://github.com/kanboard/kanboard "Kanboard - Kanban Project Management Software") ≥`1.2.54`
+- Requires [Kanboard](https://github.com/kanboard/kanboard "Kanboard - Kanban Project Management Software") ≥`1.2.54`
 - Tested with PHP `8.2`–`8.5`
 - SQLite, MySQL `8.4` and PostgreSQL `18` have dedicated compatibility tests
 - **Other Plugins & Action Plugins**
